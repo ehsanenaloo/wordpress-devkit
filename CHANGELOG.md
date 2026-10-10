@@ -60,4 +60,4 @@ The first version recorded in this repository.
 
 [Unreleased]: https://github.com/ehsanenaloo/wordpress-devkit/compare/v2.0.1...HEAD
 [2.0.1]: https://github.com/ehsanenaloo/wordpress-devkit/releases/tag/v2.0.1
-[2.0.0]: https://github.com/ehsanenaloo/wordpress-devkit/releases/tag/v2.0.0
+[2.0.0]: https://github.com/ehsanenaloo/wordpress-devkit/releases/tag/v2.0.1
