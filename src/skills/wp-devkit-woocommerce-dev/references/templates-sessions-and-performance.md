@@ -2,7 +2,7 @@
 
 Contents: template overrides; hooks first; cart fragments; sessions; product data and queries; admin and extension load; measurement; false positives.
 
-Researched 2026-10-08. Sources: [Template structure](https://developer.woocommerce.com/docs/theming/theme-development/template-structure/), [Developer advisory: session management and cron jobs in 10.1](https://developer.woocommerce.com/2025/08/08/developer-advisory-changes-to-session-management-and-cron-jobs-in-woocommerce-10-1/), [10.3 empty-session advisory](https://developer.woocommerce.com/2025/10/06/experimental-clearing-empty-sessions-10-3/), WooCommerce source (`class-wc-frontend-scripts.php`, `class-wc-widget-cart.php`, `wc-core-functions.php`; trunk 11.3-dev).
+Research date: 2026-10-08. Sources: [Template structure](https://developer.woocommerce.com/docs/theming/theme-development/template-structure/), [Developer advisory: session management and cron jobs in 10.1](https://developer.woocommerce.com/2025/08/08/developer-advisory-changes-to-session-management-and-cron-jobs-in-woocommerce-10-1/), [10.3 empty-session advisory](https://developer.woocommerce.com/2025/10/06/experimental-clearing-empty-sessions-10-3/), WooCommerce source (`class-wc-frontend-scripts.php`, `class-wc-widget-cart.php`, `wc-core-functions.php`).
 
 ## Template overrides
 
@@ -16,15 +16,15 @@ Researched 2026-10-08. Sources: [Template structure](https://developer.woocommer
 
 ## Cart fragments
 
-`wc-cart-fragments` is registered by core (`class-wc-frontend-scripts.php` registers it and does not enqueue it) and enqueued by the mini-cart widget (`WC_Widget_Cart`) and by themes/plugins that call `wp_enqueue_script( 'wc-cart-fragments' )`. It issues a `get_refreshed_fragments` AJAX call (a `WC_AJAX` endpoint, confirmed in source) to keep a header cart count in sync, which also hurts full-page caching.
+`wc-cart-fragments` is registered by core (`class-wc-frontend-scripts.php` registers it and does not enqueue it) and enqueued by the mini-cart widget (`WC_Widget_Cart`) and by themes/plugins that call `wp_enqueue_script( 'wc-cart-fragments' )`. It issues a `get_refreshed_fragments` AJAX call (a `WC_AJAX` endpoint) to keep a header cart count in sync, which also hurts full-page caching.
 
 Before dequeuing: find the consumer (`rg "wc-cart-fragments|get_refreshed_fragments|widget_shopping_cart_content"`), confirm the header widget has another update path, and test add-to-cart on cached pages. Dequeuing it on a theme that renders a mini-cart count is a regression. Not enqueuing it is not a defect.
 
 ## Sessions
 
-- Verified in the 10.1 advisory: maximum session length is capped at 30 days (a filter that exceeds it is reduced and logged); defaults were 7 days for logged-in users and 2 days for guests; logged-in sessions are stored only in the session table; the `woocommerce_migrate_guest_session_to_user_session` filter controls guest-to-user merge at login; WooCommerce cron jobs moved to Action Scheduler.
+- The 10.1 advisory states: maximum session length is capped at 30 days (a filter that exceeds it is reduced and logged); defaults were 7 days for logged-in users and 2 days for guests; logged-in sessions are stored only in the session table; the `woocommerce_migrate_guest_session_to_user_session` filter controls guest-to-user merge at login; WooCommerce cron jobs moved to Action Scheduler.
 - Code that raises `wc_session_expiration` / `wc_session_expiring` beyond 30 days does nothing past the cap. Persist long-lived data (saved carts, preferences) as user meta or a dedicated table, not in the session.
-- Sessions are created for visitors who add to cart or hit certain endpoints. Large guest/bot traffic grows `wp_woocommerce_sessions`; cleanup runs through the `woocommerce_cleanup_sessions` event (a recurring Action Scheduler action every 12 hours, scheduled in `class-woocommerce.php`). The 10.3 "clear empty sessions" feature is experimental and off by default.
+- Sessions are created for visitors who add to cart or hit certain endpoints. Large guest/bot traffic grows `wp_woocommerce_sessions`; cleanup runs through the `woocommerce_cleanup_sessions` event (a recurring Action Scheduler action every 12 hours, scheduled in `class-woocommerce.php`). The "clear empty sessions" feature (added in 10.3) was experimental and off by default; check the installed version.
 - Never store personal data or tokens in the session beyond what core does; sessions are accessible to anything running in the request.
 
 ## Product data and queries

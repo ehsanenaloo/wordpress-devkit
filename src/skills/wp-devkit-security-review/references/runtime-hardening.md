@@ -1,12 +1,12 @@
 # Runtime hardening and operational review
 
-Researched 2026-10-08. Contents: 1 Scope and evidence | 2 WordPress configuration | 3 Server and filesystem | 4 Transport, headers and cookies | 5 Logging, backup and monitoring | 6 Staged testing bounds | 7 Checks
+Research date: 2026-10-08. Contents: 1 Scope and evidence | 2 WordPress configuration | 3 Server and filesystem | 4 Transport, headers and cookies | 5 Logging, backup and monitoring | 6 Staged testing bounds | 7 Checks
 
 Source configuration is a hypothesis until the deployed response or environment confirms it. Docker localhost is not evidence of production TLS or hosting policy. Tool or host unavailable means unexecuted, not clean.
 
 ## 1. Scope and evidence
 
-Record the environment: WordPress, PHP (version and SAPI), database (engine and version), web server, OS/container image digest, filesystem and object storage, cache layers, CDN/WAF, hosting provider. Compare with the supported versions in the project; a PHP minor past its security-support end is a finding by itself (DevKit was tested against WordPress 7.1 and PHP 8.3).
+Record the environment: WordPress, PHP (version and SAPI), database (engine and version), web server, OS/container image digest, filesystem and object storage, cache layers, CDN/WAF, hosting provider. Compare with the supported versions in the project; a PHP minor past its security-support end is a finding by itself.
 
 ## 2. WordPress configuration
 

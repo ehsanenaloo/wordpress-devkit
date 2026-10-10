@@ -14,7 +14,7 @@ import zipfile
 
 # Roots that must never appear in a product tree. The publication manifest is the allowlist; this set is a
 # second, independent guard against accidental inclusion.
-FORBIDDEN_ROOTS = {'.git', 'technical-docs', 'build', 'AGENTS.md', 'CLAUDE.md'}
+FORBIDDEN_ROOTS = {'.git', 'technical-docs', 'build', 'guides', 'AGENTS.md', 'CLAUDE.md'}
 FORBIDDEN_PREFIXES = ('tests/evals', 'src/publication', 'technical-docs/internal')
 # Tests that are part of the product so the public repository can verify itself.
 PUBLIC_TEST_FILES = {'tests/test_skill_content.py', 'tests/_bootstrap.py'}
@@ -161,7 +161,10 @@ def archive_files(files):
 
 
 def write_archive(files, output, prefix='wp-devkit/'):
-    """Write a reproducible ZIP: sorted entries, fixed timestamps and permissions.
+    """Write a ZIP with sorted entries, fixed timestamps and permissions.
+
+    The compressed bytes also depend on the zlib build (CPython 3.14 on Windows uses zlib-ng), so only the archive
+    built by the CI workflow is canonical.
 
     The archive is built beside the target and moved into place, so a failure never leaves a partial file."""
     output = Path(output)

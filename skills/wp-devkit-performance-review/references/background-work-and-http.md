@@ -1,6 +1,6 @@
 # Background work, remote calls and request-path cost
 
-Researched 2026-10-08. Contents: 1 What belongs on the request path | 2 WP-Cron | 3 Action Scheduler | 4 Remote HTTP | 5 admin-ajax, REST and Heartbeat | 6 Hook cost | 7 Memory and limits | 8 Review checks
+Research date: 2026-10-08. Contents: 1 What belongs on the request path | 2 WP-Cron | 3 Action Scheduler | 4 Remote HTTP | 5 admin-ajax, REST and Heartbeat | 6 Hook cost | 7 Memory and limits | 8 Review checks
 
 ## 1. What belongs on the request path
 

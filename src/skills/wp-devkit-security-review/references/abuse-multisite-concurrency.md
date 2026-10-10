@@ -1,6 +1,6 @@
 # Abuse, tenant isolation and concurrency
 
-Researched 2026-10-08. Contents: 1 Public endpoints and abuse | 2 Webhooks and replay | 3 Tenant isolation | 4 Concurrency | 5 Severity and evidence | 6 Checks
+Research date: 2026-10-08. Contents: 1 Public endpoints and abuse | 2 Webhooks and replay | 3 Tenant isolation | 4 Concurrency | 5 Severity and evidence | 6 Checks
 
 ## 1. Public endpoints and abuse
 

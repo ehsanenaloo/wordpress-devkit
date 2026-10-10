@@ -89,7 +89,9 @@ Consequence: `sanitize_text_field` as the only `sanitize_callback` on an `intege
 | Route 404 | Namespace/regex mismatch, registered before `rest_api_init`, non-pretty permalinks (`?rest_route=/ns/v1/...`) | Fix registration, test both URL forms |
 | Batch sub-request exits the response | Callback uses `wp_send_json` or `die` | Return `WP_REST_Response` |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - `register_rest_route`: https://developer.wordpress.org/reference/functions/register_rest_route/
 - Adding custom endpoints: https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
@@ -98,5 +100,3 @@ Consequence: `sanitize_text_field` as the only `sanitize_callback` on an `intege
 - Modifying responses: https://developer.wordpress.org/rest-api/extending-the-rest-api/modifying-responses/
 - Batch framework 5.6: https://make.wordpress.org/core/2020/11/20/rest-api-batch-framework-in-wordpress-5-6/
 - Core source read (wordpress-develop trunk): `class-wp-rest-request.php` (`has_valid_params`, `sanitize_params`), `rest-api.php`, `class-wp-rest-controller.php`.
-
-Not verified: that missing `permission_callback` behaves as unrestricted on every supported core (the 5.5 notice text says the route is public by default; confirm on the lowest supported version); `enum` support below 4.7; `WP_REST_Server::EDITABLE` mapping (from core constants, stable but not re-fetched).

@@ -6,14 +6,11 @@ from pathlib import Path
 import shutil
 import sys
 
-from distribution import is_link, remove_tree, tree_files
+from distribution import is_link, remove_tree, resolve_regular_path, tree_files
 
 
 def regular_path(value):
-    path = Path(value).absolute()
-    if any(is_link(item) for item in (path, *path.parents)):
-        raise ValueError(f'Refusing a linked recovery path: {path}')
-    return path.resolve()
+    return resolve_regular_path(value, 'recovery path')
 
 
 def hashes(path):

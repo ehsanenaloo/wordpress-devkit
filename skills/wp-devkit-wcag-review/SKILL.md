@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-wcag-review
-description: Produce a WCAG 2.1 or 2.2 A/AA conformance assessment for WordPress journeys: scope, sampling, per-criterion Pass/Fail/Needs evidence/N-A, evidence and retest. Use for audits, ACR/VPAT input and go-live acceptance; fixing widget behavior goes to wp-devkit-accessibility-review.
+description: "Produce a WCAG 2.1 or 2.2 A/AA conformance assessment for WordPress journeys: scope, sampling, per-criterion Pass/Fail/Needs evidence/N-A, evidence and retest. Use for audits, ACR/VPAT input and go-live acceptance; fixing widget behavior goes to wp-devkit-accessibility-review."
 ---
 
 # Conformance scope and criterion evidence

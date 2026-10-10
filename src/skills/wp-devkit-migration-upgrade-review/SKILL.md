@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-migration-upgrade-review
-description: Plan, debug, implement or review WordPress schema and data upgrades: dbDelta tables, versioned migrations, batched backfills, partial failures, multisite and HPOS transitions, search-replace, PHP/WordPress version upgrades and rollback readiness.
+description: "Plan, debug, implement or review WordPress schema and data upgrades: dbDelta tables, versioned migrations, batched backfills, partial failures, multisite and HPOS transitions, search-replace, PHP/WordPress version upgrades and rollback readiness."
 ---
 
 # Data transition and recoverable upgrades

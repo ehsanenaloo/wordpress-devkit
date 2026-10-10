@@ -27,6 +27,21 @@ def is_link(path):
     return False
 
 
+def resolve_regular_path(path, label):
+    """Resolve a user-chosen directory. The directory itself must not be a link. Links above it are followed
+    (for example /home -> /var/home or a dotfile-managed ~/.claude); on POSIX only when the link belongs to root
+    or to the current user, so another user cannot redirect the write."""
+    path = Path(path).absolute()
+    if is_link(path):
+        raise ValueError(f'Refusing a linked {label}: {path}')
+    if hasattr(os, 'geteuid'):
+        trusted = {0, os.geteuid()}
+        for item in path.parents:
+            if is_link(item) and item.lstat().st_uid not in trusted:
+                raise ValueError(f'Refusing a {label} below a link owned by another user: {item}')
+    return path.resolve()
+
+
 def remove_tree(path):
     """Delete a directory tree, clearing the read-only attribute that blocks deletion on Windows."""
     def clear_and_retry(function, target, *_):

@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime, timezone
 import html
 import json
+import os
 from pathlib import Path
 
 STATUSES = {'passed', 'failed', 'unavailable', 'skipped'}
@@ -117,9 +118,18 @@ def write_report(report, destination, previous=None):
         compare(report, previous)
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=True)
-    (destination / 'report.json').write_text(json.dumps(report, indent=2, ensure_ascii=False,
-                                                       allow_nan=False) + '\n', encoding='utf-8')
-    (destination / 'report.html').write_text(render(report, previous), encoding='utf-8')
+    documents = {
+        'report.json': json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + '\n',
+        'report.html': render(report, previous),
+    }
+    encoded = {name: text.encode('utf-8') for name, text in documents.items()}
+    for name, data in encoded.items():
+        partial = destination / (name + '.partial')
+        try:
+            partial.write_bytes(data)
+            os.replace(partial, destination / name)
+        finally:
+            partial.unlink(missing_ok=True)
 
 
 def main():

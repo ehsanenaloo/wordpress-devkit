@@ -77,7 +77,9 @@ Verify the artifact users get, not the repository:
 | Works on 8.1, warns on 8.3/8.4 | Newer deprecations | Run suite on the matrix |
 | Directory rejection for "external code" | CDN scripts/styles or remote updater | Plugin Check, grep for URLs in enqueue calls |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Detailed plugin guidelines: https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/
 - Plugin Check (requires WordPress 6.3+, PHP 7.4+): https://wordpress.org/plugins/plugin-check/
@@ -86,5 +88,3 @@ Verify the artifact users get, not the repository:
 - Header requirements: https://developer.wordpress.org/plugins/plugin-basics/header-requirements/
 - `wp_enqueue_script` args: https://developer.wordpress.org/reference/functions/wp_enqueue_script/
 - WordPress 7.0 field guide (PHP 7.4 minimum, script modules): https://make.wordpress.org/core/2026/05/14/wordpress-7-0-field-guide/
-
-PHP deprecation versions (8.1 null to built-in non-nullable parameters, 8.2 dynamic properties, 8.4 implicit nullable parameters) were checked against the php.net migration guides; `wp dist-archive` (honors `.distignore`, options `--create-target-dir`, `--force`, `--plugin-dirname`, `--format`) against the WP-CLI command page. Not verified: php-scoper and Strauss behavior with the current release (check each tool's README; Strauss copies prefixed dependencies to `vendor-prefixed` by default).

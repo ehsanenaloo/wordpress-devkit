@@ -2,7 +2,7 @@
 
 Apply this contract before domain heuristics. Treat examples, grep matches and historical reference checklists as investigation leads, not proven defects. This contract overrides conflicting blanket severity rules in the bundled references.
 
-1. Discover the actual WordPress, PHP, WooCommerce, Node and tooling versions from the project. Consult primary documentation for version-sensitive APIs; never invent API behavior or silently upgrade dependencies.
+1. Discover the actual WordPress, PHP, WooCommerce, Node and tooling versions from the project. Consult primary documentation for version-sensitive APIs; never invent API behavior or silently upgrade dependencies. Version numbers written in these files never say what is current: before relying on a version-sensitive statement, look up the latest release and its documentation online from the official source, and record the version you used.
 2. Establish whether the request authorizes review, implementation or deployment. Keep review read-only. For implementation, state a concise design, affected boundaries and validation plan before editing. Keep unrelated code unchanged.
 3. Trace source, transformations, authorization, sink and reachable execution path. Account for core APIs, hooks, middleware and deliberate public behavior before reporting missing controls.
 4. Separate confirmed findings from hypotheses. Include file:line, trigger or reproduction, affected actor, impact, confidence, remediation and a relevant regression check. Do not assign a vulnerability CWE to a style preference.

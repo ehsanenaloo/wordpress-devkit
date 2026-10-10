@@ -22,7 +22,7 @@ python scripts/doctor.py /path/to/project --container owned-wordpress --trusted-
 python scripts/doctor.py /path/to/project --container owned-wordpress --trusted-runtime --wordpress-root /var/www/site --output /path/to/evidence
 ```
 
-Write the output directory outside the reviewed source tree. The command prints the path of `report.html`; `report.json` is the machine-readable twin.
+Write the output directory outside the reviewed source tree. The report names the target by its absolute local path (it includes your user name and folder layout); add `--redact-paths` before sharing a report to record only the directory name. The command prints the path of `report.html`; `report.json` is the machine-readable twin.
 
 ## Modes and what each executes
 
@@ -41,12 +41,12 @@ Each check has `id`, `status` (`passed`, `failed`, `unavailable`, `skipped`), `m
 | Check id | Meaning |
 | --- | --- |
 | `filesystem` | Layout signals found at the top level (a list of names); not an exhaustive scan |
-| `tool:php`, `tool:node`, `tool:npm`, `tool:python`, `tool:docker` | `passed` with the parsed version, `unavailable` if not on PATH or output unrecognized, `failed` if the probe errored or timed out (15 s) |
+| `tool:php`, `tool:node`, `tool:npm`, `tool:python`, `tool:docker` | `passed` with the parsed version, `unavailable` if not on PATH, if its version probe exited with an error (for example a broken shim) or its output was not recognized, `failed` only if the probe timed out (15 s; the tool and any process it started are stopped) |
 | `tool:wp` | Always `skipped` when found: execution omitted by design |
 | `docker:container` | `passed` if the named container is running; otherwise `unavailable` |
 | `wordpress:runtime` | `passed` with the runtime inventory; `failed` if the collector or validation failed (diagnostics withheld to protect secrets); `skipped` when no runtime mode was requested |
 
-Exit codes: `0` when no check failed (unavailable and skipped are visible but not failures); `1` when at least one probe failed; `2` for invalid arguments or output-path problems. A `failed` tool probe says the probe errored, not that the project is broken. The report ends with a `limits` list stating that the output is not a vulnerability scan or compatibility certification.
+Exit codes: `0` when no check failed (unavailable and skipped are visible but not failures); `1` when at least one probe timed out or the runtime collector failed; `2` for invalid arguments or output-path problems. A `failed` check says the probe could not finish, not that the project is broken. The report ends with a `limits` list stating that the output is not a vulnerability scan or compatibility certification.
 
 Runtime evidence example (values are illustrative):
 

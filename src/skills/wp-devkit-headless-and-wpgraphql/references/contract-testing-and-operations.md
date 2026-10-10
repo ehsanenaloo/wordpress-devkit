@@ -2,7 +2,7 @@
 
 Contents: schema and query contract; frontend coupling checks; the WordPress front end in a headless setup; URLs, media and SEO; multisite and i18n; observability; rollout and rollback.
 
-Researched 2026-10-08. Sources: WPGraphQL source (`src/CLI/Commands.php`, `Request.php`, settings), [WPGraphQL security](https://www.wpgraphql.com/docs/security), [WP REST authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/), WordPress core `template_redirect` / `rest_api_default_filters` behavior (core source, master).
+Research date: 2026-10-08. Sources: WPGraphQL source (`src/CLI/Commands.php`, `Request.php`, settings), [WPGraphQL security](https://www.wpgraphql.com/docs/security), [WP REST authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/), WordPress core `template_redirect` / `rest_api_default_filters` behavior (core source, master).
 
 ## Schema and query contract
 

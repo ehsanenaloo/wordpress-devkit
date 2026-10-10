@@ -12,7 +12,7 @@ Contents: choosing storage; options and autoload; transients and object cache; c
 | High-volume rows, joins, counters, logs | Custom table with owned schema and indexes | Millions of `postmeta` rows queried by value |
 | Recomputable cache | Transient or object cache | Anything that must survive a cache flush |
 
-## Options and autoload (verified for WordPress 6.6+)
+## Options and autoload (behavior since WordPress 6.6)
 
 - Autoloaded options are loaded on every request into memory. In 6.6 `add_option()`/`update_option()` default `$autoload` became `null` (WordPress decides); stored values are `on`, `off`, `auto`, `auto-on`, `auto-off`, and legacy `yes`/`no`. Options without an explicit `true` whose value exceeds 150000 bytes are not autoloaded (`wp_max_autoloaded_option_size` filter; do not raise it). Passing `'yes'`/`'no'` is deprecated since 6.7; pass booleans.
 - Site Health reports a critical issue when total autoloaded size exceeds 800 KB.
@@ -76,12 +76,12 @@ If the plugin stores personal data (user meta, form submissions, logs with IP or
 | Cache returns another site's data on multisite | Key lacks blog scope or wrong global group | Scope keys/groups |
 | `last_error` ignored, silent data loss | Write result unchecked | Check and surface errors, retry or fail visibly |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Autoload changes: https://make.wordpress.org/core/2024/06/18/options-api-disabling-autoload-for-large-options/
 - `add_option`: https://developer.wordpress.org/reference/functions/add_option/
 - `wpdb::prepare`: https://developer.wordpress.org/reference/classes/wpdb/prepare/
 - Action Scheduler API: https://actionscheduler.org/api/
 - `wp option list`, `wp transient delete`: https://developer.wordpress.org/cli/commands/option/list/ , https://developer.wordpress.org/cli/commands/transient/delete/
-
-Checked against core source docblocks: transient name limits and the `wp_cache_supports( 'flush_group' )` check required before `wp_cache_flush_group()`. Not verified: support for `flush_group` varies per object-cache backend, so confirm on the target install.

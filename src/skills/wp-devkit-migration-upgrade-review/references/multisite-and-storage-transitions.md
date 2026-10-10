@@ -1,6 +1,6 @@
 # Multisite, WooCommerce storage and serialized-data transitions
 
-Researched 2026-10-08. Contents: 1 Multisite upgrades | 2 New sites | 3 WooCommerce HPOS | 4 Serialized data and search-replace | 5 Options, meta and post-type changes | 6 Review checks
+Research date: 2026-10-08. Contents: 1 Multisite upgrades | 2 New sites | 3 WooCommerce HPOS | 4 Serialized data and search-replace | 5 Options, meta and post-type changes | 6 Review checks
 
 ## 1. Multisite upgrades
 

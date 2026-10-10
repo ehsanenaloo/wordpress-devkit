@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-phpstan-review
-description: Configure, debug or review PHPStan for WordPress plugins and themes: NEON config and levels, szepeviktor/phpstan-wordpress and WordPress/WooCommerce stubs, undefined symbols, WP_Error and hook typing, baselines, ignores and CI gate coverage that actually fails on type errors.
+description: "Configure, debug or review PHPStan for WordPress plugins and themes: NEON config and levels, szepeviktor/phpstan-wordpress and WordPress/WooCommerce stubs, undefined symbols, WP_Error and hook typing, baselines, ignores and CI gate coverage that actually fails on type errors."
 ---
 
 # Static analysis with meaningful coverage

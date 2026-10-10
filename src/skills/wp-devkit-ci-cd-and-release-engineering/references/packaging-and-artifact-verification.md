@@ -2,7 +2,7 @@
 
 Contents: the artifact is the unit of release; deterministic build; include/exclude policy; version consistency; inspecting the archive; smoke install and upgrade tests; provenance and checksums; dependency collisions; themes and blocks; false positives.
 
-Researched 2026-10-08. Sources: [Composer CLI](https://getcomposer.org/doc/03-cli.md), [wp dist-archive](https://developer.wordpress.org/cli/commands/dist-archive/), [actions/upload-artifact README](https://github.com/actions/upload-artifact), [artifact attestations](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds) (docs use `actions/attest`; `actions/attest-build-provenance` was at v4.2.2 on the research date), [10up deploy action README](https://github.com/10up/action-wordpress-plugin-deploy), [plugin readme rules](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/).
+Researched 2026-10-08. Sources: [Composer CLI](https://getcomposer.org/doc/03-cli.md), [wp dist-archive](https://developer.wordpress.org/cli/commands/dist-archive/), [actions/upload-artifact README](https://github.com/actions/upload-artifact), [artifact attestations](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds), [10up deploy action README](https://github.com/10up/action-wordpress-plugin-deploy), [plugin readme rules](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/).
 
 ## The artifact is the unit of release
 

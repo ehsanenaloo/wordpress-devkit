@@ -87,7 +87,9 @@ Context: version 1.2 adds `acme_events`. Sites updating from 1.1 never activate 
 
 State the practical result, the changed owner and the remaining limits. Separate confirmed findings, candidates, executed and unexecuted checks. Do not claim compatibility, performance or security beyond the recorded environment.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Plugin basics: https://developer.wordpress.org/plugins/plugin-basics/
 - Header requirements: https://developer.wordpress.org/plugins/plugin-basics/header-requirements/

@@ -12,7 +12,8 @@ from distribution import is_link
 from product_checks import antigravity_files, archive_files, validate_snapshot, write_archive
 
 ROOT = Path(__file__).resolve().parents[1]
-SKIPPED_DIRECTORIES = {'.git', '__pycache__', 'build', 'node_modules', '.venv', '.pytest_cache'}
+SKIPPED_DIRECTORIES = {'.git', '__pycache__', '.pytest_cache'}
+ROOT_ONLY_SKIPPED = {'build', 'node_modules', '.venv'}
 
 
 def read_tree(root=ROOT):
@@ -20,7 +21,8 @@ def read_tree(root=ROOT):
     files = {}
     for path in sorted(root.rglob('*')):
         relative = path.relative_to(root)
-        if any(part in SKIPPED_DIRECTORIES for part in relative.parts) or path.suffix == '.pyc':
+        if (any(part in SKIPPED_DIRECTORIES for part in relative.parts) or relative.parts[0] in ROOT_ONLY_SKIPPED
+                or path.suffix == '.pyc'):
             continue
         if is_link(path):
             raise ValueError(f'Linked path in product tree: {relative.as_posix()}')

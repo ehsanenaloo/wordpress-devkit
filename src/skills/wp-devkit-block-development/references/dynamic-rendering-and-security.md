@@ -55,4 +55,4 @@ Use `ServerSideRender` (`@wordpress/server-side-render`) only for simple preview
 - https://developer.wordpress.org/reference/functions/get_block_wrapper_attributes/
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/
-- Core source read (trunk, 2026-10-08): `get_block_wrapper_attributes()` in `class-wp-block-supports.php` (merges `class`, `style`, `id`, `aria-label`; casts scalars; rejects bool/null/array), `WP_Block::render()` in `class-wp-block.php`
+- Core source read (trunk): `get_block_wrapper_attributes()` in `class-wp-block-supports.php` (merges `class`, `style`, `id`, `aria-label`; casts scalars; rejects bool/null/array), `WP_Block::render()` in `class-wp-block.php`

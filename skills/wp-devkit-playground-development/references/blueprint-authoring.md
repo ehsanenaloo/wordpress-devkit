@@ -4,11 +4,11 @@ Contents: structure, versions, resources, steps, ordering, trust review, a worke
 
 ## Structure
 
-A Blueprint is JSON that configures an instance. Validate against `https://playground.wordpress.net/blueprint-schema.json` (checked 2026-10-08: it currently contains both a v1 and a V2 declaration). JSON that parses is not a valid Blueprint; validate and then boot in a disposable instance.
+A Blueprint is JSON that configures an instance. Validate against `https://playground.wordpress.net/blueprint-schema.json`. JSON that parses is not a valid Blueprint; validate and then boot in a disposable instance.
 
 Top-level (v1) properties: `$schema`, `landingPage`, `preferredVersions` (`php`, `wp`), `features` (`networking`, default true), `extraLibraries` (`wp-cli`), `steps`, and the shorthands `plugins`, `login`, `siteOptions`, `constants` that expand before `steps`.
 
-Versions: `preferredVersions.php` accepts `7.4` to `8.5`, `latest`, `next` (web only); no patch versions. `preferredVersions.wp` accepts recent majors plus `latest`, `beta`, `nightly`/`trunk`. The Blueprint data-format page lists the last seven majors; the Query API page says the last three. Pick versions from the page that matches the surface you use, and confirm by booting. Aliases (`latest`, `beta`, `nightly`) move: record the resolved WordPress and PHP versions in the report. A Blueprints "v2" generation exists (the published schema declares it and the client source in `wordpress-playground` has a `BlueprintsV2Handler` and a `blueprints-runner` query parameter); its stability is not guaranteed, so do not author v2 unless the user asks and the target runner supports it.
+Versions: `preferredVersions.php` accepts a supported PHP minor version, `latest` and `next` (web only); no patch versions. Look up the supported PHP range online. `preferredVersions.wp` accepts recent majors plus `latest`, `beta`, `nightly`/`trunk`. The Blueprint data-format page and the Query API page can disagree on how many recent majors are listed. Pick versions from the page that matches the surface you use, and confirm by booting. Aliases (`latest`, `beta`, `nightly`) move: record the resolved WordPress and PHP versions in the report. A Blueprints "v2" generation exists (the published schema declares it and the client source in `wordpress-playground` has a `BlueprintsV2Handler` and a `blueprints-runner` query parameter); its stability is not guaranteed, so do not author v2 unless the user asks and the target runner supports it.
 
 ## Resources
 
@@ -61,13 +61,13 @@ Before booting any third-party Blueprint, read every `runPHP`, `runPHPWithOption
 | Different result next week | moving aliases/unpinned URLs | Pin versions, refs, digests |
 | `runSql` fails | MySQL-only syntax | Use `runPHP` + `$wpdb` or WP-CLI steps |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/playground/blueprints/steps/
 - https://developer.wordpress.org/playground/blueprints/data-format/
 - https://developer.wordpress.org/playground/blueprints/resources/
 - https://developer.wordpress.org/playground/blueprints/bundles/
 - https://playground.wordpress.net/blueprint-schema.json
-- https://make.wordpress.org/playground/ (v2 runner status posts, via search only; not fetched)
-
-Confirmed 2026-10-08 against the fetched docs: the 27 step names, deprecations (`pluginZipFile`, `themeZipFile`, `importWxr` `importer`), `runPHP` wp-load requirement, `runSql` assumes the SQLite integration plugin, `preferredVersions` ranges and the seven-major list (6.3 to 6.9 as of 2026-04-28), `features.networking` default true, shorthands expand before `steps`, resource fields, bundle layout (`blueprint.json` at the ZIP root or in exactly one top-level directory, `__MACOSX` ignored). Check the `url` resource caching behavior; the page only warns that temporary URLs expire.
+- https://make.wordpress.org/playground/

@@ -30,4 +30,4 @@ Plan or findings table plus explicit "not tested" list. A review without session
 
 ## Sources
 
-Researched 2026-10-08: [Nielsen Norman Group: usability testing](https://www.nngroup.com/articles/usability-testing-101/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
+Research date: 2026-10-08. Sources: [Nielsen Norman Group: usability testing](https://www.nngroup.com/articles/usability-testing-101/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).

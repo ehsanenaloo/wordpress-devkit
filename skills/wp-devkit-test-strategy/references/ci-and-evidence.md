@@ -80,7 +80,7 @@ The `--fail-on-risky`, `--fail-on-warning`, `--fail-on-incomplete` and `--fail-o
 
 ## Matrix design
 
-Pick cells from declared support, not from every combination: minimum and latest WordPress (plus trunk for early warning), minimum and newest supported PHP (WordPress 7.0/7.1 support PHP 7.4 to 8.5 per the core compatibility table; confirm your declared range), single site and multisite, WooCommerce legacy/HPOS-sync/HPOS storage when orders are touched, with and without a persistent object cache for cache-sensitive code. Test the built release artifact (the zip users install) at least once, not only the source tree: missing built assets and wrong file lists are release defects.
+Pick cells from declared support, not from every combination: minimum and latest WordPress (plus trunk for early warning), minimum and newest supported PHP (look up the PHP range the core compatibility table lists for each WordPress version, and confirm your declared range), single site and multisite, WooCommerce legacy/HPOS-sync/HPOS storage when orders are touched, with and without a persistent object cache for cache-sensitive code. Test the built release artifact (the zip users install) at least once, not only the source tree: missing built assets and wrong file lists are release defects.
 
 ## Coverage and mutation testing
 

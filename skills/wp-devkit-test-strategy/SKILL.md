@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-test-strategy
-description: Plan, write, debug or review WordPress tests: choose the layer (unit, WP integration, REST/AJAX, WooCommerce HPOS, Playwright), prove a regression fails first, fix flaky or order-dependent suites, CI exit propagation and skipped tests. Use for PHPUnit, wp-env and browser test strategy.
+description: "Plan, write, debug or review WordPress tests: choose the layer (unit, WP integration, REST/AJAX, WooCommerce HPOS, Playwright), prove a regression fails first, fix flaky or order-dependent suites, CI exit propagation and skipped tests. Use for PHPUnit, wp-env and browser test strategy."
 ---
 
 # Regressions that prove WordPress behavior

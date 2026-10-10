@@ -1,6 +1,6 @@
 # Typing WordPress boundaries without hiding bugs
 
-Researched 2026-10-08. Contents: 1 Principle | 2 Return unions | 3 Hooks | 4 Options, meta and request data | 5 Database and queries | 6 Classes, globals and dynamic properties | 7 WooCommerce | 8 Generics and array shapes | 9 Review checks
+Research date: 2026-10-08. Contents: 1 Principle | 2 Return unions | 3 Hooks | 4 Options, meta and request data | 5 Database and queries | 6 Classes, globals and dynamic properties | 7 WooCommerce | 8 Generics and array shapes | 9 Review checks
 
 ## 1. Principle
 

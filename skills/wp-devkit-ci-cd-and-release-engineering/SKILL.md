@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-ci-cd-and-release-engineering
-description: Build, debug or review GitHub Actions CI/CD for WordPress plugins, themes and sites: workflow trust and secrets, PHP/WP test matrices, merge gates, release zips, version drift, WordPress.org SVN delivery, host deploys and rollback. Writing the tests themselves belongs to test strategy.
+description: "Build, debug or review GitHub Actions CI/CD for WordPress plugins, themes and sites: workflow trust and secrets, PHP/WP test matrices, merge gates, release zips, version drift, WordPress.org SVN delivery, host deploys and rollback. Writing the tests themselves belongs to test strategy."
 ---
 
 # Trusted artifacts and release recovery

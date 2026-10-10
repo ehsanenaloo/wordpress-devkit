@@ -2,7 +2,7 @@
 
 Contents: two kinds of webhook; receiving a provider webhook; WooCommerce outgoing webhooks; Action Scheduler facts; failure-state acceptance; observability; false positives.
 
-Researched 2026-10-08. Sources: [Action Scheduler API](https://actionscheduler.org/api/), [usage](https://actionscheduler.org/usage/), [performance](https://actionscheduler.org/perf/), [WooCommerce webhooks](https://woocommerce.com/document/webhooks/), WooCommerce source (`class-wc-webhook.php`, `wc-webhook-functions.php`) and Action Scheduler source (`functions.php`, `ActionScheduler_DBStore.php`, library 4.2.0 on trunk). Library behavior has changed between releases; read the installed `action-scheduler` version before relying on a detail.
+Research date: 2026-10-08. Sources: [Action Scheduler API](https://actionscheduler.org/api/), [usage](https://actionscheduler.org/usage/), [performance](https://actionscheduler.org/perf/), [WooCommerce webhooks](https://woocommerce.com/document/webhooks/), WooCommerce source (`class-wc-webhook.php`, `wc-webhook-functions.php`) and Action Scheduler source (`functions.php`, `ActionScheduler_DBStore.php`). Library behavior has changed between releases; read the installed `action-scheduler` version before relying on a detail.
 
 ## Two different webhook flows
 
@@ -36,7 +36,7 @@ $is_duplicate = ( 0 === $inserted );             // 0 rows: already accepted
 
 ## WooCommerce outgoing webhooks (verified in source)
 
-- Headers: `X-WC-Webhook-Source`, `-Topic`, `-Resource`, `-Event`, `-Signature`, `-ID`, `-Delivery-ID`. Signature is `base64_encode( hash_hmac( 'sha256', $raw_body, $secret, true ) )` over the body bytes sent (algorithm filterable; header names, the 60 second timeout, `redirection => 0` and the `> 5` failure threshold confirmed in `class-wc-webhook.php`).
+- Headers: `X-WC-Webhook-Source`, `-Topic`, `-Resource`, `-Event`, `-Signature`, `-ID`, `-Delivery-ID`. Signature is `base64_encode( hash_hmac( 'sha256', $raw_body, $secret, true ) )` over the body bytes sent (algorithm filterable; header names, the 60 second timeout, `redirection => 0` and the `> 5` failure threshold are set in `class-wc-webhook.php`).
 - `X-WC-Webhook-Delivery-ID` is generated per delivery attempt, so it is not a stable business key. Deduplicate on resource id plus a content/modified-time check or the topic's own identifier.
 - Delivery is queued at request shutdown and sent through Action Scheduler (`woocommerce_deliver_webhook_async`, group `woocommerce-webhooks`) with a 60 second timeout and no redirects. Any non-2xx response counts as a failure; after more than five consecutive failures (filter `woocommerce_max_webhook_delivery_failures`) the webhook is set to `disabled` and fires `woocommerce_webhook_disabled_due_delivery_failures`. A receiver that is slow or returns 5xx during a deploy silently stops receiving. Monitor webhook status.
 - Ordering is not guaranteed. Treat payloads as "something changed" and fetch current state with the REST API when order matters.

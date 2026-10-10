@@ -12,7 +12,7 @@ Classify each directory you were given as one of: first-party source, vendored d
 
 | Shape | Signals | Notes |
 | --- | --- | --- |
-| Single plugin | Header comment `Plugin Name:` in a root PHP file; `readme.txt`; `uninstall.php`; activation hooks | Check `Requires at least`, `Requires PHP`, `Requires Plugins` (WordPress 6.5+), `Update URI` (5.8+; versions taken from the dev-note links on the header-requirements page), `Network: true` |
+| Single plugin | Header comment `Plugin Name:` in a root PHP file; `readme.txt`; `uninstall.php`; activation hooks | Check `Requires at least`, `Requires PHP`, `Requires Plugins` (WordPress 6.5+), `Update URI` (5.8+), `Network: true` |
 | Theme: block | `theme.json`, `templates/index.html`, `parts/`, `patterns/`, `styles/` | `wp_is_block_theme()` (since 5.9) wraps `wp_get_theme()->is_block_theme()`, which the reference's user note ties to a block template `index.html` (the reference itself does not name the path; confirm in `WP_Theme::is_block_theme()`); `theme.json` `version` and `$schema` tell the schema level |
 | Theme: classic | `style.css` header, `functions.php`, `header.php`, `index.php` | `Template:` header means a child theme: find the parent |
 | Theme: hybrid | Both `theme.json`/block templates and PHP templates | Verify which templates are actually resolved on the site |

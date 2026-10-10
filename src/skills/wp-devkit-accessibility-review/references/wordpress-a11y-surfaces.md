@@ -123,7 +123,7 @@ function mytheme_read_more_link( $post = null ) {
 
 ## Version notes
 
-Core behaviors cited above were checked (`container_aria_label` 5.5.0 and the `html5` `script`/`style` deprecation in 7.0.0 re-confirmed in the function reference on 2026-10-08) on 2026-10-08 against the developer reference: `wp_admin_notice` 6.4+, `container_aria_label` 5.5+, block-template skip link function 6.4+, `html5` `script`/`style` deprecated in 7.0. The nav menu `aria-current="page"` is emitted by `Walker_Nav_Menu::start_el()` in current source; check the installed version on older sites. The `wp-a11y` handle is confirmed only as a script dependency in `script-loader.php`; the `@wordpress/a11y` docs do not document classic-script usage, so check the installed WordPress. Determine the target project's minimum WordPress and re-read the function reference before relying on a newer argument.
+Version gates cited above: `wp_admin_notice` 6.4+, `container_aria_label` 5.5+, block-template skip link function 6.4+, `html5` `script`/`style` deprecated in 7.0. The nav menu `aria-current="page"` is emitted by `Walker_Nav_Menu::start_el()`; check the installed version on older sites. The `wp-a11y` handle is a script dependency in `script-loader.php`; the `@wordpress/a11y` docs do not document classic-script usage, so check the installed WordPress. Determine the target project's minimum WordPress and re-read the function reference before relying on a newer argument.
 
 ## Sources
 

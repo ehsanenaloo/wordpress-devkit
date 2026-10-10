@@ -1,6 +1,6 @@
 # Input, output, SQL and serialization
 
-Researched 2026-10-08. Contents: 1 Input handling | 2 SQL | 3 Escaping by context | 4 DOM and JavaScript sinks | 5 HTML allowlists | 6 Serialization | 7 Review checks
+Research date: 2026-10-08. Contents: 1 Input handling | 2 SQL | 3 Escaping by context | 4 DOM and JavaScript sinks | 5 HTML allowlists | 6 Serialization | 7 Review checks
 
 ## 1. Input handling
 

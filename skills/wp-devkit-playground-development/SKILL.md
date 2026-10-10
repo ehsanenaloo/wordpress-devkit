@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-playground-development
-description: Build, debug or review WordPress Playground Blueprints, @wp-playground/cli setups, query/embed links and shareable plugin or theme reproductions. Use for boot failures, resource/mount problems and untrusted-Blueprint review. Not a substitute for real MySQL or host testing.
+description: "Build, debug or review WordPress Playground Blueprints, @wp-playground/cli setups, query/embed links and shareable plugin or theme reproductions. Use for boot failures, resource/mount problems and untrusted-Blueprint review. Not a substitute for real MySQL or host testing."
 ---
 
 # Portable reproductions and trusted Blueprints

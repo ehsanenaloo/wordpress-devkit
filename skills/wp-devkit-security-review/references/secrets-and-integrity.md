@@ -1,6 +1,6 @@
 # Secrets, integrity and personal data
 
-Researched 2026-10-08. Contents: 1 Secret discovery | 2 Handling a hit | 3 Storing secrets in WordPress | 4 Integrity checks | 5 CSP rollout | 6 Personal data exposure | 7 Checks
+Research date: 2026-10-08. Contents: 1 Secret discovery | 2 Handling a hit | 3 Storing secrets in WordPress | 4 Integrity checks | 5 CSP rollout | 6 Personal data exposure | 7 Checks
 
 ## 1. Secret discovery
 

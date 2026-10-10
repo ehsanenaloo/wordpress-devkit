@@ -2,7 +2,7 @@
 
 Contents: WordPress.org plugin release mechanics; automating with a tag workflow; readme and directory rules; pre-publish gates; propagation and verification; rollback reality; non-directory distribution; host deployments; data and migration rollback; release record; false positives.
 
-Researched 2026-10-08. Sources: [Using Subversion](https://developer.wordpress.org/plugins/wordpress-org/how-to-use-subversion/), [How your readme.txt works](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/), [10up WordPress plugin deploy action](https://github.com/10up/action-wordpress-plugin-deploy) (latest release 2.3.0, 2025-01-21), [Plugin Check action](https://github.com/WordPress/plugin-check-action), WordPress core `wp-includes/update.php` (version comparison), [WP-CLI dist-archive](https://developer.wordpress.org/cli/commands/dist-archive/). The SVN handbook does not describe a rollback procedure; the rollback section below is derived from core behavior and marked as such.
+Researched 2026-10-08. Sources: [Using Subversion](https://developer.wordpress.org/plugins/wordpress-org/how-to-use-subversion/), [How your readme.txt works](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/), [10up WordPress plugin deploy action](https://github.com/10up/action-wordpress-plugin-deploy), [Plugin Check action](https://github.com/WordPress/plugin-check-action), WordPress core `wp-includes/update.php` (version comparison), [WP-CLI dist-archive](https://developer.wordpress.org/cli/commands/dist-archive/). The SVN handbook does not describe a rollback procedure; the rollback section below is derived from core behavior and marked as such.
 
 ## WordPress.org SVN mechanics
 
@@ -49,7 +49,7 @@ Facts from the action's README: it commits the contents of the Git tag to the di
 
 1. Version consistency check (packaging reference): header `Version`, `Stable tag`, tag, changelog.
 2. `readme.txt` validity: 1 to 5 `Tags`; `Contributors` are WordPress.org usernames; `Tested up to` is a number only and only the major version matters (minor versions are ignored); `Requires PHP` numbers only; license GPLv2-compatible; short description about 150 characters, no markup; `Requires at least` lives in the main plugin file header since WordPress 5.8. A readme larger than 10k may result in errors (readme handbook): keep recent notes in `readme.txt` and move old history to `changelog.txt`.
-3. Plugin Check: `wordpress/plugin-check-action` (v1.1.9 on the research date) with `build-dir` set to the built tree; inputs include `checks`, `exclude-checks`, `ignore-codes`, `categories`, `exclude-directories`, `ignore-warnings`. Narrow ignores with a reason; do not blanket-ignore categories to turn it green.
+3. Plugin Check: `wordpress/plugin-check-action` with `build-dir` set to the built tree; inputs include `checks`, `exclude-checks`, `ignore-codes`, `categories`, `exclude-directories`, `ignore-warnings`. Narrow ignores with a reason; do not blanket-ignore categories to turn it green.
 4. Smoke install of the exact zip (packaging reference). `Tested up to` must be a version your matrix actually ran.
 5. Changelog and, if the release changes data, upgrade notice text.
 6. Guideline conformance for the directory (no obfuscated code, no tracking without opt-in, no embedded licensing nags beyond the guidelines): a human review item, not automatable.

@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-accessibility-review
-description: Build, debug or review accessible WordPress controls: forms, errors, dialogs, menus, tabs, focus, live announcements, block, admin and WooCommerce UI. Use for keyboard and screen-reader behavior of a component; criterion-by-criterion status and audit scope belong to wp-devkit-wcag-review.
+description: "Build, debug or review accessible WordPress controls: forms, errors, dialogs, menus, tabs, focus, live announcements, block, admin and WooCommerce UI. Use for keyboard and screen-reader behavior of a component; criterion-by-criterion status and audit scope belong to wp-devkit-wcag-review."
 ---
 
 # Usable controls and assistive access

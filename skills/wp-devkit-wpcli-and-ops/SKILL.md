@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-wpcli-and-ops
-description: Build, debug or review WP-CLI commands and WordPress operations runbooks. Use for serialized-safe search-replace and domain moves, multisite targeting, batch jobs, cron and cache maintenance, backups and recoverable procedures; not application code.
+description: "Build, debug or review WP-CLI commands and WordPress operations runbooks. Use for serialized-safe search-replace and domain moves, multisite targeting, batch jobs, cron and cache maintenance, backups and recoverable procedures; not application code."
 ---
 
 # Scoped commands and operational recovery

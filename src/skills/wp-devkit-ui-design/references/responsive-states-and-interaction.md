@@ -36,7 +36,7 @@ Visible `<label>` per control, not placeholder-only; `autocomplete` tokens for p
 
 Keep essential state changes visible without motion. Respect `prefers-color-scheme` only if the theme ships a dark palette tested for contrast.
 
-## WCAG 2.2 criteria that most affect UI work (W3C, checked 2026-10-08)
+## WCAG 2.2 criteria that most affect UI work
 
 - 2.5.8 Target Size (Minimum, AA): pointer targets at least 24 by 24 CSS px unless an exception (spacing, inline, equivalent control, user-agent control, essential) applies.
 - 2.4.11 Focus Not Obscured (Minimum, AA): a focused item must not be entirely hidden by sticky headers, cookie banners or chat widgets.
@@ -55,7 +55,9 @@ This skill checks UI behavior; criterion-by-criterion conformance belongs to `wp
 
 Verify with a 40-character translated label, a long email address and 200% zoom.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://www.w3.org/TR/WCAG22/ (1.4.10 Reflow 320 CSS px, 1.3.5 Identify Input Purpose, 2.4.11, 2.5.7, 2.5.8, 3.3.7, 3.3.8 as listed in the wcag-review criteria index)
 - https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/

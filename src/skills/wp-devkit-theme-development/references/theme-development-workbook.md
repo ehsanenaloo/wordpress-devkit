@@ -59,7 +59,9 @@ A pass does not prove performance on real devices, plugin interactions, or every
 
 Review finding: `file:line` | actor | trigger | reachable path | impact | confidence | fix | regression. Change report: owner layer, files, commands and exit codes, screenshots/widths, unexecuted checks, rollback.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/themes/templates/template-hierarchy/
 - https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/

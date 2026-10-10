@@ -2,7 +2,7 @@
 
 Contents: read paths and formatting; write paths; validation; REST and headless exposure; escaping at output; ACF Blocks; nested fields and storage; failure symptoms; false positives.
 
-Researched 2026-10-08. Sources: [get_field](https://www.advancedcustomfields.com/resources/get_field/), [update_field](https://www.advancedcustomfields.com/resources/update_field/), [acf/validate_value](https://www.advancedcustomfields.com/resources/acf-validate_value/), [acf/save_post](https://www.advancedcustomfields.com/resources/acf-save_post/), [ACF REST integration](https://www.advancedcustomfields.com/resources/wp-rest-api-integration/), [HTML escaping](https://www.advancedcustomfields.com/resources/html-escaping/), [Create your first ACF block](https://www.advancedcustomfields.com/resources/create-your-first-acf-block/), [ACF 6.6 / Blocks V3](https://wpengine.com/blog/acf-6-6-release).
+Researched 2026-10-08. Sources: [get_field](https://www.advancedcustomfields.com/resources/get_field/), [update_field](https://www.advancedcustomfields.com/resources/update_field/), [acf/validate_value](https://www.advancedcustomfields.com/resources/acf-validate_value/), [acf/save_post](https://www.advancedcustomfields.com/resources/acf-save_post/), [ACF REST integration](https://www.advancedcustomfields.com/resources/wp-rest-api-integration/), [HTML escaping](https://www.advancedcustomfields.com/resources/html-escaping/), [Create your first ACF block](https://www.advancedcustomfields.com/resources/create-your-first-acf-block/), [ACF Blocks V3 release notes](https://wpengine.com/blog/acf-6-6-release).
 
 ## Read paths
 

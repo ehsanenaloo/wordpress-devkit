@@ -2,7 +2,7 @@
 
 Contents: registration; synopsis and docblock; trust model; argument validation; dry run; output and exit codes; batching and memory; progress; running other commands; distribution; testing; failure symptoms; sources.
 
-Verified against the WP-CLI commands cookbook and internal API pages on 2026-10-08. Latest WP-CLI release seen: v2.12.0 (2025-05-07). Always check `wp --version` and `wp help <command>` on the target; flags differ across versions.
+Research date: 2026-10-08. Based on the WP-CLI commands cookbook and internal API pages. Look up the latest WP-CLI release online (https://github.com/wp-cli/wp-cli/releases) and record the version you used. Always check `wp --version` and `wp help <command>` on the target; flags differ across versions.
 
 ## Registration
 
@@ -108,11 +108,13 @@ Bundle in a plugin (conditional load) or ship as a package (`composer.json` with
 | Command missing in production | Plugin skipped via `--skip-plugins` or load guard | Check invocation and `WP_CLI` guard |
 | Usage error before code runs | Synopsis mismatch | Fix docblock |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Commands cookbook: https://make.wordpress.org/cli/handbook/guides/commands-cookbook/
 - Internal API: https://make.wordpress.org/cli/handbook/references/internal-api/ , `WP_CLI::runcommand`, `WP_CLI::error` pages under the same path.
 - `wp_cache_flush_runtime`: https://developer.wordpress.org/reference/functions/wp_cache_flush_runtime/
 - WP-CLI releases: https://github.com/wp-cli/wp-cli/releases
 
-Confirmed in WP-CLI main source (2026-10-08): `WP_CLI::halt( $return_code )` exits with that integer (`php/class-wp-cli.php`); `WP_CLI::confirm( $question, $assoc_args )` skips the prompt when `yes` is set and calls a bare `exit` (status 0) when the answer is not `y`, so a declined prompt is not a failure exit; `make_progress_bar()` is a no-op when piped (`php/utils.php`); `wp scaffold package-tests` exists in https://github.com/wp-cli/scaffold-package-command. Sources: https://github.com/wp-cli/wp-cli/blob/main/php/class-wp-cli.php, https://github.com/wp-cli/wp-cli/blob/main/php/utils.php. Behavior can differ by WP-CLI version: check `wp --version` and `wp help` on the target.
+Notes from the WP-CLI source: `WP_CLI::halt( $return_code )` exits with that integer (`php/class-wp-cli.php`); `WP_CLI::confirm( $question, $assoc_args )` skips the prompt when `yes` is set and calls a bare `exit` (status 0) when the answer is not `y`, so a declined prompt is not a failure exit; `make_progress_bar()` is a no-op when piped (`php/utils.php`); `wp scaffold package-tests` exists in https://github.com/wp-cli/scaffold-package-command. Sources: https://github.com/wp-cli/wp-cli/blob/main/php/class-wp-cli.php, https://github.com/wp-cli/wp-cli/blob/main/php/utils.php. Behavior can differ by WP-CLI version: check `wp --version` and `wp help` on the target.

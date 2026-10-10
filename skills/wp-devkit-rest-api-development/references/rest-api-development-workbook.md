@@ -83,10 +83,11 @@ CRITICAL: reachable unauthorized write/read of protected data, privilege escalat
 
 Report actor/method/URL/body/status/response for each check, objects re-read after denied calls, executed vs unexecuted checks, and limits.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Custom endpoints: https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
 - Authentication: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
 - Schema: https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/
 - Controllers: https://developer.wordpress.org/rest-api/extending-the-rest-api/controller-classes/
-- Core source read from wordpress-develop trunk on 2026-10-08 (REST server, request, controller).

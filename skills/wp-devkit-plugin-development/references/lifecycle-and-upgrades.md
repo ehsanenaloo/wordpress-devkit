@@ -146,7 +146,9 @@ Points that matter:
 | 404 on new post type URLs | Rules not flushed once after registration change | Flush once on activation/upgrade, test old and new permalinks and pagination. |
 | Uninstall left data / removed too much | Wrong mechanism or no retention policy | Read uninstall path; test in disposable site. |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Plugin header requirements: https://developer.wordpress.org/plugins/plugin-basics/header-requirements/
 - Uninstall methods: https://developer.wordpress.org/plugins/plugin-basics/uninstall-methods/

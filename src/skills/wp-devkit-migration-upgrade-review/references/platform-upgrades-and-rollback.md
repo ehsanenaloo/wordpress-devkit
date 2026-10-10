@@ -1,12 +1,12 @@
 # Platform upgrades, rollback and recovery
 
-Researched 2026-10-08. Contents: 1 What an upgrade plan must contain | 2 WordPress core and plugin updates | 3 PHP upgrades | 4 Database engine upgrades | 5 Auto-update behavior | 6 Backup, restore and rollback | 7 Downgrade and uninstall | 8 Review checks
+Research date: 2026-10-08. Contents: 1 What an upgrade plan must contain | 2 WordPress core and plugin updates | 3 PHP upgrades | 4 Database engine upgrades | 5 Auto-update behavior | 6 Backup, restore and rollback | 7 Downgrade and uninstall | 8 Review checks
 
 ## 1. What an upgrade plan must contain
 
 Source and target versions (WordPress, PHP, MySQL/MariaDB, WooCommerce, the plugin under review), supported range, the order of changes, the data steps, verification queries, the maintenance window or zero-downtime approach, rollback triggers and owner, and the communications. Discover the real versions (`wp core version`, `wp --info`, `wp plugin list --format=json`, `SELECT VERSION()`) on the environment; do not read them from marketing pages. Treat unsupported starting versions as untested.
 
-Reference baseline (the versions DevKit was tested against; re-verify before use): WordPress requires PHP 7.4+ and MySQL 5.7+/MariaDB 10.3+ as a floor per the advanced administration requirements page, while the WordPress.org requirements page lists PHP 8.3+ and MySQL 8.0+/MariaDB 10.11+ as recommended and PHP 7.4/MySQL 5.5.5 as legacy minimums. These sources differ on the database floor; use the target project's declared "Requires" headers and the hosting policy, and report the discrepancy rather than choosing silently.
+Reference baseline: look up the current WordPress requirements and recommended versions (PHP, MySQL/MariaDB) online, on the WordPress.org requirements page and the advanced administration requirements page. These sources can differ on the database floor; use the target project's declared "Requires" headers and the hosting policy, and report the discrepancy rather than choosing silently.
 
 ## 2. WordPress core and plugin updates
 

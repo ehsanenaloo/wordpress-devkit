@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-block-development
-description: Build, debug or review Gutenberg blocks: block.json registration, invalid-content errors and deprecations, dynamic render.php, InnerBlocks, Interactivity API, Block Bindings, iframe editor. Not for theme.json/templates (theme skill) or generic plugin code.
+description: "Build, debug or review Gutenberg blocks: block.json registration, invalid-content errors and deprecations, dynamic render.php, InnerBlocks, Interactivity API, Block Bindings, iframe editor. Not for theme.json/templates (theme skill) or generic plugin code."
 ---
 
 # Block state, storage and rendering

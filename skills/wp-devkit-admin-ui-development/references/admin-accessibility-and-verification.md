@@ -51,9 +51,9 @@ Axe-style rules find a subset of WCAG failures; a clean run does not show correc
 
 ## Sources (checked 2026-10-08)
 
-- WCAG 2.2: https://www.w3.org/TR/WCAG22/ (criteria 1.4.1, 1.4.10, 2.4.11, 2.5.7, 2.5.8, 3.3.7, 3.3.8; levels for 2.4.11, 2.5.7, 2.5.8, 3.3.7, 3.3.8 and 1.4.10 checked against the Recommendation on 2026-10-08)
+- WCAG 2.2: https://www.w3.org/TR/WCAG22/ (criteria 1.4.1, 1.4.10, 2.4.11, 2.5.7, 2.5.8, 3.3.7, 3.3.8)
 - Settings API: https://developer.wordpress.org/plugins/settings/settings-api/
 - WordPress 7.0 field guide (view transitions, Modern color scheme): https://make.wordpress.org/core/2026/05/14/wordpress-7-0-field-guide/
-- npm registry checked 2026-10-08 for package names: `@wordpress/e2e-test-utils-playwright` (3.0.0), `@axe-core/playwright` (4.13.0), `@wordpress/env` (11.17.0), `@wordpress/scripts` (36.1.0).
+- npm package names: `@wordpress/e2e-test-utils-playwright`, `@axe-core/playwright`, `@wordpress/env`, `@wordpress/scripts`. Look up their latest versions online.
 
-Confirmed 2026-10-08: WCAG 2.2 levels (2.4.11 AA, 2.5.7 AA, 2.5.8 AA with a 24 by 24 CSS px minimum, 3.3.7 A, 3.3.8 AA, 4.1.3 AA, 1.4.10 AA at 320 CSS px); `speak( message, ariaLive )` with `ariaLive` defaulting to `'polite'` (https://github.com/WordPress/gutenberg/blob/trunk/packages/a11y/README.md); `WP_List_Table` sets `aria-sort` on the sorted column (trunk `class-wp-list-table.php`); `Admin.visitAdminPage( adminPath, query )` and the exported `Admin`, `Editor`, `PageUtils`, `RequestUtils` classes (Gutenberg trunk `packages/e2e-test-utils-playwright`). Check `wp.a11y.speak` on older WordPress versions and the `RequestUtils` method names against the installed package README.
+WCAG 2.2 levels used here (2.4.11 AA, 2.5.7 AA, 2.5.8 AA with a 24 by 24 CSS px minimum, 3.3.7 A, 3.3.8 AA, 4.1.3 AA, 1.4.10 AA at 320 CSS px). Facts to verify in sources: `speak( message, ariaLive )` with `ariaLive` defaulting to `'polite'` (https://github.com/WordPress/gutenberg/blob/trunk/packages/a11y/README.md); `WP_List_Table` sets `aria-sort` on the sorted column (trunk `class-wp-list-table.php`); `Admin.visitAdminPage( adminPath, query )` and the exported `Admin`, `Editor`, `PageUtils`, `RequestUtils` classes (Gutenberg trunk `packages/e2e-test-utils-playwright`). Check `wp.a11y.speak` on older WordPress versions and the `RequestUtils` method names against the installed package README.

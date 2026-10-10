@@ -1,6 +1,6 @@
 # Dependency and supply-chain review
 
-Researched 2026-10-08. Contents: 1 Inventory | 2 Scan runbook | 3 Triage | 4 Build and CI chain | 5 WordPress packages | 6 Checks
+Research date: 2026-10-08. Contents: 1 Inventory | 2 Scan runbook | 3 Triage | 4 Build and CI chain | 5 WordPress packages | 6 Checks
 
 ## 1. Inventory
 

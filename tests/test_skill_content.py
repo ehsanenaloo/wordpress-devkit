@@ -16,7 +16,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / 'src/skills'
-FRONTMATTER = re.compile(r'\A---\nname: ([a-z0-9-]+)\ndescription: (.+)\n---\n')
+FRONTMATTER = re.compile(r'\A---\nname: ([a-z0-9-]+)\ndescription: "?(.+?)"?\n---\n')
 LINK = re.compile(r'`(references/[A-Za-z0-9_./-]+\.md)`|\]\((references/[A-Za-z0-9_./-]+\.md)(?:#[^)]*)?\)')
 FENCE = re.compile(r'^```([A-Za-z0-9_+-]*)[^\n]*\n(.*?)^```[ \t]*$', re.M | re.S)
 EMOJI = re.compile('[\U0001F300-\U0001FAFF☀-➿]')
@@ -52,6 +52,19 @@ class SkillContentTests(unittest.TestCase):
             self.assertNotIn('<', description, f'{skill.name}: XML-like text in description')
             self.assertNotIn(description, descriptions, f'{skill.name}: duplicate description of {descriptions.get(description)}')
             descriptions[description] = skill.name
+
+    def test_frontmatter_descriptions_are_strict_yaml(self):
+        """Antigravity parses frontmatter as strict YAML: a plain scalar with ': ' or ' #' drops the skill."""
+        for skill in skill_dirs():
+            text = (skill / 'SKILL.md').read_text(encoding='utf-8')
+            raw = re.match(r'\A---\nname: [^\n]+\ndescription: ([^\n]+)\n---\n', text)
+            self.assertIsNotNone(raw, f'{skill.name}: invalid frontmatter')
+            value = raw[1]
+            if value.startswith('"'):
+                self.assertTrue(value.endswith('"') and len(value) > 1, f'{skill.name}: unclosed quote')
+                self.assertNotRegex(value[1:-1], r'(?<!\\)"', f'{skill.name}: unescaped quote in description')
+            else:
+                self.assertNotRegex(value, r': | #|^[\[\]{}&*!|>\'%@`]', f'{skill.name}: quote the description')
 
     def test_entrypoints_stay_lean(self):
         for skill in skill_dirs():

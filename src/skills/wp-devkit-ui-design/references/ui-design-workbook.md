@@ -55,7 +55,9 @@ Run the rows of [acceptance-checklist.md](acceptance-checklist.md) that apply; a
 
 Review finding: `file:line` or URL+viewport | actor | trigger | path | impact | confidence | fix | regression. Change report: owner, files, flows implemented, viewports/browsers/locales tested, screenshots, empty/loading/error/success states, commands with exit codes, unexecuted checks.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/coding-standards/wordpress-coding-standards/accessibility/
 - https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/

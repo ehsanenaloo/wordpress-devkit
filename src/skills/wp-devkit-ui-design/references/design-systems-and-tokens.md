@@ -34,12 +34,12 @@ Anatomy, variants, and every state (default, hover, `:focus-visible`, active, di
 - Plugin presentation leaking into theme tokens; plugin behavior stays out of the theme.
 - Token renames without alias break child themes and custom CSS.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/
 - https://make.wordpress.org/core/2024/06/19/theme-json-version-3/
 - https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/
 
-## Sources
-
-Researched 2026-10-08: [theme.json reference](https://developer.wordpress.org/themes/global-settings-and-styles/), [Design Tokens Community Group format](https://www.designtokens.org/tr/drafts/format/).
+Further sources: [theme.json reference](https://developer.wordpress.org/themes/global-settings-and-styles/), [Design Tokens Community Group format](https://www.designtokens.org/tr/drafts/format/).

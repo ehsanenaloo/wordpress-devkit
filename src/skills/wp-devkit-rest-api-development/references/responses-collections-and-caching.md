@@ -77,11 +77,11 @@ Stream or batch exports rather than building giant arrays in memory; background 
 | Duplicates after retry | Non-idempotent POST | Idempotency key |
 | Slow collection | Unbounded `per_page`, per-item queries, `_embed` of heavy relations | Cap, batch-prime caches (`_prime_post_caches`, `update_post_meta_cache`), `_fields` aware fields |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Pagination: https://developer.wordpress.org/rest-api/using-the-rest-api/pagination/
 - Global parameters: https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/
 - Custom endpoints (WP_Error status): https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
 - Core source read (trunk): `class-wp-rest-server.php` (`rest_send_nocache_headers`, CORS expose headers), `class-wp-rest-controller.php` (`get_collection_params`).
-
-Not verified from a primary source: the `rest_post_invalid_page_number` error on every supported version (core posts controller; the pagination article does not cover it), `rest_jsonp_enabled` filter name, and the 429/Retry-After convention (HTTP practice, not a WordPress API).

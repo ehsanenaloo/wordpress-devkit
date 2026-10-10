@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-site-audit-and-onboarding
-description: Inventory an inherited or unfamiliar WordPress project: stack and version discovery, ownership map, drop-ins and mu-plugins, environment doctor, risk-ranked routing to specialist skills. Read-only first pass; use a domain skill directly when the problem is already known.
+description: "Inventory an inherited or unfamiliar WordPress project: stack and version discovery, ownership map, drop-ins and mu-plugins, environment doctor, risk-ranked routing to specialist skills. Read-only first pass; use a domain skill directly when the problem is already known."
 ---
 
 # Project discovery and evidence-led routing

@@ -38,4 +38,4 @@ Real-user outcomes, screen-reader behavior beyond the tested combinations, perfo
 
 ## Sources
 
-Researched 2026-10-08: [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Core Web Vitals thresholds](https://web.dev/articles/vitals), [WordPress accessibility handbook](https://make.wordpress.org/accessibility/handbook/).
+Research date: 2026-10-08. Sources: [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Core Web Vitals thresholds](https://web.dev/articles/vitals), [WordPress accessibility handbook](https://make.wordpress.org/accessibility/handbook/).

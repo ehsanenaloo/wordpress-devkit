@@ -4,7 +4,7 @@ Contents: theme type detection, precedence, hierarchy gotchas, classic loop rule
 
 ## Theme type detection
 
-- Block theme: `style.css` plus `templates/index.html` (the only required template). `/block-templates` is a legacy location. `wp_is_block_theme()` defers to `WP_Theme::is_block_theme()`, which checks for `templates/index.html` or the legacy `block-templates/index.html` (confirmed in trunk `class-wp-theme.php`).
+- Block theme: `style.css` plus `templates/index.html` (the only required template). `/block-templates` is a legacy location. `wp_is_block_theme()` defers to `WP_Theme::is_block_theme()`, which checks for `templates/index.html` or the legacy `block-templates/index.html` (see `class-wp-theme.php` in core).
 - Classic theme: PHP templates (`index.php`, `style.css`). A `theme.json`, patterns, or `add_theme_support( 'block-template-parts' )` do not make it a block theme; these produce a "hybrid", a community term, still classic internally.
 - Child theme: `style.css` header `Template:` must equal the parent folder name exactly. Block child themes override parent templates, parts and patterns by same name (a pattern also needs the same `Slug`); child `functions.php` loads before the parent's and does not replace it.
 
@@ -43,7 +43,9 @@ In the Site Editor the Templates list marks customized entries and offers "Clear
 - Keep `wp_head()`, `wp_footer()`, `wp_body_open()`, `body_class()`, `post_class()` in place; removing them breaks plugins and block styles.
 - Pagination uses the main query; custom loops need `paged` handling and `paginate_links()` with the custom `max_num_pages`.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/themes/templates/template-hierarchy/
 - https://developer.wordpress.org/themes/templates/templates/
@@ -51,4 +53,4 @@ In the Site Editor the Templates list marks customized entries and offers "Clear
 - https://developer.wordpress.org/themes/advanced-topics/child-themes/
 - https://developer.wordpress.org/reference/functions/register_block_template/
 
-Confirmed 2026-10-08 against primary sources: `register_block_template()` since 6.7 with name form `plugin_uri//template_name`; `wp_attachment_pages_enabled` option (trunk `wp-admin/includes/schema.php` and `upgrade.php`) and attachment pages off by default for new installs since 6.4; `front-page` precedence, `home` meaning and embed-template rule (template-hierarchy page); child `functions.php` loads immediately before the parent's, `Template` must match the parent folder name, block child themes override templates/parts/patterns by name (patterns also by `Slug`) (child-themes page); one `wp_global_styles` post per theme resolved by `WP_Theme_JSON_Resolver::get_user_data_from_wp_global_styles()` (trunk).
+Primary source notes: `register_block_template()` since 6.7 with name form `plugin_uri//template_name`; `wp_attachment_pages_enabled` option (core `wp-admin/includes/schema.php` and `upgrade.php`) and attachment pages off by default for new installs since 6.4; `front-page` precedence, `home` meaning and embed-template rule (template-hierarchy page); child `functions.php` loads immediately before the parent's, `Template` must match the parent folder name, block child themes override templates/parts/patterns by name (patterns also by `Slug`) (child-themes page); one `wp_global_styles` post per theme resolved by `WP_Theme_JSON_Resolver::get_user_data_from_wp_global_styles()` (core).

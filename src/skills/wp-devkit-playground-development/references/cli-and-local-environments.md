@@ -1,6 +1,6 @@
 # Playground CLI and local environments
 
-Contents: commands, flags, persistence, mounts and trust, CI use, limits, sources. Package: `@wp-playground/cli` (Node 20.18 or newer per the docs checked 2026-10-08). Use the installed `--help` output as the final authority; flags change between releases and the legacy `wp-now` package is superseded.
+Contents: commands, flags, persistence, mounts and trust, CI use, limits, sources. Package: `@wp-playground/cli` (look up the required Node.js version online in the CLI docs). Use the installed `--help` output as the final authority; flags change between releases and the legacy `wp-now` package is superseded.
 
 ## Commands
 
@@ -20,7 +20,7 @@ Pin the package version in repeatable work (`@latest` is for exploration).
 
 ## Flags worth knowing (server unless noted)
 
-`--php` (8.0 to 8.5 and 7.4; default 8.3), `--wp` (default latest), `--port` (default 9400), `--blueprint` (path, zip, directory or http(s) URL), `--auto-mount[=path]`, `--mount=host:vfs`, `--mount-before-install=host:vfs`, `--mount-dir "<host>" "<vfs>"` (Windows-friendly), `--login`, `--wordpress-install-mode` (`download-and-install`, `install-from-existing-files`, `install-from-existing-files-if-needed`, `do-not-attempt-installing`), `--skip-sqlite-setup`, `--verbosity=quiet|normal|debug`, `--debug`, `--phpmyadmin`, `--xdebug`, `--workers`. `start` only: `--reset`, `--skip-browser`, `--no-auto-mount`, `--path`. The docs list no `--skip-wordpress-setup` flag.
+`--php` (the supported versions and the default are listed by `--help`), `--wp` (default latest), `--port` (default 9400), `--blueprint` (path, zip, directory or http(s) URL), `--auto-mount[=path]`, `--mount=host:vfs`, `--mount-before-install=host:vfs`, `--mount-dir "<host>" "<vfs>"` (Windows-friendly), `--login`, `--wordpress-install-mode` (`download-and-install`, `install-from-existing-files`, `install-from-existing-files-if-needed`, `do-not-attempt-installing`), `--skip-sqlite-setup`, `--verbosity=quiet|normal|debug`, `--debug`, `--phpmyadmin`, `--xdebug`, `--workers`. `start` only: `--reset`, `--skip-browser`, `--no-auto-mount`, `--path`. The docs list no `--skip-wordpress-setup` flag.
 
 ## Trust-sensitive flags
 
@@ -43,8 +43,8 @@ npx wait-on http://127.0.0.1:9400 && npx playwright test
 
 Capture exit codes for both. The runtime is PHP.wasm with SQLite: a green run does not prove MySQL/MariaDB, object cache, real cron, filesystem permissions, hosting limits or Apache/nginx rewrite behavior. Keep a real-environment job (wp-env, Docker) for those.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/playground/developers/local-development/wp-playground-cli/
-
-Confirmed 2026-10-08: Node.js 20.18+, the four commands, `server` defaults (port 9400, PHP 8.3 with choices 7.4 to 8.5, `download-and-install`, verbosity `normal`), the `start` flags (`--reset`, `--skip-browser`, `--no-auto-mount`, `--path`), persistence locations for `start` and `server`, `@wp-now/wp-now` deprecated in favor of `start`, and `--follow-symlinks` flagged as a security risk. Check the CI `wait-on` snippet and the `run-blueprint` flags (the snippet is a generic pattern); the "SQLite not MySQL" caveat comes from the `runSql` note and the `--skip-sqlite-setup` flag.

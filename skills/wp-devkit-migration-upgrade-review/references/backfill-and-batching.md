@@ -1,6 +1,6 @@
 # Backfills, batching and resumable runners
 
-Researched 2026-10-08. Contents: 1 Selection and cursor | 2 Batch bounds | 3 Idempotency and conflicts | 4 Checkpoints and completion | 5 Concurrency control | 6 Runners | 7 Invalid and unexpected data | 8 Verification | 9 Review checks
+Research date: 2026-10-08. Contents: 1 Selection and cursor | 2 Batch bounds | 3 Idempotency and conflicts | 4 Checkpoints and completion | 5 Concurrency control | 6 Runners | 7 Invalid and unexpected data | 8 Verification | 9 Review checks
 
 ## 1. Selection and cursor
 

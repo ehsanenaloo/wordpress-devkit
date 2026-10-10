@@ -1,6 +1,6 @@
 # Frontend performance evidence
 
-Researched 2026-10-08. Contents: 1 Method and budgets | 2 LCP | 3 INP | 4 CLS | 5 WordPress asset APIs | 6 Images and fonts | 7 Speculative loading | 8 Third parties | 9 Acceptance
+Research date: 2026-10-08. Contents: 1 Method and budgets | 2 LCP | 3 INP | 4 CLS | 5 WordPress asset APIs | 6 Images and fonts | 7 Speculative loading | 8 Third parties | 9 Acceptance
 
 ## 1. Method and budgets
 

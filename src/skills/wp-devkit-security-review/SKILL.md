@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-security-review
-description: Review or remediate reachable WordPress security defects: missing capability or ownership checks, XSS, SQL injection, CSRF, SSRF, unsafe uploads, secrets, dependency risk, multisite isolation. Use for plugin/theme/REST/AJAX audits and exploit-path triage; route design belongs to the REST skill.
+description: "Review or remediate reachable WordPress security defects: missing capability or ownership checks, XSS, SQL injection, CSRF, SSRF, unsafe uploads, secrets, dependency risk, multisite isolation. Use for plugin/theme/REST/AJAX audits and exploit-path triage; route design belongs to the REST skill."
 ---
 
 # Security paths and exploit evidence

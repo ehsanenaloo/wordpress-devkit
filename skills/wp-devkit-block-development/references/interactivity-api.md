@@ -57,7 +57,7 @@ Directives processed on the server for blocks happen automatically; classic temp
 
 ## Actions and events
 
-- Event directives run async by default. Handlers that call `event.preventDefault()`, `stopPropagation()` or read `event.currentTarget` must be wrapped in `withSyncEvent()` (required as of WordPress 6.8 / Gutenberg 20.4; without it a deprecation warning appears).
+- Event directives run async by default. Handlers that call `event.preventDefault()`, `stopPropagation()` or read `event.currentTarget` must be wrapped in `withSyncEvent()` (required since WordPress 6.8; without it a deprecation warning appears).
 - Async actions must be generators (`function* load() { const r = yield fetch(...); }`). With `async/await`, scope is lost across the await and `getContext()` can return the wrong context. Use `withScope()` for callbacks created outside the runtime (timers, third-party listeners). Use `splitTask()` inside generators to break up long tasks.
 - Always handle a failed request: set an error flag in context and expose it with `aria-live` text; do not leave a spinner.
 - Negation `!` works on state/context/getters, not on functions; define a getter for computed negation.
@@ -91,4 +91,4 @@ Router regions (`data-wp-router-region`, `supports.interactivity.clientNavigatio
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-supports/
 - Core source read (trunk): `wp-includes/interactivity-api/interactivity-api.php` (`wp_interactivity_*` functions since 6.5; `wp_interactivity_get_context` 6.6; `wp_interactivity_get_element` 6.7)
 
-Confirmed 2026-10-08 in the API reference: `withSyncEvent` required as of 6.8, generators for async actions, `withScope`, `splitTask`, `data-wp-each-key`, `asDangerousHTML`, the `!` operator limits, minimum WordPress 6.5.
+Facts to verify in the API reference: `withSyncEvent` required since 6.8, generators for async actions, `withScope`, `splitTask`, `data-wp-each-key`, `asDangerousHTML`, the `!` operator limits, minimum WordPress 6.5.

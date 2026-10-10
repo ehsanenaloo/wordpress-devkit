@@ -18,7 +18,7 @@ For wp-admin plugin screens hand off to `wp-devkit-admin-ui-development`; this s
 ## Editor/frontend parity
 
 - Both read the same `theme.json` tokens; parity bugs usually mean a style exists in only one of `style.css`, `editorStyle`, `add_editor_style`.
-- The post editor canvas is an iframe: per the block API versions page, WordPress 6.3 iframes it when all registered blocks use apiVersion 3 or higher, 7.0 checks the blocks in the post content, and WordPress 7.1 (Gutenberg 23.6) always iframes it. Admin CSS no longer leaks into content, so styles must be loaded into the iframe explicitly.
+- The post editor canvas is an iframe: per the block API versions page, WordPress 6.3 iframes it when all registered blocks use apiVersion 3 or higher, 7.0 checks the blocks in the post content, and WordPress 7.1 always iframes it. Admin CSS no longer leaks into content, so styles must be loaded into the iframe explicitly.
 - Compare resolved values, not screenshots alone: `getComputedStyle` for font-size, line-height, max-width, spacing at the same viewport.
 - Layout width comes from `settings.layout.contentSize`/`wideSize`; a container with hard-coded `max-width` fights it.
 
@@ -34,7 +34,9 @@ For wp-admin plugin screens hand off to `wp-devkit-admin-ui-development`; this s
 4. Re-run contrast on every foreground/background pairing the token touches.
 5. Document deprecation if a token is renamed; keep the old name as an alias for one release.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/block-editor/reference-guides/components/
 - https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/

@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-headless-and-wpgraphql
-description: Build, debug or review decoupled WordPress with WPGraphQL: schema exposure, draft and preview access, authentication, query limits, Smart Cache and persisted queries, and webhook-driven frontend revalidation. Plain REST routes and ACF storage design belong to the sibling skills.
+description: "Build, debug or review decoupled WordPress with WPGraphQL: schema exposure, draft and preview access, authentication, query limits, Smart Cache and persisted queries, and webhook-driven frontend revalidation. Plain REST routes and ACF storage design belong to the sibling skills."
 ---
 
 # Decoupled WordPress and WPGraphQL

@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-woocommerce-dev
-description: Build, debug or review WooCommerce extensions: HPOS order access, classic vs block checkout and Store API, gateways, refunds, stock, payment webhooks, Action Scheduler jobs and template overrides. Generic plugin or REST issues go to the plugin and REST skills.
+description: "Build, debug or review WooCommerce extensions: HPOS order access, classic vs block checkout and Store API, gateways, refunds, stock, payment webhooks, Action Scheduler jobs and template overrides. Generic plugin or REST issues go to the plugin and REST skills."
 ---
 
 # WooCommerce behavior and reliable order work

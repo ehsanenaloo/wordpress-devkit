@@ -2,12 +2,12 @@
 
 Contents: iframe timeline, fixes, data access, effects, controls, tests, sources.
 
-## Iframe editor timeline (verified 2026-10-08)
+## Iframe editor timeline
 
 - apiVersion 3 (WordPress 6.3+) means the block must work inside an iframe with its own `document` and `window`; editor scripts still run in the parent page.
 - WordPress 6.9: console warning for blocks registered with apiVersion 2 or lower; published `block.json` schema only allows 3.
 - WordPress 7.0: the iframe decision looks at blocks present in the post content; one v1/v2 block makes the editor fall back to non-iframe mode.
-- Gutenberg 23.6 and WordPress 7.1: the post editor always uses the iframe, regardless of apiVersion. Treat an apiVersion 2 block that touches globals as a release-blocking defect on 7.1 targets, and as a compatibility warning below.
+- WordPress 7.1: the post editor always uses the iframe, regardless of apiVersion. Treat an apiVersion 2 block that touches globals as a release-blocking defect on 7.1 targets, and as a compatibility warning below.
 
 ## Typical breakages and fixes
 
@@ -43,7 +43,7 @@ Prefer `useRefEffect` over `useEffect` plus `ref.current`, because it re-runs wh
 
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-api-versions/
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-api-versions/block-migration-for-iframe-editor-compatibility/
-- https://make.wordpress.org/core/2026/02/24/iframed-editor-changes-in-wordpress-7-0/ (fetched 2026-10-08: the 7.0 check uses blocks inserted in the post; the iframe is not enforced in 7.0)
-- https://make.wordpress.org/core/2025/11/12/preparing-the-post-editor-for-full-iframe-integration/ (search result only, not fetched)
+- https://make.wordpress.org/core/2026/02/24/iframed-editor-changes-in-wordpress-7-0/
+- https://make.wordpress.org/core/2025/11/12/preparing-the-post-editor-for-full-iframe-integration/
 
-The 7.1 / Gutenberg 23.6 statement comes from the handbook migration page as served on 2026-10-08; secondary sources disagree on dates, so confirm against the current handbook.
+The 7.1 statement comes from the handbook migration page; secondary sources disagree on dates, so confirm against the current handbook.

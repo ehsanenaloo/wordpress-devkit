@@ -4,6 +4,22 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 
+## [2.0.2] - 2026-10-10
+
+### Added
+
+- Doctor accepts `--redact-paths`, which records only the folder name of the project instead of its full path in the report.
+
+### Changed
+
+- Doctor reports a tool whose version check returns an error, such as a broken shim, as `unavailable` instead of `failed`.
+
+### Fixed
+
+- Doctor stops a timed-out version check together with the programs it started.
+- The installer accepts a destination below a linked folder, such as `/home` linked to `/var/home` on Fedora Atomic. It still refuses a destination that is itself a link, and on Linux and macOS a link owned by another user.
+- Thirteen skills did not load in Google Antigravity because their descriptions were not valid YAML. All 20 skills now load.
+
 ## [2.0.1] - 2026-10-09
 
 ### Added
@@ -58,6 +74,7 @@ The first version recorded in this repository.
 - A physical Claude plugin mirror and Python/PowerShell manual installation entrypoints.
 - Distribution regression tests and command migration support.
 
-[Unreleased]: https://github.com/ehsanenaloo/wordpress-devkit/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/ehsanenaloo/wordpress-devkit/compare/v2.0.2...HEAD
+[2.0.2]: https://github.com/ehsanenaloo/wordpress-devkit/releases/tag/v2.0.2
 [2.0.1]: https://github.com/ehsanenaloo/wordpress-devkit/releases/tag/v2.0.1
 [2.0.0]: https://github.com/ehsanenaloo/wordpress-devkit/releases/tag/v2.0.1

@@ -47,6 +47,21 @@ jobs:
           python scripts/install.py --agent claude --destination "$RUNNER_TEMP/skills" --status
           test "$(ls "$RUNNER_TEMP/skills" | grep -c '^wp-devkit-')" -eq "$(ls src/skills | wc -l)"
 
+      - name: Replace an installed skill that contains a read-only file
+        shell: bash
+        run: |
+          python -c "import os, stat, sys; os.chmod(sys.argv[1], stat.S_IREAD)" "$RUNNER_TEMP/skills/wp-devkit-ui-design/SKILL.md"
+          python scripts/install.py --agent claude --destination "$RUNNER_TEMP/skills" --replace
+          python scripts/install.py --agent claude --destination "$RUNNER_TEMP/skills" --status
+
+      - name: Preview and check status through the PowerShell wrapper
+        shell: pwsh
+        run: |
+          ./scripts/install.ps1 -Agent claude -Destination "$env:RUNNER_TEMP/skills/" -Skill 'wp-devkit-ui-design,wp-devkit-wcag-review' -Preview
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./scripts/install.ps1 -Agent claude -Destination "$env:RUNNER_TEMP/skills" -Status
+          exit $LASTEXITCODE
+
       - name: Run the doctor entrypoints
         run: |
           python scripts/doctor.py --help
@@ -68,7 +83,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up PHP
-        uses: shivammathur/setup-php@b604ade2a87db23f8871b7182e69ec5e75effb45 # v2
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
           php-version: '8.3'
           coverage: none

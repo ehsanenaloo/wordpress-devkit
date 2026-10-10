@@ -94,4 +94,4 @@ Record tool versions, dataset, run counts and exit status; list unexecuted check
 
 ## 8. Sources
 
-Researched 2026-10-08. [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) | [WP_Object_Cache](https://developer.wordpress.org/reference/classes/wp_object_cache/) | [Options API autoload change (6.6)](https://make.wordpress.org/core/2024/06/18/options-api-disabling-autoload-for-large-options/) | [Web Vitals](https://web.dev/articles/vitals) | [Transients](https://developer.wordpress.org/apis/transients/) | [WP-CLI profile](https://developer.wordpress.org/cli/commands/profile/).
+Research date: 2026-10-08. [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/) | [WP_Object_Cache](https://developer.wordpress.org/reference/classes/wp_object_cache/) | [Options API autoload change (6.6)](https://make.wordpress.org/core/2024/06/18/options-api-disabling-autoload-for-large-options/) | [Web Vitals](https://web.dev/articles/vitals) | [Transients](https://developer.wordpress.org/apis/transients/) | [WP-CLI profile](https://developer.wordpress.org/cli/commands/profile/).

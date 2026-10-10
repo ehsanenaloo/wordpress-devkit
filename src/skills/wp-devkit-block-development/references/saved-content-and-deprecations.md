@@ -73,6 +73,6 @@ Regression check (Playwright with the WordPress e2e utils, or a Jest/Vitest test
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-deprecation/
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/
 - https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
-- Gutenberg `packages/blocks/src/api/serializer.tsx`: `getCommentAttributes()` omits attributes that equal their `default`, attributes with a `source`, and `role: local` attributes (confirmed 2026-10-08).
+- Gutenberg `packages/blocks/src/api/serializer.tsx`: `getCommentAttributes()` omits attributes that equal their `default`, attributes with a `source`, and `role: local` attributes.
 
-Confirmed 2026-10-08 in the deprecation page: newest-first order, first valid entry wins, no chaining, `isEligible` not called when all earlier saves were invalid, `migrate` may return a tuple, each entry carries its own `attributes`/`supports`/`save`.
+Facts to verify in the deprecation page: newest-first order, first valid entry wins, no chaining, `isEligible` not called when all earlier saves were invalid, `migrate` may return a tuple, each entry carries its own `attributes`/`supports`/`save`.

@@ -1,6 +1,6 @@
 # Queries, metadata and options
 
-Researched 2026-10-08. Contents: 1 WP_Query arguments | 2 N+1 and priming | 3 Meta, taxonomy and search queries | 4 Counting and pagination | 5 Autoload and options | 6 Indexes and custom tables | 7 Large data and multisite | 8 WooCommerce and HPOS | 9 Review checks
+Research date: 2026-10-08. Contents: 1 WP_Query arguments | 2 N+1 and priming | 3 Meta, taxonomy and search queries | 4 Counting and pagination | 5 Autoload and options | 6 Indexes and custom tables | 7 Large data and multisite | 8 WooCommerce and HPOS | 9 Review checks
 
 ## 1. WP_Query arguments
 

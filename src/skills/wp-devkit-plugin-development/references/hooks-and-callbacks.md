@@ -101,7 +101,9 @@ Translating before `init` triggers a `_doing_it_wrong` notice for `_load_textdom
 
 Assert the callback is attached at the intended priority, that the output changes only under the intended condition, that other callbacks on the same hook still run (register a second probe callback), that repeat registration does not double-fire, and that removal by the documented method works.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Hooks: https://developer.wordpress.org/plugins/hooks/
 - i18n changes in 6.7: https://make.wordpress.org/core/2024/10/21/i18n-improvements-6-7/

@@ -1,6 +1,6 @@
 # Schema changes, dbDelta and online DDL
 
-Researched 2026-10-08. Contents: 1 dbDelta contract | 2 Safe table definition | 3 Version gate | 4 What dbDelta cannot do | 5 Cost of DDL on large tables | 6 Charset and collation | 7 Expand and contract | 8 Review checks
+Research date: 2026-10-08. Contents: 1 dbDelta contract | 2 Safe table definition | 3 Version gate | 4 What dbDelta cannot do | 5 Cost of DDL on large tables | 6 Charset and collation | 7 Expand and contract | 8 Review checks
 
 ## 1. dbDelta contract
 

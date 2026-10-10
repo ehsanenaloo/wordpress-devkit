@@ -91,11 +91,11 @@ Core has no rate limiting. Apply limits at the edge (WAF/reverse proxy) or with 
 | User edits another user's object | Generic cap or none in permission callback | `edit_post` with id; re-read after denied call |
 | Different object edited than authorized | Permission reads URL id, handler reads body id | Read the id one way (parameter order is body-first) |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Authentication: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
 - `rest_authentication_errors`: https://developer.wordpress.org/reference/hooks/rest_authentication_errors/
 - Custom endpoints (permission callbacks): https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
 - Core source read (trunk): `rest_cookie_check_errors`, `rest_authorization_required_code`, `wp_is_application_passwords_supported`.
-
-Not verified from a primary source in this review: exact default nonce lifetime wording (12 hours / two ticks is long-standing behavior), the `incorrect_password` error code family, and the claim about `/wp/v2/users` anonymous exposure rules per version; test these on the target.

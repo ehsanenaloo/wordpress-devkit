@@ -2,7 +2,7 @@
 
 Contents: gateway contract; order status and `payment_complete()`; stock reduction and reservation; refunds; provider-initiated events; money handling; test cases; false positives.
 
-Researched 2026-10-08. Sources: [Payment gateway API](https://developer.woocommerce.com/docs/features/payments/payment-gateway-api/), WooCommerce source (`class-wc-order.php` `payment_complete`, `wc-stock-functions.php`, `wc-order-functions.php` `wc_create_refund`, `OrderStatus` enum; trunk 11.3-dev), [WooCommerce webhooks](https://woocommerce.com/document/webhooks/). Provider-specific behavior (Stripe, PayPal, Adyen...) must come from that provider's current docs; none is asserted here.
+Research date: 2026-10-08. Sources: [Payment gateway API](https://developer.woocommerce.com/docs/features/payments/payment-gateway-api/), WooCommerce source (`class-wc-order.php` `payment_complete`, `wc-stock-functions.php`, `wc-order-functions.php` `wc_create_refund`, `OrderStatus` enum), [WooCommerce webhooks](https://woocommerce.com/document/webhooks/). Provider-specific behavior (Stripe, PayPal, Adyen...) must come from that provider's current docs; none is asserted here.
 
 ## Gateway contract
 
@@ -24,7 +24,7 @@ Facts from `WC_Order::payment_complete()`:
 
 ## Stock
 
-- Reduction runs on `woocommerce_payment_complete` and on transitions to `completed`, `processing`, `on-hold` through `wc_maybe_reduce_stock_levels()`. It checks an order-level "stock reduced" flag (data store `get_stock_reduced()`/`set_stock_reduced()`, stored as `_order_stock_reduced`) so repeated transitions do not reduce twice. Restoration (`wc_maybe_increase_stock_levels()`) runs for `cancelled` and `pending` when the flag is set; the `failed` transition was added in WooCommerce 11.0.0 per the source comment, so on 10.x a failed order does not restore stock by itself. Confirmed in `wc-stock-functions.php` (trunk), including `wc_reduce_stock_levels( $order_id )` and `wc_increase_stock_levels( $order_id )` (order object or id).
+- Reduction runs on `woocommerce_payment_complete` and on transitions to `completed`, `processing`, `on-hold` through `wc_maybe_reduce_stock_levels()`. It checks an order-level "stock reduced" flag (data store `get_stock_reduced()`/`set_stock_reduced()`, stored as `_order_stock_reduced`) so repeated transitions do not reduce twice. Restoration (`wc_maybe_increase_stock_levels()`) runs for `cancelled` and `pending` when the flag is set; the `failed` transition was added in WooCommerce 11.0.0 per the source comment, so before 11.0.0 a failed order does not restore stock by itself. See `wc-stock-functions.php`, including `wc_reduce_stock_levels( $order_id )` and `wc_increase_stock_levels( $order_id )` (order object or id).
 - Hand-rolled `$product->set_stock_quantity( $product->get_stock_quantity() - $qty )` is a read-modify-write race. Use `wc_update_product_stock( $product, $qty, 'decrease' | 'increase' )`, which issues a relative SQL update on the legacy product store.
 - Duplicating that logic (manual reduce plus core reduce) double-counts. Check the flag, or use the core helpers `wc_reduce_stock_levels( $order )` and `wc_increase_stock_levels( $order )`.
 - Checkout reservation: `wc_reserve_stock_for_order()` runs on `woocommerce_checkout_order_created`, holds for `woocommerce_hold_stock_minutes` (default 60), skipped when `woocommerce_hold_stock_for_checkout` is false or stock management is off. Reservation protects the last item between order creation and payment; it does not protect between add-to-cart and checkout.

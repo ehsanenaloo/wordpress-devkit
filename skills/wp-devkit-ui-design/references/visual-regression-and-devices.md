@@ -37,12 +37,12 @@ Thresholds at the 75th percentile, per device class: LCP at most 2.5 s, INP at m
 
 `@axe-core/playwright`: `new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze()` (`wcag22aa` and the other tags are listed in the axe-core API tag table; confirm in the installed axe-core version). Reveal dynamic UI first, scan again after opening menus/dialogs, and avoid `exclude()` on large subtrees. Automation finds only a subset of problems; keyboard, screen-reader and zoom checks remain manual.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://playwright.dev/docs/test-snapshots
 - https://playwright.dev/docs/accessibility-testing
 - https://web.dev/articles/vitals
 
-## Sources
-
-Researched 2026-10-08: [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots), [Playwright emulation](https://playwright.dev/docs/emulation).
+Further sources: [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots), [Playwright emulation](https://playwright.dev/docs/emulation).

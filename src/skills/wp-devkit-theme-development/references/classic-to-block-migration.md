@@ -57,9 +57,11 @@ wp post list --post_type=page,post --s='[' --fields=ID,post_title   # rough shor
 
 Per template type render home, single, page, archive, search with results and empty, 404, a password-protected post, paginated archive, and a post with comments. Check navigation at mobile/desktop, legacy shortcodes, widgets area replacement, image sizes, editor/front parity, RTL and a long translation, and `wp_head`/`wp_footer` output (analytics, plugin scripts). Visual diff against the pre-migration site; a new home page screenshot alone does not prove the migration.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/themes/block-themes/
 - https://developer.wordpress.org/themes/core/theme-structure/
 - https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/
-- Core source read (trunk, 2026-10-08): `theme.php` lists `block-template-parts` as a theme support (since 6.1) and `class-wp-theme.php` `is_block_theme()` checks `templates/index.html`. The earlier Trac #64241 / changeset 54176 reference came from a search result and was not re-read.
+- Core source: `theme.php` lists `block-template-parts` as a theme support (since 6.1) and `class-wp-theme.php` `is_block_theme()` checks `templates/index.html`.

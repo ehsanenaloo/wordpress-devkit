@@ -1,6 +1,6 @@
 # Access control, CSRF and authentication
 
-Researched 2026-10-08. Contents: 1 Layers | 2 Capability and ownership | 3 Entrypoint patterns | 4 Nonces and CSRF | 5 Authentication models | 6 Privilege and role writes | 7 Multisite | 8 Review checks
+Research date: 2026-10-08. Contents: 1 Layers | 2 Capability and ownership | 3 Entrypoint patterns | 4 Nonces and CSRF | 5 Authentication models | 6 Privilege and role writes | 7 Multisite | 8 Review checks
 
 ## 1. Layers
 

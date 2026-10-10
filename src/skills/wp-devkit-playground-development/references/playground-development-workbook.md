@@ -66,7 +66,9 @@ Persists after reset: <yes/no>   Unexecuted: <list>
 
 [playground-isolation-fixture.json](playground-isolation-fixture.json) sets a site title and logs in on a disposable instance. It is setup material, not a defect reproduction or runtime test; its `preferredVersions` lines are examples to replace and record.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/playground/blueprints/
 - https://developer.wordpress.org/playground/developers/local-development/wp-playground-cli/

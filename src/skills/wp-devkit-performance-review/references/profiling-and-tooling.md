@@ -1,6 +1,6 @@
 # Profiling and measurement tooling
 
-Researched 2026-10-08. Contents: 1 Principles | 2 Query Monitor | 3 WP-CLI profile | 4 SQL evidence | 5 Request-level and load | 6 Browser and field | 7 Safe production sampling | 8 Reporting
+Research date: 2026-10-08. Contents: 1 Principles | 2 Query Monitor | 3 WP-CLI profile | 4 SQL evidence | 5 Request-level and load | 6 Browser and field | 7 Safe production sampling | 8 Reporting
 
 ## 1. Principles
 

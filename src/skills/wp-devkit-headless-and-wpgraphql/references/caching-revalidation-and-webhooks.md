@@ -2,7 +2,7 @@
 
 Contents: layers and ownership; WPGraphQL Smart Cache; persisted queries; mapping content changes to routes; webhook sender and receiver; Next.js revalidation APIs; failure modes; tests; false positives.
 
-Researched 2026-10-08. Sources: WPGraphQL Smart Cache docs in the monorepo (`plugins/wp-graphql-smart-cache/docs`: cache-invalidation, on-demand-revalidation, persisted-queries, network-cache, object-cache), [Next.js revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag) (docs v16.4.0, updated 2026-08-25), [Next.js draftMode](https://nextjs.org/docs/app/api-reference/functions/draft-mode), WordPress developer reference for `transition_post_status`, `wp_schedule_single_event`, `hash_hmac`.
+Research date: 2026-10-08. Sources: WPGraphQL Smart Cache docs in the monorepo (`plugins/wp-graphql-smart-cache/docs`: cache-invalidation, on-demand-revalidation, persisted-queries, network-cache, object-cache), [Next.js revalidateTag](https://nextjs.org/docs/app/api-reference/functions/revalidateTag), [Next.js draftMode](https://nextjs.org/docs/app/api-reference/functions/draft-mode), WordPress developer reference for `transition_post_status`, `wp_schedule_single_event`, `hash_hmac`.
 
 ## Name the freshness owner for each layer
 
@@ -23,7 +23,7 @@ Facts from the plugin docs (monorepo `main`):
 - Purge events: publish (not previously public to public) purges `list:<type>`; update of a public node purges the node ID and `skipped:<type>`; delete or unpublish purges the node and `skipped:<type>`. Drafts, new draft posts and new users with no published content do not purge. Terms, users-as-authors, media, comments, menus and (WPGraphQL 2.18+) settings groups are tracked; permalink options trigger a full purge.
 - `skipped:<type>`: when too many nodes are returned the key header is truncated to a type-level key, so such queries are purged on any change of that type. Large list queries therefore invalidate often; shrink or paginate them.
 - Settings queries before WPGraphQL 2.18 do not purge on change; use a per-document max-age.
-- Action `do_action( 'graphql_purge', $key, $event, $graphql_endpoint )` fires for each purge (the third argument is the GraphQL endpoint URL without its scheme, per `Cache/Invalidation.php`; confirmed on `main`). Key shapes: a Relay global ID (base64 of `type:databaseId`), `list:<type>`, `skipped:<type>`, `graphql:Query` (purge all). One editor action can fire several. Batch them per request.
+- Action `do_action( 'graphql_purge', $key, $event, $graphql_endpoint )` fires for each purge (the third argument is the GraphQL endpoint URL without its scheme, per `Cache/Invalidation.php`). Key shapes: a Relay global ID (base64 of `type:databaseId`), `list:<type>`, `skipped:<type>`, `graphql:Query` (purge all). One editor action can fire several. Batch them per request.
 - Persisted queries are stored in a private `graphql_document` post type with allow/deny modes ("Public", "Allow only specific queries", "Deny specific queries"), alias names (query IDs), and a per-document max-age. They reduce upload size and let you lock a public endpoint to known operations. They do not fix poor schema design, expensive resolvers, missing pagination or preview cache separation.
 - `wp graphql smart-cache documents audit|purge` manages stored documents. `audit` is the inspection command; treat `purge` (flags `--include-curated`, `--dry-run`, `--yes` per the persisted-queries doc) as destructive and never run it in review, even with `--dry-run` unless the task authorizes it.
 
@@ -107,7 +107,7 @@ export async function POST(request: Request) {
 }
 ```
 
-- In Next.js 16 (docs v16.4.0, last updated 2026-08-25, confirmed) `revalidateTag( tag, profile )` takes a second argument; `'max'` gives stale-while-revalidate for up to a year. The one-argument form is deprecated and behaves like `{ expire: 0 }`. For a webhook (not a Server Action) `updateTag` is not available; use `revalidateTag( tag, { expire: 0 } )` when stale content must never be served. Tags must be 256 characters or fewer and must have been attached to the cached data (`fetch(..., { next: { tags } })` or `cacheTag` with `'use cache'`), otherwise revalidation does nothing. Revalidation is triggered by the next request, not by the call.
+- Since Next.js 16, `revalidateTag( tag, profile )` takes a second argument (check the current docs online); `'max'` gives stale-while-revalidate for up to a year. The one-argument form is deprecated and behaves like `{ expire: 0 }`. For a webhook (not a Server Action) `updateTag` is not available; use `revalidateTag( tag, { expire: 0 } )` when stale content must never be served. Tags must be 256 characters or fewer and must have been attached to the cached data (`fetch(..., { next: { tags } })` or `cacheTag` with `'use cache'`), otherwise revalidation does nothing. Revalidation is triggered by the next request, not by the call.
 - Older Next.js versions used `revalidateTag( tag )` and `revalidatePath( path )` (one argument): read the installed version's docs before copying.
 - Tagging convention: tag each fetch with the same Relay IDs and `list:<type>` keys that Smart Cache emits so the mapping is mechanical.
 - Return 2xx only after the revalidation calls were accepted. Count and log accepted/rejected events.

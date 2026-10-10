@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-theme-development
-description: Build, debug or review classic, child, hybrid and block themes: template hierarchy and Site Editor overrides, theme.json versions and style layers, patterns and parts, fonts and images, classic-to-block migration. Not for block internals (block skill) or visual redesign (ui-design).
+description: "Build, debug or review classic, child, hybrid and block themes: template hierarchy and Site Editor overrides, theme.json versions and style layers, patterns and parts, fonts and images, classic-to-block migration. Not for block internals (block skill) or visual redesign (ui-design)."
 ---
 
 # Theme rendering and customization

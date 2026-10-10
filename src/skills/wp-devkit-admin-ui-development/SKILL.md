@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-admin-ui-development
-description: Build, debug or review WordPress admin settings pages, list tables, custom save handlers and editor-side tools. Use for save-says-success-but-unchanged, role/capability gaps, scoped assets, notices, and accessible loading/error states; not REST route design.
+description: "Build, debug or review WordPress admin settings pages, list tables, custom save handlers and editor-side tools. Use for save-says-success-but-unchanged, role/capability gaps, scoped assets, notices, and accessible loading/error states; not REST route design."
 ---
 
 # Administrative screens and save behavior

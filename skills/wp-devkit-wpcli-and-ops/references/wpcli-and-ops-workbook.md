@@ -102,7 +102,9 @@ The fixture registers `wp devkit-fixture report-warmup`. It validates a batch si
 
 Explain the practical result, changed owner and remaining limits. Separate confirmed findings, candidates, executed and unexecuted checks. Do not claim successful operations from source review.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Search-replace: https://developer.wordpress.org/cli/commands/search-replace/
 - Commands cookbook: https://make.wordpress.org/cli/handbook/guides/commands-cookbook/

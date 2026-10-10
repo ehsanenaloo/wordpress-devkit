@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-performance-review
-description: Investigate and improve measured WordPress performance: slow queries, N+1 loads, autoloaded options, object/page cache correctness, cron and remote calls, hook cost, Core Web Vitals. Use for a slow or must-scale journey with workload context; ordinary code review alone does not select this skill.
+description: "Investigate and improve measured WordPress performance: slow queries, N+1 loads, autoloaded options, object/page cache correctness, cron and remote calls, hook cost, Core Web Vitals. Use for a slow or must-scale journey with workload context; ordinary code review alone does not select this skill."
 ---
 
 # Measured queries, caches and delivery

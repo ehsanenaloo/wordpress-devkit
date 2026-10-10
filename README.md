@@ -297,7 +297,7 @@ Doctor checks the project layout and selected tool versions without loading Word
 ## How the project is verified
 
 - Structure checks: every skill's metadata, links, sources, research dates and examples are validated on each change; complete PHP examples are syntax-checked.
-- Distribution checks: installers, recovery, uninstall protection, reproducible release archives and the plugin manifests have automated tests on Linux and Windows.
+- Distribution checks: installers, recovery, uninstall protection, release archives (fixed entry order, timestamps and permissions) and the plugin manifests have automated tests on Linux and Windows.
 - Behavioural cases: a registry of real defects, benign look-alikes and insufficient-evidence scenarios exists for every skill and is used to evaluate agent behaviour with real clients.
 - Disposable runtime checks exercise WordPress and WooCommerce APIs in containers that never touch an existing site.
 

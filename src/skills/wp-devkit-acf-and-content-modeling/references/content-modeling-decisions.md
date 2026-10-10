@@ -2,7 +2,7 @@
 
 Contents: decision table; registration arguments that matter; meta registration; modeling smells; relationships and ownership; multilingual and multisite notes; model-change checklist; false positives.
 
-Researched 2026-10-08. Sources: [register_post_type](https://developer.wordpress.org/reference/functions/register_post_type/), [register_meta](https://developer.wordpress.org/reference/functions/register_meta/), [ACF Repeater](https://www.advancedcustomfields.com/resources/repeater/). Only the first 100,000 characters of the `register_post_type` page were read; arguments not listed here need a re-read.
+Researched 2026-10-08. Sources: [register_post_type](https://developer.wordpress.org/reference/functions/register_post_type/), [register_meta](https://developer.wordpress.org/reference/functions/register_meta/), [ACF Repeater](https://www.advancedcustomfields.com/resources/repeater/). Arguments not listed here need a re-read of the reference.
 
 ## Choose the container
 

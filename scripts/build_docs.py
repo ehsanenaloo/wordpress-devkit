@@ -117,7 +117,7 @@ def commands_for(skill, root):
 
 def article(skill, root):
     text = (root / 'src/skills' / skill / 'SKILL.md').read_text(encoding='utf-8')
-    meta = re.match(r'^---\nname: (.+)\ndescription: (.+)\n---\n', text)
+    meta = re.match(r'^---\nname: (.+)\ndescription: "?(.+?)"?\n---\n', text)
     description = meta[2]
     parts = sections(text[meta.end():])
     commands = commands_for(skill, root)

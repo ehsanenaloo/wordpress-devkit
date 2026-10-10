@@ -2,7 +2,7 @@
 
 Contents: storage modes; compatibility declaration; reading and writing orders; querying orders; admin screens; synchronization and WP-CLI; large stores; test matrix; false positives.
 
-Researched 2026-10-08. Sources: [HPOS recipe book](https://developer.woocommerce.com/docs/features/high-performance-order-storage/recipe-book/), [HPOS overview](https://developer.woocommerce.com/docs/features/high-performance-order-storage/), [wc_get_orders() and order queries](https://developer.woocommerce.com/docs/features/orders/wc-get-orders/), WooCommerce source on GitHub (`CLIRunner.php`, `ListTable.php`, `OrdersTableDataStore.php`, trunk at 11.3-dev; the DevKit tested baseline is 10.8, so re-check names against the installed version).
+Research date: 2026-10-08. Sources: [HPOS recipe book](https://developer.woocommerce.com/docs/features/high-performance-order-storage/recipe-book/), [HPOS overview](https://developer.woocommerce.com/docs/features/high-performance-order-storage/), [wc_get_orders() and order queries](https://developer.woocommerce.com/docs/features/orders/wc-get-orders/), WooCommerce source on GitHub (`CLIRunner.php`, `ListTable.php`, `OrdersTableDataStore.php`); re-check names against the installed version.
 
 ## Storage modes
 
@@ -77,13 +77,13 @@ $orders = wc_get_orders( array(
 - Documented args: `status` (prefixed or not), `type` (`shop_order`, `shop_order_refund`), `customer`/`customer_id`, `parent`, `exclude`, `created_via`, `payment_method`, `currency`, `limit` (`-1` is unlimited), `paged`/`offset`, `return` (`objects` default, or `ids`), `paginate` (result object with `orders`, `total`, `max_num_pages`), `order`, `orderby` (`none`, `ID`, `name`, `type`, `rand`, `date`, `modified`), and date fields with `>`, `<`, `...` range syntax.
 - `meta_query`, `field_query` (order properties that moved to columns) and `date_query` arrived in 8.2 and work only when HPOS is the configured store. Gate them on `OrderUtil::custom_orders_table_usage_is_enabled()` or test both modes. Prefer plain top-level args (`billing_email`, `total`) over `field_query` for simple equality.
 - Meta-based `orderby` is not documented for `wc_get_orders`; do not assume `meta_key` ordering works.
-- Custom query args: `woocommerce_order_query_args` is applied by `WC_Order_Query` before either data store runs. Store-specific SQL changes differ: HPOS uses `woocommerce_orders_table_query_clauses` (and `_query_sql`), the legacy store uses `woocommerce_order_data_store_cpt_get_orders_query`. Extending one store-specific filter silently breaks the other (all hook names confirmed in trunk source).
+- Custom query args: `woocommerce_order_query_args` is applied by `WC_Order_Query` before either data store runs. Store-specific SQL changes differ: HPOS uses `woocommerce_orders_table_query_clauses` (and `_query_sql`), the legacy store uses `woocommerce_order_data_store_cpt_get_orders_query`. Extending one store-specific filter silently breaks the other (see the hook names in the WooCommerce source).
 - An unindexed `meta_query` scans `wc_orders_meta`. For a hot lookup prefer a first-class field (`transaction_id`, `customer_id`, `payment_method`) or an indexed table you own.
 
 ## Admin screens and metaboxes
 
 - Screen id is `wc_get_page_screen_id( 'shop-order' )` under HPOS and `shop_order` on the legacy store. The metabox callback receives a `WC_Order` under HPOS and a `WP_Post` otherwise: `$order = $arg instanceof WP_Post ? wc_get_order( $arg->ID ) : $arg;`.
-- List-table columns on HPOS use `manage_{$screen_id}_columns` and `manage_{$screen_id}_custom_column` (second argument is the `WC_Order`), where the screen id comes from `wc_get_page_screen_id( 'shop-order' )` (confirmed in `ListTable.php`; the recipe book itself does not name these hooks). The legacy `manage_edit-shop_order_columns` does not fire there. Custom list-table arguments go through `woocommerce_order_list_table_prepare_items_query_args`.
+- List-table columns on HPOS use `manage_{$screen_id}_columns` and `manage_{$screen_id}_custom_column` (second argument is the `WC_Order`), where the screen id comes from `wc_get_page_screen_id( 'shop-order' )` (see `ListTable.php`; the recipe book itself does not name these hooks). The legacy `manage_edit-shop_order_columns` does not fire there. Custom list-table arguments go through `woocommerce_order_list_table_prepare_items_query_args`.
 - A metabox save is an admin write path. Verify a nonce and `current_user_can( 'edit_shop_orders' )` (or the narrower capability) before `$order->save()`.
 
 ## Synchronization, migration and WP-CLI

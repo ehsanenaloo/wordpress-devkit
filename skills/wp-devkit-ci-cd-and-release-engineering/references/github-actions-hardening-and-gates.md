@@ -2,7 +2,7 @@
 
 Contents: threat model; triggers and checkout rules; permissions; pinning; script injection; secrets and environments; caches and artifacts across trust levels; gates that really gate; concurrency; reference workflow skeleton; review procedure; false positives.
 
-Researched 2026-10-08; a second pass the same day re-read the secure-use, events, required-status-check and dependency-caching pages and the action READMEs (latest releases then: checkout v7.0.1, upload-artifact v7.0.2, download-artifact v8.0.2, setup-php 2.40.0, attest and attest-build-provenance v4.2.2, cache v6.1.0; ubuntu-latest = ubuntu-24.04, ubuntu-26.04 exists). Sources: [GitHub Actions secure use reference](https://docs.github.com/en/actions/reference/security/secure-use), [events that trigger workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows), [troubleshooting required status checks](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks), [runner images](https://github.com/actions/runner-images), [artifact attestations](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds), [dependency caching](https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching). Action versions quoted in this file were the latest releases on the research date; resolve current versions and SHAs again before editing a workflow.
+Researched 2026-10-08. Sources: [GitHub Actions secure use reference](https://docs.github.com/en/actions/reference/security/secure-use), [events that trigger workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows), [troubleshooting required status checks](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks), [runner images](https://github.com/actions/runner-images), [artifact attestations](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds), [dependency caching](https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching). Versions quoted in examples are placeholders: look up the latest release and its commit SHA of each action online before editing a workflow.
 
 ## Threat model in one paragraph
 
@@ -130,7 +130,7 @@ jobs:
     steps: [] # build once, inspect, upload-artifact (see packaging reference)
 ```
 
-`ubuntu-latest` currently maps to Ubuntu 24.04 and `ubuntu-26.04` exists; pin the label you tested so image migrations are a change you make.
+Look up which Ubuntu version `ubuntu-latest` maps to in the runner images list, and pin the label you tested so image migrations are a change you make.
 
 ## Review procedure (read-only)
 

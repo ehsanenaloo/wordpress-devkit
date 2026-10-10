@@ -73,7 +73,9 @@ Hard-coded URLs in theme/plugin files, `wp-config.php` constants, `.htaccess`/se
 | Very slow run | `--regex`, `--log`, huge tables | Limit tables/columns; run in window; consider `--export` |
 | Login loops after domain change | Cookie domain/constants not updated | Fix `COOKIE_DOMAIN`, `WP_HOME`/`WP_SITEURL` |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - `wp search-replace`: https://developer.wordpress.org/cli/commands/search-replace/
 - `wp db export`: https://developer.wordpress.org/cli/commands/db/export/
@@ -83,4 +85,4 @@ Hard-coded URLs in theme/plugin files, `wp-config.php` constants, `.htaccess`/se
 - `wp cache flush`: https://developer.wordpress.org/cli/commands/cache/flush/
 - `wp maintenance-mode`: https://developer.wordpress.org/cli/commands/maintenance-mode/
 
-Confirmed in https://github.com/wp-cli/search-replace-command (README and source, 2026-10-08): flags table, tables without a primary key skipped, JSON-encoded string handling, inconvertible-serialized-object warning. Check the report for corrupt serialized values, which may be altered partially instead of skipped; check `wp help` for `wp db clean` and `wp site empty`; the backup step is operational practice, not a documented requirement.
+Notes from https://github.com/wp-cli/search-replace-command (README and source): flags table, tables without a primary key skipped, JSON-encoded string handling, inconvertible-serialized-object warning. Check the report for corrupt serialized values, which may be altered partially instead of skipped; check `wp help` for `wp db clean` and `wp site empty`; the backup step is operational practice, not a documented requirement.

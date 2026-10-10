@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import signal
 import subprocess
 import tempfile
 import sys
@@ -49,14 +50,36 @@ def safe_which(name, untrusted=()):
     return shutil.which(name, path=search)
 
 
+def kill_tree(process):
+    """Stop a timed-out probe together with the processes it started (npm.cmd starts node)."""
+    if os.name == 'nt':
+        subprocess.run(['taskkill', '/T', '/F', '/PID', str(process.pid)], capture_output=True, check=False)
+    else:
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except OSError:
+            pass
+    process.kill()
+
+
 def probe(arguments, timeout=15):
+    # Run from a neutral directory so project-level shims and configuration are not picked up.
+    options = {} if os.name == 'nt' else {'start_new_session': True}
     try:
-        # Run from a neutral directory so project-level shims and configuration are not picked up.
-        result = subprocess.run(arguments, capture_output=True, text=True, encoding='utf-8',
-                                errors='replace', timeout=timeout, cwd=tempfile.gettempdir())
-    except (OSError, subprocess.TimeoutExpired):
+        process = subprocess.Popen(arguments, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                   encoding='utf-8', errors='replace', cwd=tempfile.gettempdir(), **options)
+    except OSError:
         return None
-    return result
+    try:
+        stdout, stderr = process.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        kill_tree(process)
+        try:
+            process.communicate(timeout=5)
+        except subprocess.TimeoutExpired:
+            pass
+        return None
+    return subprocess.CompletedProcess(arguments, process.returncode, stdout, stderr)
 
 
 def validate_runtime(data):
@@ -90,7 +113,7 @@ def validate_runtime(data):
     return data
 
 
-def inventory(target, container=None, trusted_runtime=False, wordpress_root='/var/www/html'):
+def inventory(target, container=None, trusted_runtime=False, wordpress_root='/var/www/html', redact_paths=False):
     target = Path(target).resolve(strict=True)
     if not target.is_dir():
         raise ValueError('Target must be a directory.')
@@ -100,7 +123,8 @@ def inventory(target, container=None, trusted_runtime=False, wordpress_root='/va
         raise ValueError('Trusted runtime requires an explicitly selected container.')
     if not re.fullmatch(r'/[A-Za-z0-9_./-]+', wordpress_root) or '..' in Path(wordpress_root).parts:
         raise ValueError('WordPress container root must be an absolute normalized path.')
-    report = new_report('directory:' + str(target) + (';container:' + container
+    label = (target.name or 'root') if redact_paths else str(target)
+    report = new_report('directory:' + label + (';container:' + container
                         + ';wordpress-root:' + wordpress_root if container else ''))
 
     def check(identifier, status, message, evidence=None):
@@ -127,7 +151,9 @@ def inventory(target, container=None, trusted_runtime=False, wordpress_root='/va
         if result is None:
             check('tool:' + name, 'failed', 'Version probe could not finish within the time limit.')
         elif result.returncode:
-            check('tool:' + name, 'failed', 'Version probe returned an error.', {'exit_code': result.returncode})
+            # A broken shim (Microsoft Store python stub, nvm without a selected version) is not a doctor failure.
+            check('tool:' + name, 'unavailable', 'Executable is present but its version probe returned an error.',
+                  {'exit_code': result.returncode})
         else:
             # Allowlist version lines; never forward arbitrary command diagnostics.
             version = re.search(r'(?<![\w.])v?(\d+\.\d+(?:\.\d+)?(?:[-+][A-Za-z0-9.-]+)?)', result.stdout)
@@ -166,10 +192,12 @@ def main():
     parser.add_argument('--container')
     parser.add_argument('--trusted-runtime', action='store_true')
     parser.add_argument('--wordpress-root', default='/var/www/html')
+    parser.add_argument('--redact-paths', action='store_true',
+                        help='record only the directory name of the target, not its absolute path')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     try:
-        report = inventory(args.target, args.container, args.trusted_runtime, args.wordpress_root)
+        report = inventory(args.target, args.container, args.trusted_runtime, args.wordpress_root, args.redact_paths)
         # Keep generated evidence outside the inspected source directory.
         destination = args.output.resolve()
         target_path = Path(args.target).resolve()

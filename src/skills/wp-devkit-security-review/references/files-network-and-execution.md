@@ -1,6 +1,6 @@
 # Files, outbound requests and code execution
 
-Researched 2026-10-08. Contents: 1 Uploads | 2 Paths and archives | 3 Outbound requests and SSRF | 4 Redirects | 5 Include, eval and command execution | 6 Filesystem API | 7 Review checks
+Research date: 2026-10-08. Contents: 1 Uploads | 2 Paths and archives | 3 Outbound requests and SSRF | 4 Redirects | 5 Include, eval and command execution | 6 Filesystem API | 7 Review checks
 
 ## 1. Uploads
 

@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import tempfile
-from distribution import is_link, replace_directories, tree_files
+from distribution import is_link, replace_directories, resolve_regular_path, tree_files
 
 ROOT = Path(__file__).resolve().parents[1]
 RECORD = '.wp-devkit-installation'
@@ -39,11 +39,7 @@ def source_directories():
 def destination_path(agent, destination):
     if agent not in AGENT_PATHS:
         raise ValueError('Unknown agent: ' + str(agent))
-    path = Path(destination).expanduser().absolute()
-    for item in (path, *path.parents):
-        if is_link(item):
-            raise ValueError(f'Refusing a linked destination: {item}')
-    path = path.resolve()
+    path = resolve_regular_path(Path(destination).expanduser(), 'destination')
     root = ROOT.resolve()
     if path == root or root in path.parents:
         raise ValueError('Choose a destination outside the source checkout.')
@@ -211,6 +207,7 @@ if __name__ == '__main__':
     parser.add_argument('--status', action='store_true', help='Show recorded versions and changed installed files without network access.')
     args = parser.parse_args()
     default = default_destination(args.agent)
+    action = 'Status check' if args.status else 'Preview' if args.preview else 'Uninstall' if args.uninstall else 'Installation'
     try:
         destination = args.destination or default
         if sum([args.status, args.preview, args.uninstall]) > 1:
@@ -232,6 +229,6 @@ if __name__ == '__main__':
             raise SystemExit(0)
         paths = install(args.agent, destination, args.replace, args.skill, args.force)
     except (ValueError, OSError, RuntimeError) as error:
-        parser.exit(1, f'Installation failed: {error}\n')
+        parser.exit(1, f'{action} failed: {error}\n')
     print(f'Installed {len(paths)} self-contained skills into {paths[0].parent}')
     print('Manual skills do not install Claude namespaced plugin commands.')

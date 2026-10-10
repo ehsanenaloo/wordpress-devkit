@@ -1,6 +1,6 @@
 # Configuration, levels and symbol discovery
 
-Researched 2026-10-08 against PHPStan 2.3.1 (released 2026-10-08), szepeviktor/phpstan-wordpress 2.0.4, php-stubs/wordpress-stubs 7.1.2, php-stubs/woocommerce-stubs 11.2.0. Re-check versions on the target project.
+Research date: 2026-10-08. Check the latest releases of PHPStan, szepeviktor/phpstan-wordpress and the stub packages online (official source) and record the versions you used.
 
 Contents: 1 Install and layout | 2 Config precedence and keys | 3 Levels | 4 Symbol discovery | 5 WordPress extension and stubs | 6 WooCommerce, WP-CLI and other stubs | 7 PHP version | 8 Cache and performance | 9 Strictness packages | 10 Review checks
 
@@ -10,7 +10,7 @@ Contents: 1 Install and layout | 2 Config precedence and keys | 3 Levels | 4 Sym
 composer require --dev phpstan/phpstan szepeviktor/phpstan-wordpress phpstan/extension-installer
 ```
 
-Committed: `composer.json`, `composer.lock`, `phpstan.neon.dist` (and a baseline if used). Ignored by Git: `phpstan.neon` (local override) and `tmpDir`. Pin the PHPStan version through the lockfile; upgrades are deliberate commits that re-run the suite. szepeviktor/phpstan-wordpress 2.x requires PHPStan 2.0+, PHP 7.4+ (tested up to 8.3 per its README) and `php-stubs/wordpress-stubs` 6.6.2 or newer. With `phpstan/extension-installer` the extension loads automatically; without it include `vendor/szepeviktor/phpstan-wordpress/extension.neon` once. Do both and you load it twice.
+Committed: `composer.json`, `composer.lock`, `phpstan.neon.dist` (and a baseline if used). Ignored by Git: `phpstan.neon` (local override) and `tmpDir`. Pin the PHPStan version through the lockfile; upgrades are deliberate commits that re-run the suite. szepeviktor/phpstan-wordpress 2.x requires PHPStan 2.0+ and PHP 7.4+; check its README online for the supported PHP range and the minimum `php-stubs/wordpress-stubs` version. With `phpstan/extension-installer` the extension loads automatically; without it include `vendor/szepeviktor/phpstan-wordpress/extension.neon` once. Do both and you load it twice.
 
 ## 2. Config precedence and keys
 
@@ -62,7 +62,7 @@ parameters:
         - vendor/php-stubs/wp-cli-stubs/wp-cli-stubs.php   # commands, i18n and tools stubs are separate files in the package: wp-cli-commands-stubs.php, wp-cli-i18n-stubs.php, wp-cli-tools-stubs.php
 ```
 
-Add only what the code uses (`php-stubs/woocommerce-stubs`, `php-stubs/wp-cli-stubs`; community stub packages exist for ACF and others, verify maintenance). WooCommerce stubs track the latest WooCommerce (11.2.0 at the research date), so the same version-gating caveat applies; WooCommerce 10.8+ recommends WordPress 6.9+ and PHP 8.3+. Check each stub package's own README for the supported file names.
+Add only what the code uses (`php-stubs/woocommerce-stubs`, `php-stubs/wp-cli-stubs`; community stub packages exist for ACF and others, verify maintenance). WooCommerce stubs track the latest WooCommerce, so the same version-gating caveat applies. Check each stub package's own README for the supported file names.
 
 ## 7. PHP version
 
@@ -74,7 +74,7 @@ The result cache lives in `tmpDir`; on CI restore it between runs keyed by lockf
 
 ## 9. Strictness packages
 
-Optional rule packages: `phpstan/phpstan-strict-rules` (opinionated), `phpstan/phpstan-deprecation-rules` (calls to deprecated APIs; valuable when preparing for a new WordPress or PHP), `phpstan/phpstan-phpunit`. Opt-in `bleedingEdge.neon` includes carry no compatibility guarantee between releases (per the 2.3.0 release notes): use it knowingly, pinned. Each package is a separate decision; add one at a time and baseline nothing new without review.
+Optional rule packages: `phpstan/phpstan-strict-rules` (opinionated), `phpstan/phpstan-deprecation-rules` (calls to deprecated APIs; valuable when preparing for a new WordPress or PHP), `phpstan/phpstan-phpunit`. Opt-in `bleedingEdge.neon` includes carry no compatibility guarantee between releases (per the PHPStan release notes): use it knowingly, pinned. Each package is a separate decision; add one at a time and baseline nothing new without review.
 
 ## 10. Review checks
 

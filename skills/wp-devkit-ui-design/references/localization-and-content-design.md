@@ -29,11 +29,11 @@ Pseudolocalization (accent plus roughly 30-40 percent expansion), a German-like 
 
 Headings, labels, buttons, help text, errors, empty states, consent text and alt text each need: clear task language, no jargon, no blame in errors, a next action, and a screen-reader reading that makes sense alone ("Read more" links need context via text or `aria-label` that includes the visible text). Alt text conveys purpose, not file names; decorative images use `alt=""`.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/apis/internationalization/
 - https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/ (WCAG 2.2 context; 3.1.x unchanged from 2.1)
 
-## Sources
-
-Researched 2026-10-08: [W3C internationalization: bidirectional text](https://www.w3.org/International/articles/inline-bidi-markup/), [WordPress i18n handbook](https://developer.wordpress.org/apis/internationalization/).
+Further sources: [W3C internationalization: bidirectional text](https://www.w3.org/International/articles/inline-bidi-markup/), [WordPress i18n handbook](https://developer.wordpress.org/apis/internationalization/).

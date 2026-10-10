@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-acf-and-content-modeling
-description: Design, debug or review WordPress content models and ACF. Use for CPT vs taxonomy vs field choices, Local JSON/PHP schema drift, missing or unformatted values, ACF validation and REST exposure, meta_query slowness and safe field renames or backfills.
+description: "Design, debug or review WordPress content models and ACF. Use for CPT vs taxonomy vs field choices, Local JSON/PHP schema drift, missing or unformatted values, ACF validation and REST exposure, meta_query slowness and safe field renames or backfills."
 ---
 
 # Editorial models and field evolution

@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-ui-design
-description: Design, implement or review WordPress user journeys, responsive layouts, UI states, design tokens, editor/front parity, RTL and visual-regression checks. Not for WCAG criterion audits (wcag-review), theme.json internals (theme skill) or wp-admin implementation (admin-ui).
+description: "Design, implement or review WordPress user journeys, responsive layouts, UI states, design tokens, editor/front parity, RTL and visual-regression checks. Not for WCAG criterion audits (wcag-review), theme.json internals (theme skill) or wp-admin implementation (admin-ui)."
 ---
 
 # WordPress journeys and visual decisions

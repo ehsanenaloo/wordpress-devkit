@@ -76,4 +76,4 @@ Reviewed 2026-10-08.
 
 - [WCAG 2.2 conformance requirements and claims](https://www.w3.org/WAI/WCAG22/Understanding/conformance)
 - [WCAG-EM reporting](https://www.w3.org/TR/WCAG-EM/)
-- [ITI VPAT page](https://www.itic.org/policy/accessibility/vpat) (template and terminology; the page lists VPAT 2.5Rev, April 2025, in 508, EU, WCAG and INT editions; confirm current edition)
+- [ITI VPAT page](https://www.itic.org/policy/accessibility/vpat) (template and terminology; look up the current edition and its 508, EU, WCAG and INT variants)

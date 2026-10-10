@@ -2,7 +2,7 @@
 
 Contents: choose the authentication method; request identity rules; the preview flow end to end; Next.js Draft Mode notes; CORS; failure symptoms; tests; false positives.
 
-Researched 2026-10-08. Sources: [WPGraphQL authentication and authorization](https://www.wpgraphql.com/docs/authentication-and-authorization), [WPGraphQL security](https://www.wpgraphql.com/docs/security), [REST API authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/), [preview_post_link](https://developer.wordpress.org/reference/hooks/preview_post_link/), [rest_allowed_cors_headers](https://developer.wordpress.org/reference/hooks/rest_allowed_cors_headers/), WordPress core source (`user.php`, `rest-api.php`), WPGraphQL source (`RootQuery.php`, `Model/Post.php`), [Next.js draftMode](https://nextjs.org/docs/app/api-reference/functions/draft-mode) (docs v16.4.0).
+Research date: 2026-10-08. Sources: [WPGraphQL authentication and authorization](https://www.wpgraphql.com/docs/authentication-and-authorization), [WPGraphQL security](https://www.wpgraphql.com/docs/security), [REST API authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/), [preview_post_link](https://developer.wordpress.org/reference/hooks/preview_post_link/), [rest_allowed_cors_headers](https://developer.wordpress.org/reference/hooks/rest_allowed_cors_headers/), WordPress core source (`user.php`, `rest-api.php`), WPGraphQL source (`RootQuery.php`, `Model/Post.php`), [Next.js draftMode](https://nextjs.org/docs/app/api-reference/functions/draft-mode).
 
 ## Choose the authentication method
 

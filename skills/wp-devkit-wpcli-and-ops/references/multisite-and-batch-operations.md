@@ -63,7 +63,9 @@ Log start/end, target (path, URL, DB name without credentials), version of WP-CL
 | Overlapping runs | No lock | `flock`/atomic lock |
 | Site-wide slowdown after "cache clear" | `wp cache flush` on shared Redis | Targeted invalidation, warm-up plan |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - `wp site list`: https://developer.wordpress.org/cli/commands/site/list/
 - `wp cron`: https://developer.wordpress.org/cli/commands/cron/ and `cron event run`: https://developer.wordpress.org/cli/commands/cron/event/run/
@@ -72,4 +74,4 @@ Log start/end, target (path, URL, DB name without credentials), version of WP-CL
 - `wp plugin activate`: https://developer.wordpress.org/cli/commands/plugin/activate/
 - Global config and `--url`: https://make.wordpress.org/cli/handbook/references/config/
 
-Confirmed 2026-10-08 against package READMEs: `wp cron test` behavior, `wp cron event run [<hook>...] [--due-now] [--exclude] [--all] [--network]`, `wp cache delete <key> [<group>]`, `wp rewrite flush [--hard]`, `wp transient delete [<key>] [--network] [--all] [--expired]`, `wp site list` filters including `--site__in`, `--site_user`, `--site-path` (https://github.com/wp-cli/cron-command, https://github.com/wp-cli/cache-command, https://github.com/wp-cli/rewrite-command, https://github.com/wp-cli/entity-command). Check the `get_sites()` argument keys (standard `WP_Site_Query`; see the developer reference) and the `flock` recipe (OS behavior, not WordPress).
+Notes from the package READMEs: `wp cron test` behavior, `wp cron event run [<hook>...] [--due-now] [--exclude] [--all] [--network]`, `wp cache delete <key> [<group>]`, `wp rewrite flush [--hard]`, `wp transient delete [<key>] [--network] [--all] [--expired]`, `wp site list` filters including `--site__in`, `--site_user`, `--site-path` (https://github.com/wp-cli/cron-command, https://github.com/wp-cli/cache-command, https://github.com/wp-cli/rewrite-command, https://github.com/wp-cli/entity-command). Check the `get_sites()` argument keys (standard `WP_Site_Query`; see the developer reference) and the `flock` recipe (OS behavior, not WordPress).

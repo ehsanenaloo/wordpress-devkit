@@ -97,4 +97,4 @@ Record tool versions, exit status and the unexecuted checks.
 
 ## 8. Sources
 
-Researched 2026-10-08. [Security principles](https://developer.wordpress.org/apis/security/) | [Nonces](https://developer.wordpress.org/apis/security/nonces/) | [Escaping](https://developer.wordpress.org/apis/security/escaping/) | [REST authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/) | [register_rest_route](https://developer.wordpress.org/reference/functions/register_rest_route/) | [OWASP Top 10:2025](https://top10.owasp.org/2025) | [CWE](https://cwe.mitre.org/).
+Research date: 2026-10-08. [Security principles](https://developer.wordpress.org/apis/security/) | [Nonces](https://developer.wordpress.org/apis/security/nonces/) | [Escaping](https://developer.wordpress.org/apis/security/escaping/) | [REST authentication](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/) | [register_rest_route](https://developer.wordpress.org/reference/functions/register_rest_route/) | [OWASP Top 10](https://top10.owasp.org/2025) | [CWE](https://cwe.mitre.org/).

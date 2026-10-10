@@ -2,7 +2,7 @@
 
 Apply this contract before WCAG heuristics. A match in source or an automated report is an investigation lead, not proof of a criterion failure.
 
-1. Discover the actual WordPress, PHP, browser, JavaScript and assistive-technology versions in scope. Verify version-sensitive behavior with primary documentation.
+1. Discover the actual WordPress, PHP, browser, JavaScript and assistive-technology versions in scope. Verify version-sensitive behavior with primary documentation. Version numbers written in these files never say what is current: look up the latest release and its documentation online from the official source, and record the version you used.
 2. Keep review, remediation and deployment separate. State the requested posture and the exact paths being assessed before changing code.
 3. Trace the reachable user journey from source to rendered output and state changes. Include server-rendered, client-rendered, embedded and third-party content boundaries.
 4. Record criterion, level, trigger, reproduction, affected user, impact, evidence, confidence, remediation and retest. Do not map a style preference to a WCAG failure without a criterion and mechanism.

@@ -95,5 +95,5 @@ Reviewed 2026-10-08.
 - [WooCommerce HPOS documentation](https://developer.woocommerce.com/docs/features/high-performance-order-storage/): default for new installs since 8.2, option names, compatibility mode
 - [HPOS extension recipe book](https://developer.woocommerce.com/docs/features/high-performance-order-storage/recipe-book/): `declare_compatibility`, avoid direct posts access, test with sync on and off
 - [pre_http_request](https://developer.wordpress.org/reference/hooks/pre_http_request/)
-- Confirmed: HPOS default for new installs since 8.2, option `woocommerce_custom_orders_table_enabled`, `before_woocommerce_init` + `FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true )`, `OrderUtil::custom_orders_table_usage_is_enabled()`; the docs name `woocommerce_custom_orders_table_data_sync_enabled` as the sync option but give no test procedure for sync on/off. Action Scheduler: [API](https://actionscheduler.org/api/).
+- Action Scheduler: [API](https://actionscheduler.org/api/).
 - Check against installed versions: the `pre_option_*` approach to switching HPOS in a test bootstrap, Action Scheduler helper signatures, WooCommerce's internal test helper names, Store API route details.

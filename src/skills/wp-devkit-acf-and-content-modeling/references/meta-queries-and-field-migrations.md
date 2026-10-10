@@ -2,7 +2,7 @@
 
 Contents: what the meta tables can and cannot do; meta_query rules; alternatives when a query is hot; renaming and moving fields; backfill script pattern; rollback and verification; false positives.
 
-Researched 2026-10-08. Sources: WordPress core `wp-admin/includes/schema.php` and `class-wp-meta-query.php` (master, 7.2-alpha), [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/), [ACF update_field](https://www.advancedcustomfields.com/resources/update_field/), [ACF Repeater](https://www.advancedcustomfields.com/resources/repeater/), [WP-CLI handbook](https://make.wordpress.org/cli/handbook/).
+Researched 2026-10-08. Sources: WordPress core `wp-admin/includes/schema.php` and `class-wp-meta-query.php`, [WP_Query](https://developer.wordpress.org/reference/classes/wp_query/), [ACF update_field](https://www.advancedcustomfields.com/resources/update_field/), [ACF Repeater](https://www.advancedcustomfields.com/resources/repeater/), [WP-CLI handbook](https://make.wordpress.org/cli/handbook/).
 
 ## What the tables give you
 

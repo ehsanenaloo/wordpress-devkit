@@ -2,13 +2,13 @@
 
 Contents: derive the support matrix; gate catalog and what each proves; PHP and WordPress runtimes in CI; multisite and database variants; JavaScript and browser gates; dependency gates; baselines and flaky tests; speed; reference jobs; acceptance.
 
-Researched 2026-10-08. Sources: [PHP compatibility and WordPress versions](https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/) (page modified 2026-08-19), [wp-env](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/), [WordPress core version check API](https://api.wordpress.org/core/version-check/1.7/) (reported 7.1.3 on the research date), [Plugin Check action](https://github.com/WordPress/plugin-check-action), [Composer CLI](https://getcomposer.org/doc/03-cli.md), the DevKit tested baseline (WordPress 7.1, PHP 8.3, WooCommerce 10.8; a baseline, not a project promise).
+Researched 2026-10-08. Sources: [PHP compatibility and WordPress versions](https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/), [wp-env](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/), [WordPress core version check API](https://api.wordpress.org/core/version-check/1.7/), [Plugin Check action](https://github.com/WordPress/plugin-check-action), [Composer CLI](https://getcomposer.org/doc/03-cli.md).
 
 ## Derive the matrix from the declared support policy
 
 1. Read the plugin/theme headers: `Requires at least`, `Requires PHP`, `Tested up to`, and `composer.json` `require.php`. These are the project's promise. If they are missing or stale, that is a finding, not a free choice.
 2. Test the declared minimum, the newest supported and the current WordPress release, plus trunk/beta as a non-blocking job. A PHP version the WordPress release does not support is not a meaningful cell.
-3. WordPress/PHP support at the research date (handbook table re-read in the second pass; 6.2 is 5.6 through 8.2, 6.3 is 7.0 through 8.2): 7.1 and 7.0 support PHP 7.4 through 8.5; 6.9 supports 7.2 through 8.5; 6.8 and 6.7 support 7.2 through 8.4; 6.6 supports 7.2 through 8.3. (The "beta" label was retired in May 2026, so a "supported" cell means core supports it.) WooCommerce, Gutenberg and your own dependencies add narrower floors; read their requirements.
+3. WordPress/PHP support: look up the handbook table online for the range of each WordPress release (for example 6.2 is 5.6 through 8.2, 6.3 is 7.0 through 8.2, 6.9 supports 7.2 through 8.5; 6.8 and 6.7 support 7.2 through 8.4; 6.6 supports 7.2 through 8.3). A "supported" cell means core supports it. WooCommerce, Gutenberg and your own dependencies add narrower floors; read their requirements.
 4. Keep the matrix small and meaningful: lowest/lowest, highest/highest, current/current-PHP, plus one multisite cell. A full cross product multiplies cost without finding more defects.
 
 ```yaml

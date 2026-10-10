@@ -91,7 +91,9 @@ Escalation: who to call, evidence to attach
 | Backup will not import | Dump taken without consistency, wrong collation/mode | Rehearse; use `--single-transaction`; check SQL mode flags on import |
 | Secrets in CI logs | Commands echo passwords | Redact, avoid arguments with secrets |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - Config and global parameters: https://make.wordpress.org/cli/handbook/references/config/
 - `wp core verify-checksums`: https://developer.wordpress.org/cli/commands/core/verify-checksums/
@@ -100,4 +102,4 @@ Escalation: who to call, evidence to attach
 - `wp maintenance-mode`: https://developer.wordpress.org/cli/commands/maintenance-mode/
 - `wp plugin activate` (`--force`, `--network`): https://developer.wordpress.org/cli/commands/plugin/activate/
 
-Confirmed 2026-10-08 against WP-CLI package sources: `--allow-root`/`WP_CLI_ALLOW_ROOT` guard (https://github.com/wp-cli/wp-cli/blob/main/php/WP_CLI/Bootstrap/CheckRoot.php); `wp cli alias list` exists and prints aliases (`php/commands/src/CLI_Alias_Command.php`); `wp plugin verify-checksums [<plugin>...] [--all] [--strict] [--version=<version>] [--format] [--insecure] [--exclude=<name>] [--exclude-mu-plugins]` and `wp core verify-checksums` avoiding loading WordPress (https://github.com/wp-cli/checksum-command); `wp db export` accepts any mysqldump flags (https://github.com/wp-cli/db-command). Check the exact `wp --info` output beyond the global/project config lines and the `wp config get` behavior for an undefined constant on the installed version; `wp user create --user_pass` guidance is operational advice.
+Notes from the WP-CLI package sources: `--allow-root`/`WP_CLI_ALLOW_ROOT` guard (https://github.com/wp-cli/wp-cli/blob/main/php/WP_CLI/Bootstrap/CheckRoot.php); `wp cli alias list` exists and prints aliases (`php/commands/src/CLI_Alias_Command.php`); `wp plugin verify-checksums [<plugin>...] [--all] [--strict] [--version=<version>] [--format] [--insecure] [--exclude=<name>] [--exclude-mu-plugins]` and `wp core verify-checksums` avoiding loading WordPress (https://github.com/wp-cli/checksum-command); `wp db export` accepts any mysqldump flags (https://github.com/wp-cli/db-command). Check the exact `wp --info` output beyond the global/project config lines and the `wp config get` behavior for an undefined constant on the installed version; `wp user create --user_pass` guidance is operational advice.

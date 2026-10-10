@@ -26,4 +26,4 @@ Correlation in analytics is descriptive; only a valid experiment supports a caus
 
 ## Sources
 
-Researched 2026-10-08: [Web Vitals measurement guidance](https://web.dev/articles/vitals), [GDPR consent basics (EDPB)](https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-052020-consent-under-regulation-2016679_en).
+Research date: 2026-10-08. Sources: [Web Vitals measurement guidance](https://web.dev/articles/vitals), [GDPR consent basics (EDPB)](https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-052020-consent-under-regulation-2016679_en).

@@ -2,7 +2,7 @@
 
 Contents: what is exposed by default; registering types, fields and connections; visibility and authorization; ACF data; query cost controls and their gaps; N+1 and resolver cost; debug and tracing; CLI; false positives.
 
-Researched 2026-10-08. Sources: [WPGraphQL security](https://www.wpgraphql.com/docs/security), [authentication and authorization](https://www.wpgraphql.com/docs/authentication-and-authorization), [custom post types](https://www.wpgraphql.com/docs/custom-post-types), [debugging](https://www.wpgraphql.com/docs/debugging), [WPGraphQL vs REST (DataLoader)](https://www.wpgraphql.com/docs/wpgraphql-vs-wp-rest-api), and the WPGraphQL monorepo source (`wp-graphql/wp-graphql`, `main`, plugin version 2.23.1 released 2026-09-22; requires WordPress 6.0+, PHP 7.4+). Confirm behavior against the installed version; defaults have changed across releases.
+Research date: 2026-10-08. Sources: [WPGraphQL security](https://www.wpgraphql.com/docs/security), [authentication and authorization](https://www.wpgraphql.com/docs/authentication-and-authorization), [custom post types](https://www.wpgraphql.com/docs/custom-post-types), [debugging](https://www.wpgraphql.com/docs/debugging), [WPGraphQL vs REST (DataLoader)](https://www.wpgraphql.com/docs/wpgraphql-vs-wp-rest-api), and the WPGraphQL monorepo source (`wp-graphql/wp-graphql`, `main`; requires WordPress 6.0+, PHP 7.4+). Confirm behavior against the installed version; defaults have changed across releases.
 
 ## What is exposed
 
@@ -64,7 +64,7 @@ Use the separate WPGraphQL for ACF plugin (monorepo `plugins/wp-graphql-acf`; Wo
 | Control | Default and facts |
 |---|---|
 | Max items per connection | 100 per page; filter `graphql_connection_max_query_amount` (can lower or raise; raising is the risk) |
-| Query depth limiting | Setting `query_depth_enabled`; max depth default 15; filter `graphql_query_depth_max` (return 0 for no limit). The code default is off; activation of a new install saves it as on (confirmed in `WPGraphQL.php`: activation defaults `query_depth_enabled` to `on` and `query_depth_max` to 15; `QueryDepth.php` defines `DEFAULT_MAX_QUERY_DEPTH = 15` and the `graphql_query_depth_max` filter), so sites that pre-date the setting may still have it off. Introspection-only operations are exempt. |
+| Query depth limiting | Setting `query_depth_enabled`; max depth default 15; filter `graphql_query_depth_max` (return 0 for no limit). The code default is off; activation of a new install saves it as on (see `WPGraphQL.php` and `QueryDepth.php`), so sites that pre-date the setting may still have it off. Introspection-only operations are exempt. |
 | Batching | Enabled by default; `batch_limit` default 10 operations per request; filter `graphql_is_batch_queries_enabled` |
 | Introspection | Authenticated-only outside local/development |
 | Complexity / cost analysis | Not available (the upstream feature request [#3922](https://github.com/wp-graphql/wp-graphql/issues/3922), "query complexity (cost analysis) limiting", was still open on 2026-10-08). Depth limiting does not stop wide queries or alias repetition (`a: posts{...} b: posts{...}`) |

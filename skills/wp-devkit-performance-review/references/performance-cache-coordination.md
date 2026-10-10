@@ -1,6 +1,6 @@
 # Cache correctness and concurrency
 
-Apply [the engineering contract](engineering-contract.md) first. Researched 2026-10-08. Cache proposals require topology and correctness evidence.
+Apply [the engineering contract](engineering-contract.md) first. Research date: 2026-10-08. Cache proposals require topology and correctness evidence.
 
 Contents: 1 Topology | 2 Object cache API | 3 Transients | 4 Page and fragment caching | 5 Keys and invalidation | 6 Stampedes and locks | 7 Counters | 8 Multisite and operations | 9 Review checks
 

@@ -63,7 +63,7 @@ Load dependencies (WooCommerce) the same way in `muplugins_loaded` before your p
 
 ## PHPUnit versions
 
-WordPress core's test suite selects PHPUnit by PHP version through the PHPUnit Polyfills (WordPress 5.9+). At the time of review, WordPress 7.0 and 7.1 on PHP 7.4 to 8.5 use PHPUnit 9; 6.9 uses 9 on 7.3 to 8.5. Plugins that load the core test library are therefore constrained to the version that library supports, whatever the project would like. Pure-unit suites that do not load the library may use a newer PHPUnit (10 to 12) with their own `phpunit.xml`. Read the installed library bootstrap and the compatibility table before choosing a version.
+WordPress core's test suite selects PHPUnit by PHP version through the PHPUnit Polyfills (WordPress 5.9+). Which PHPUnit version core uses depends on the WordPress and PHP versions; look it up in the compatibility table. Plugins that load the core test library are therefore constrained to the version that library supports, whatever the project would like. Pure-unit suites that do not load the library may use a newer PHPUnit with their own `phpunit.xml`. Read the installed library bootstrap and the compatibility table before choosing a version.
 
 ## Base classes and isolation
 
@@ -132,5 +132,4 @@ Reviewed 2026-10-08.
 - [PHPUnit compatibility and WordPress versions](https://make.wordpress.org/core/handbook/references/phpunit-compatibility-and-wordpress-versions/)
 - [wp scaffold plugin-tests](https://developer.wordpress.org/cli/commands/scaffold/plugin-tests/)
 - [@wordpress/env](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/)
-- Confirmed 2026-10-08 against current trunk: `skipWithMultisite()`, `skipWithoutMultisite()`, `setExpectedDeprecated()`, `setExpectedIncorrectUsage()`, `assertWPError()`, `assertNotWPError()`, `assertEqualSets()`, `assertSameIgnoreEOL()`, `start_transaction()`, `_create_temporary_tables()`; PHPUnit table: WordPress 6.9 uses PHPUnit 9 on PHP 7.3-8.5 (8 on 7.2), 7.0 and 7.1 use 9 on 7.4-8.5.
 - Core test case source (method names for transactions, temporary tables, skip helpers): [abstract-testcase.php](https://github.com/WordPress/wordpress-develop/blob/trunk/tests/phpunit/includes/abstract-testcase.php)

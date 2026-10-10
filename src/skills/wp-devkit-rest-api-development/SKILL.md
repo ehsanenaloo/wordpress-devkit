@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-rest-api-development
-description: Build, debug or review WordPress REST routes, argument schemas, authentication, object permissions, responses and pagination. Use for 401/403/400 responses, nonce or Application Password problems, missing permission_callback, collections and caching; not admin screens.
+description: "Build, debug or review WordPress REST routes, argument schemas, authentication, object permissions, responses and pagination. Use for 401/403/400 responses, nonce or Application Password problems, missing permission_callback, collections and caching; not admin screens."
 ---
 
 # REST contracts and request boundaries

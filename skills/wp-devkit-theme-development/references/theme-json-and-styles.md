@@ -5,13 +5,13 @@ Contents: versions, layering, presets, fonts, variations, custom CSS, filters, d
 ## Versions and schema
 
 - `version` controls backward compatibility; `$schema` only drives editor hints. Use a versioned schema URL matching the minimum supported WordPress (for example `https://schemas.wp.org/wp/6.6/theme.json`) or `trunk`.
-- Version 2: WordPress 5.9+ (dev note https://make.wordpress.org/core/2022/01/08/updates-for-settings-styles-and-theme-json/). Version 3: the dev note is tagged for 6.6 and recommends updating once the minimum supported WordPress is 6.6 (it does not name the introducing release outright; trunk has `WP_Theme_JSON::LATEST_SCHEMA = 3`). Older versions keep working.
+- Version 2: WordPress 5.9+ (dev note https://make.wordpress.org/core/2022/01/08/updates-for-settings-styles-and-theme-json/). Version 3: the dev note is tagged for 6.6 and recommends updating once the minimum supported WordPress is 6.6 (it does not name the introducing release outright). Older versions keep working.
 - v3 breaking change: presets using the default slugs (`small`, `medium`, `large`, `x-large` for font sizes; `20` to `80` for spacing sizes) no longer replace the defaults. Set `settings.typography.defaultFontSizes` and/or `settings.spacing.defaultSpacingSizes` to `false` to override them. `spacingSizes` and `spacingScale` are merged and sorted by slug (`spacingSizes` wins on equal slugs). Classic themes get `default-font-sizes` / `default-spacing-sizes` supports. Comments on the dev note report cases where default variables persisted; test the generated CSS.
 - Child and parent themes should be moved together; verify merged output rather than assuming.
 
 ## Layers (lowest to highest)
 
-WordPress core defaults, block-level defaults, parent theme, child theme, user Global Styles (database), plus block-level user edits in content (the child-themes handbook page gives default, parent, child, user; trunk `WP_Theme_JSON_Resolver` applies the `default`, `blocks`, `theme` and user layers). When a value does not apply, check layers top-down, then specificity of custom CSS. Inspect resolved values with `wp eval 'echo wp_json_encode( wp_get_global_settings( array( "color", "palette" ) ) );'` and `wp_get_global_styles()` (read-only).
+WordPress core defaults, block-level defaults, parent theme, child theme, user Global Styles (database), plus block-level user edits in content (the child-themes handbook page gives default, parent, child, user; core `WP_Theme_JSON_Resolver` applies the `default`, `blocks`, `theme` and user layers). When a value does not apply, check layers top-down, then specificity of custom CSS. Inspect resolved values with `wp eval 'echo wp_json_encode( wp_get_global_settings( array( "color", "palette" ) ) );'` and `wp_get_global_styles()` (read-only).
 
 ## Practical rules
 
@@ -35,7 +35,7 @@ WordPress core defaults, block-level defaults, parent theme, child theme, user G
 
 ## Filters (PHP)
 
-`wp_theme_json_data_default`, `wp_theme_json_data_theme`, `wp_theme_json_data_user` let code modify data programmatically through `WP_Theme_JSON_Data::update_with()`. Treat as last resort; they hide values from static review. Confirmed in trunk `class-wp-theme-json-resolver.php`: `wp_theme_json_data_default`, `wp_theme_json_data_theme`, `wp_theme_json_data_blocks` and `wp_theme_json_data_user`; `WP_Theme_JSON_Data::update_with()` since 6.1.
+`wp_theme_json_data_default`, `wp_theme_json_data_theme`, `wp_theme_json_data_user` let code modify data programmatically through `WP_Theme_JSON_Data::update_with()`. Treat as last resort; they hide values from static review. In core `class-wp-theme-json-resolver.php` the filters are `wp_theme_json_data_default`, `wp_theme_json_data_theme`, `wp_theme_json_data_blocks` and `wp_theme_json_data_user`; `WP_Theme_JSON_Data::update_with()` since 6.1.
 
 ## Debug
 
@@ -47,7 +47,9 @@ WordPress core defaults, block-level defaults, parent theme, child theme, user G
 | Invalid JSON ignored | schema validation in editor, `json_last_error_msg()` | fix syntax, keep `$schema` |
 | Font blocked | console CSP/CORS, font path | correct `file:` path and server MIME |
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/themes/global-settings-and-styles/introduction-to-theme-json/
 - https://developer.wordpress.org/themes/global-settings-and-styles/styles/
@@ -58,4 +60,4 @@ WordPress core defaults, block-level defaults, parent theme, child theme, user G
 - https://developer.wordpress.org/reference/functions/wp_enqueue_block_style/
 - https://make.wordpress.org/core/2024/06/24/section-styles/
 - https://make.wordpress.org/core/2022/01/08/updates-for-settings-styles-and-theme-json/
-- Core source read (trunk, 2026-10-08): `class-wp-theme-json-resolver.php`, `class-wp-theme-json-data.php`, `script-loader.php`, `block-supports/typography.php` (default 14px fluid minimum). A dev note reports that `defaultFontSizes`/`defaultSpacingSizes: false` sometimes left default variables; test the generated CSS in your WordPress version.
+- Core source: `class-wp-theme-json-resolver.php`, `class-wp-theme-json-data.php`, `script-loader.php`, `block-supports/typography.php` (default 14px fluid minimum). A dev note reports that `defaultFontSizes`/`defaultSpacingSizes: false` sometimes left default variables; test the generated CSS in your WordPress version.

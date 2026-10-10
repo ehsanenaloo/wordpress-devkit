@@ -1,6 +1,6 @@
 ---
 name: wp-devkit-plugin-development
-description: Build, debug or review WordPress plugin lifecycle, hooks, upgrade routines, storage, scheduled jobs and packaging. Use for activation/upgrade/uninstall failures, hook order or removal bugs, multisite setup and directory readiness; not REST routes, admin screens or WP-CLI.
+description: "Build, debug or review WordPress plugin lifecycle, hooks, upgrade routines, storage, scheduled jobs and packaging. Use for activation/upgrade/uninstall failures, hook order or removal bugs, multisite setup and directory readiness; not REST routes, admin screens or WP-CLI."
 ---
 
 # Plugin lifecycle and integration

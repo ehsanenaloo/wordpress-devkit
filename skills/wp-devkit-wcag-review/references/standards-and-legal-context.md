@@ -11,15 +11,15 @@ This file is context for choosing a target version. It is not legal advice and t
 | WCAG 2.2 (W3C Recommendation, 5 Oct 2023) | A/AA/AAA criteria; 55 A/AA | WordPress core project expectation is 2.2 AA |
 | WCAG 2.1 | 50 A/AA incl. 4.1.1 | Referenced by many current regulations |
 | WCAG 2.0 | 38 A/AA | Section 508 baseline in the United States |
-| EN 301 549 | Web clauses reference WCAG | v3.2.1 aligns web content with WCAG 2.1 AA; v4.1.1 is reported to align with 2.2 AA (see below) |
+| EN 301 549 | Web clauses reference WCAG | v3.2.1 aligns web content with WCAG 2.1 AA; look up online whether a newer version exists and which WCAG version it references (see below) |
 
 ## Regulatory snapshot
 
-Checked on 2026-10-08: ADA Title II (ada.gov), Section 508 (section508.gov), the ETSI publication listing and the WCAG 3.0 draft status were read at primary sources; the EAA application date and the Official Journal status of EN 301 549 v4.1.1 were not confirmed at a primary source.
+Legal dates and standard versions change. Look up the current status online at the primary sources (ada.gov, section508.gov, EUR-Lex, the ETSI publication listing, the W3C WCAG 3.0 page) and record what you found.
 
-- United States, ADA Title II (state and local governments): the DOJ rule adopts WCAG 2.1 AA. The ada.gov web rule page states WCAG 2.1 Level AA and, after an April 2026 interim final rule extending the deadlines, compliance dates of 26 April 2027 (population of 50,000 or more) and 26 April 2028 (smaller entities and special district governments). Check the Federal Register text for later changes. Private businesses (Title III) are not covered by that rule; litigation uses WCAG 2.1/2.2 AA as the practical benchmark.
+- United States, ADA Title II (state and local governments): the DOJ rule adopts WCAG 2.1 AA. The ada.gov web rule page states WCAG 2.1 Level AA and gives compliance dates by population size. Look up the current dates online, because they have been changed by later rules. Private businesses (Title III) are not covered by that rule; litigation uses WCAG 2.1/2.2 AA as the practical benchmark.
 - United States, Section 508 (federal ICT): WCAG 2.0 AA is the legal baseline; 2.1/2.2 are recommended best practice.
-- European Union, European Accessibility Act (Directive (EU) 2019/882) applies from 28 June 2025 (confirm in the EUR-Lex text, Article 31) to specified consumer products and services including e-commerce; presumption of conformity comes through EN 301 549, which in v3.2.1 points to WCAG 2.1 AA. ETSI lists EN 301 549 v4.1.1 as published on 2 September 2026; secondary reports say its web clauses reference WCAG 2.2 AA instead of 2.1 AA and that it has no EAA presumption-of-conformity effect until cited in the Official Journal. Check the Official Journal before relying on v4.1.1 over v3.2.1. Member-state laws set enforcement and penalties.
+- European Union, European Accessibility Act (Directive (EU) 2019/882) applies from 28 June 2025 (see the EUR-Lex text, Article 31) to specified consumer products and services including e-commerce; presumption of conformity comes through EN 301 549, which in v3.2.1 points to WCAG 2.1 AA. Look up the ETSI listing for newer EN 301 549 versions, and check which WCAG version their web clauses reference and whether the Official Journal cites them. A version that is not cited there gives no presumption of conformity. Check the Official Journal before relying on a newer version over v3.2.1. Member-state laws set enforcement and penalties.
 - Other jurisdictions (UK Equality Act and PSBAR, Canada AODA/ACA, Ontario, Australia DDA) generally point to WCAG 2.x AA. Look them up when the client operates there.
 
 ## How to use this in an audit
@@ -31,13 +31,13 @@ Checked on 2026-10-08: ADA Title II (ada.gov), Section 508 (section508.gov), the
 
 ## WCAG 3.0 and AAA
 
-WCAG 3.0 is a W3C Working Draft (the 10 September 2026 draft states it may be updated, replaced or obsoleted at any time) with a different conformance model; do not audit against it or cite it as the standard. AAA criteria are not required for general conformance; W3C recommends not requiring AAA as a blanket policy because some content cannot satisfy it. Record AAA items (for example 2.4.12 Focus Not Obscured (Enhanced), 2.4.13 Focus Appearance, 3.3.9) as advisory unless the contract names them.
+WCAG 3.0 is a W3C Working Draft unless the W3C page you check says otherwise (drafts may be updated, replaced or obsoleted at any time) and has a different conformance model; do not audit against it or cite it as the standard. AAA criteria are not required for general conformance; W3C recommends not requiring AAA as a blanket policy because some content cannot satisfy it. Record AAA items (for example 2.4.12 Focus Not Obscured (Enhanced), 2.4.13 Focus Appearance, 3.3.9) as advisory unless the contract names them.
 
 ## Sources and verification status
 
-Reviewed 2026-10-08.
+Research date: 2026-10-08.
 
-- Verified against W3C primary pages: [What is new in WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
-- Verified against WordPress primary page: [WordPress accessibility coding standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/accessibility/).
-- Verified at primary pages: [ADA.gov web rule](https://www.ada.gov/resources/web-rule-first-steps/) (WCAG 2.1 AA, 2027/2028 dates); [ETSI EN 301 549 listing](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/) (v4.1.1 dated 2026-09-02); [Section 508 applicability and conformance](https://section508.gov/develop/applicability-conformance) (WCAG 2.0 AA incorporated by reference); [WCAG 3.0 draft](https://www.w3.org/TR/wcag-3.0/).
-- Secondary-source only (re-verify before use): EN 301 549 v4.1.1 content and Official Journal status ([Deque article](https://www.deque.com/blog/en-301-549-v4-1-1-is-final-what-changed-what-it-means-and-what-you-should-do/), [DWT summary](https://www.dwt.com/insights/2026/09/european-accessibility-act-ict-standards-update)). Not retrievable here: [Directive (EU) 2019/882](https://eur-lex.europa.eu/eli/dir/2019/882/oj); read Articles 2 and 31 for scope and the 28 June 2025 date.
+- W3C primary pages: [What is new in WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
+- WordPress primary page: [WordPress accessibility coding standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/accessibility/).
+- Legal and standards pages: [ADA.gov web rule](https://www.ada.gov/resources/web-rule-first-steps/); [ETSI EN 301 549 listing](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/); [Section 508 applicability and conformance](https://section508.gov/develop/applicability-conformance) (WCAG 2.0 AA incorporated by reference); [WCAG 3.0 draft](https://www.w3.org/TR/wcag-3.0/).
+- Secondary sources (verify at the primary source before use): newer EN 301 549 content and Official Journal status ([Deque article](https://www.deque.com/blog/en-301-549-v4-1-1-is-final-what-changed-what-it-means-and-what-you-should-do/), [DWT summary](https://www.dwt.com/insights/2026/09/european-accessibility-act-ict-standards-update)). Also read: [Directive (EU) 2019/882](https://eur-lex.europa.eu/eli/dir/2019/882/oj); read Articles 2 and 31 for scope and the 28 June 2025 date.

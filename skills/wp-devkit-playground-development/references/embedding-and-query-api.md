@@ -2,9 +2,9 @@
 
 Contents: query API, loading Blueprints, iframe/JS client, origin and message hygiene, sources.
 
-## Query API (playground.wordpress.net, checked 2026-10-08)
+## Query API (playground.wordpress.net)
 
-`php` (7.4 to 8.5, `latest`, `next`; default shown as 8.5 on this page, 8.3 for the CLI), `wp` (`latest`, `nightly`, `beta`, recent majors), `blueprint-url`, `plugin` and `theme` (WordPress.org slugs, repeatable), `url` (initial page), `login` (`yes`/`no`), `networking`, `multisite`, `mode` (`browser-full-screen` or `seamless`), `storage=temp`, `can-save=no`, `site-slug`, `language` (needs networking), `import-site`, `import-wxr`, `gutenberg-pr`, `gutenberg-branch`, `core-pr`, `lazy`, `page-title`. Installing a plugin or theme through these logs in as admin. Without `storage=temp` or `can-save=no`, the site may autosave in browser storage.
+`php` (a supported PHP minor version, `latest`, `next`; look up the supported range and the default online), `wp` (`latest`, `nightly`, `beta`, recent majors), `blueprint-url`, `plugin` and `theme` (WordPress.org slugs, repeatable), `url` (initial page), `login` (`yes`/`no`), `networking`, `multisite`, `mode` (`browser-full-screen` or `seamless`), `storage=temp`, `can-save=no`, `site-slug`, `language` (needs networking), `import-site`, `import-wxr`, `gutenberg-pr`, `gutenberg-branch`, `core-pr`, `lazy`, `page-title`. Installing a plugin or theme through these logs in as admin. Without `storage=temp` or `can-save=no`, the site may autosave in browser storage.
 
 A Blueprint can also be passed in the URL fragment as JSON (optionally `encodeURIComponent`-encoded) or Base64, per the Using Blueprints and "How to load and run Blueprints" docs (via search result); browsers do not send fragments to servers, but anyone holding the link sees the Blueprint. Do not put secrets in a shared link or Blueprint.
 
@@ -28,17 +28,17 @@ A Blueprint can also be passed in the URL fragment as JSON (optionally `encodeUR
 ```
 
 - The client README recommends importing the client from the same deployment as the runtime; an npm-installed client can drift from the hosted `remote.html`. If you use npm, pin client and remote versions together or self-host.
-- The client README and JavaScript API page fetched on 2026-10-08 do not label the embed API experimental or give an availability guarantee (an earlier note said they did; that came from a search summary and is unconfirmed). Self-host the runtime if you need availability you control; that is a design judgment, not a documented requirement.
+- Self-host the runtime if you need availability you control; that is a design judgment, not a documented requirement.
 - Pass only data the page owns into the Blueprint. If the host page listens for `message` events, validate `event.origin` and the message shape; never `eval` or render message data as HTML.
 - A docs page that embeds a generic site does not demonstrate the target defect; the landing page and seed must expose it.
 
-## Sources (checked 2026-10-08)
+## Sources
+
+Research date: 2026-10-08.
 
 - https://developer.wordpress.org/playground/developers/query-api/
 - https://developer.wordpress.org/playground/blueprints/bundles/
-- https://developer.wordpress.org/playground/developers/apis/javascript-api/ (fetched 2026-10-08: `iframe`, `remoteUrl`, `isReady()`)
-- https://github.com/WordPress/wordpress-playground/blob/trunk/packages/playground/client/README.md (fetched: same-origin import recommendation, npm drift warning)
+- https://developer.wordpress.org/playground/developers/apis/javascript-api/ (`iframe`, `remoteUrl`, `isReady()`)
+- https://github.com/WordPress/wordpress-playground/blob/trunk/packages/playground/client/README.md (same-origin import recommendation, npm drift warning)
 - https://github.com/WordPress/wordpress-playground/blob/trunk/packages/playground/client/src/index.ts (`StartPlaygroundOptions.blueprint`)
 - https://developer.wordpress.org/playground/blueprints/using-blueprints/ and .../tutorial/how-to-load-run/ (fragment Blueprints; search result only)
-
-The Query API page fetched on 2026-10-08 lists `php` default 8.5 and `wp` as the last three majors (dated June 2024), which conflicts with the CLI (PHP 8.3) and the data-format page (seven majors); the conflict is unresolved, so boot to confirm.

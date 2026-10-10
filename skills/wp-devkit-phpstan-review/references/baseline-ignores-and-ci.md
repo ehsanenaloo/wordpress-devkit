@@ -1,6 +1,6 @@
 # Baselines, ignores and CI gates
 
-Researched 2026-10-08 against PHPStan 2.3.x. Contents: 1 Choosing a suppression | 2 Inline ignores | 3 Config ignores | 4 Baseline | 5 Adoption plan | 6 CI wiring | 7 Upgrading PHPStan | 8 Review checks
+Research date: 2026-10-08. Contents: 1 Choosing a suppression | 2 Inline ignores | 3 Config ignores | 4 Baseline | 5 Adoption plan | 6 CI wiring | 7 Upgrading PHPStan | 8 Review checks
 
 ## 1. Choosing a suppression
 
