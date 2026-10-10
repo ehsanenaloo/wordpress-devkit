@@ -1,0 +1,20 @@
+# Normalize line endings to LF so checksums, mirrors and diffs are stable on every OS.
+* text=auto eol=lf
+
+*.ps1 text eol=crlf
+
+# Binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.zip binary
+
+# Keep reference snapshots and generated files out of language statistics
+tests/evals/reference-skills/** linguist-vendored
+technical-docs/catalog.json linguist-generated
+technical-docs/test-coverage.json linguist-generated
+skills/** linguist-generated
+docs/** linguist-documentation

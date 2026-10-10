@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability (private)
+    url: https://github.com/ehsanenaloo/wordpress-devkit/security/advisories/new
+    about: Please report security issues privately. Do not open a public issue.
+  - name: Documentation and guides
+    url: https://ehsanenaloo.github.io/wordpress-devkit/
+    about: Check the guides for installation, workflows and troubleshooting before opening an issue.
+  - name: Support and where to ask
+    url: https://github.com/ehsanenaloo/wordpress-devkit/blob/main/.github/SUPPORT.md
+    about: Find out where to ask a question, report a problem or request a change.
+  - name: Contributing guide
+    url: https://github.com/ehsanenaloo/wordpress-devkit/blob/main/.github/CONTRIBUTING.md
+    about: Learn how to send a pull request or improve a skill.

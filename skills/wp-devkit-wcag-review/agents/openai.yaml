@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conformance scope and criterion evidence"
+  short_description: "Conformance scope and criterion evidence"
+  default_prompt: "Use $wp-devkit-wcag-review for the WordPress task I describe, and report evidence and limits."

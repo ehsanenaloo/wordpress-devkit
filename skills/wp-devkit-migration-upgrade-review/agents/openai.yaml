@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data transition and recoverable upgrades"
+  short_description: "Data transition and recoverable upgrades"
+  default_prompt: "Use $wp-devkit-migration-upgrade-review for the WordPress task I describe, and report evidence and limits."

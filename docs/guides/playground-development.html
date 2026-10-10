@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WordPress Playground | WordPress DevKit</title><meta name="description" content="Build, debug or review WordPress Playground Blueprints, @wp-playground/cli setups, query/embed links and shareable plugin or theme reproductions.">
+<meta name="color-scheme" content="light"><link rel="stylesheet" href="../styles.css"><script defer src="../app.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="shell header-inner">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span><span>WordPress DevKit<small>THE FIELD GUIDE</small></span></a>
+<nav class="top-nav" aria-label="Primary"><a href="../index.html">Overview</a><a href="../guides/installation.html">Install</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../commands.html">Commands</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">GitHub ↗</a></nav></div></header>
+<main id="main"><div class="shell page-intro"><p class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Guides</a></p><p class="eyebrow">WordPress DevKit / Field guide</p><h1>WordPress Playground</h1><p class="lead">Build, debug or review WordPress Playground Blueprints, @wp-playground/cli setups, query/embed links and shareable plugin or theme reproductions.</p></div><div class="shell doc-layout"><aside class="sidebar"><nav aria-label="Learning path"><p>Getting started</p><a href="quick-start.html">Your first review</a><a href="installation.html">Install for your agent</a><a href="doctor-and-reports.html">Discover the environment</a><a href="review-to-fix.html">Turn a finding into a fix</a><a href="release-checklist.html">Prepare a WordPress release</a><a href="faq.html">Questions &amp; troubleshooting</a><p>Reference</p><a href="index.html">All 20 domain guides</a><a href="../commands.html">All 41 commands</a></nav></aside><article class="prose"><h2>When to use it</h2>
+<p>Build, debug or review WordPress Playground Blueprints, @wp-playground/cli setups, query/embed links and shareable plugin or theme reproductions. Use for boot failures, resource/mount problems and untrusted-Blueprint review. Not a substitute for real MySQL or host testing.</p>
+<h2>Boundaries and hand-offs</h2>
+<ul><li>Test strategy and CI design for the plugin itself: <code>wp-devkit-test-strategy</code> and <code>wp-devkit-ci-cd-and-release-engineering</code>; this skill covers the Playground layer.</li><li>Security review of the plugin under test: <code>wp-devkit-security-review</code>.</li><li>Real database, cache, cron or host behavior: use wp-env/Docker, not Playground.</li></ul>
+<h2>Ask Claude</h2>
+<p>With the plugin loaded, start a read-only review of a bounded target:</p>
+<pre><code>/wp-devkit:playground-review &lt;target-path&gt;</code></pre>
+<p>The short form <code>/wp-devkit:playground</code> requests a quick scan.</p>
+<h2>Ask Codex, ChatGPT or Antigravity</h2>
+<p>Name the installed skill and keep the request bounded. Replace the target with your files or journey.</p>
+<pre><code>$wp-devkit-playground-development
+Review the target without editing files.
+Read the project instructions and the skill's engineering contract first.
+Separate confirmed findings from candidates and state the evidence and checks you could not run.</code></pre>
+<h2>What it covers</h2>
+<p>The agent loads only the reference that matches the task:</p>
+<ul>
+<li><code>blueprint-authoring.md</code>: Blueprint authoring and review</li>
+<li><code>cli-and-local-environments.md</code>: Playground CLI and local environments</li>
+<li><code>embedding-and-query-api.md</code>: Embedding, query API and shareable links</li>
+<li><code>playground-development-workbook.md</code>: Playground development workbook</li>
+</ul>
+<h2>How a review runs</h2>
+<ol>
+<li>List every step and resource; read all <code>runPHP</code>, <code>runPHPWithOptions</code>, <code>runSql</code>, <code>wp-cli</code>, <code>writeFile(s)</code>, archive imports and URLs before anything runs (<code>references/blueprint-authoring.md</code>, trust review). Do not execute them.</li>
+<li>Validate against the schema used by the installed generation; parsing JSON is not validation.</li>
+<li>Check step order, resource types, pinning and CORS-reachable URLs; record resolved versions of aliases.</li>
+<li>For CLI work, read the installed <code>--help</code>, then check flags, mounts and persistence mode (<code>references/cli-and-local-environments.md</code>). For links and embeds, check query parameters, bundle layout, origins (<code>references/embedding-and-query-api.md</code>).</li>
+<li>Confirm the reproduction has a seed, a named trigger and an expected/observed pair; otherwise it is a setup, not a reproduction.</li>
+<li>Describe the fresh-instance, missing-resource and second-run checks. Report runtime behavior as unexecuted unless it was run.
+
+Read <code>references/playground-development-workbook.md</code> for the decision table, symptoms, false positives, severity and acceptance checks.
+Optional disposable setup material: <code>references/playground-isolation-fixture.json</code> (not a defect reproduction; limits in the workbook).</li>
+</ol>
+<h2>What you get back</h2>
+<p>Lead with the result and reviewed scope (files read, nothing executed). Confirmed concern: <code>file:line</code>, actor, trigger, reachable path, impact, confidence, minimal fix, regression check. Keep candidates and "not established" items separate. Implementation: Blueprint/command, resolved versions, CLI and Node versions, exit codes, fresh-instance result, what remains unexecuted. A successful Playground boot does not prove MySQL, hosting, cache or production behavior.</p>
+<aside class="callout"><p>Reviews are read-only. A clean review covers the inspected scope; it is not a certification. Ask for implementation as a separate, bounded task with a regression check.</p></aside>
+<h2>Where to go next</h2>
+<p>Use <a href="review-to-fix.html">review to fix</a> for a bounded implementation and <a href="doctor-and-reports.html">Doctor and reports</a> for environment and evidence tooling.</p>
+<div class="reading-footer"><a href="index.html">← All guides</a><a href="quick-start.html">Your first review →</a></div></article></div></main><footer class="footer"><div class="shell footer-inner"><p>WordPress DevKit · Maintained by Ehsan Enaloo · MIT</p><div><a href="../guides/faq.html">FAQ</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">Source repository ↗</a></div></div></footer></body></html>

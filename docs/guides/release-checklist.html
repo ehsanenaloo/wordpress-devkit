@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prepare a WordPress release | WordPress DevKit</title><meta name="description" content="Work through migrations, tests, packaging and rollback before you release.">
+<meta name="color-scheme" content="light"><link rel="stylesheet" href="../styles.css"><script defer src="../app.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="shell header-inner">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span><span>WordPress DevKit<small>THE FIELD GUIDE</small></span></a>
+<nav class="top-nav" aria-label="Primary"><a href="../index.html">Overview</a><a href="../guides/installation.html">Install</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../commands.html">Commands</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">GitHub ↗</a></nav></div></header>
+<main id="main"><div class="shell page-intro"><p class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Guides</a></p><p class="eyebrow">WordPress DevKit / Field guide</p><h1>Prepare a WordPress release</h1><p class="lead">Work through migrations, tests, packaging and rollback before you release.</p></div><div class="shell doc-layout"><aside class="sidebar"><nav aria-label="Learning path"><p>Getting started</p><a href="quick-start.html">Your first review</a><a href="installation.html">Install for your agent</a><a href="doctor-and-reports.html">Discover the environment</a><a href="review-to-fix.html">Turn a finding into a fix</a><a href="release-checklist.html" aria-current="page">Prepare a WordPress release</a><a href="faq.html">Questions &amp; troubleshooting</a><p>Reference</p><a href="index.html">All 20 domain guides</a><a href="../commands.html">All 41 commands</a></nav></aside><article class="prose"><h2>1. Define the target release</h2>
+<p>Record supported WordPress, PHP and WooCommerce versions, the changes, affected data, checkout type and packaging target. Identify who can approve deployment and who can restore the previous state.</p>
+<h2>2. Sequence the reviews</h2>
+<ol><li>Use <a href="plugin-development.html">plugin</a> or <a href="theme-development.html">theme</a> review for structural and lifecycle changes.</li><li>Use <a href="security-review.html">security</a> and <a href="rest-api-development.html">REST</a> review for access or data boundaries.</li><li>Use <a href="migration-upgrade-review.html">migration</a> and <a href="wpcli-and-ops.html">operations</a> review for upgrades, backfills and maintenance.</li><li>Use <a href="test-strategy.html">test strategy</a>, <a href="phpstan-review.html">PHPStan</a> and relevant browser journeys for the changed behavior.</li><li>Use <a href="ci-cd-and-release-engineering.html">release engineering</a> to inspect the final pipeline and the artifact.</li></ol>
+<h2>3. Ask for the pipeline review</h2>
+<pre><code>/wp-devkit:release-review .</code></pre>
+<pre><code>$wp-devkit-ci-cd-and-release-engineering
+Review the release pipeline and package without deploying.
+Check that the tested archive is the published archive, token permissions and action pinning,
+required gates and their skipped-check behavior, version consistency, migration order and rollback readiness.
+Report local and hosted checks separately and list unexecuted target checks.</code></pre>
+<h2>4. Evidence to collect before you publish</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Question</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td>Is the archive what you tested?</td><td>Archive digest recorded after the tests and verified again at upload</td></tr>
+<tr><td>Does it contain only what it should?</td><td>File list of the built archive; no secrets, tests, caches or development data</td></tr>
+<tr><td>Do versions agree?</td><td>Plugin header, readme stable tag, changelog and git tag compared in one check</td></tr>
+<tr><td>Do upgrades work?</td><td>Install and upgrade from the previous release on representative disposable data, including an interrupted run</td></tr>
+<tr><td>Can you go back?</td><td>Rollback steps and the data changes that make rollback unsafe</td></tr>
+<tr><td>Are required checks real?</td><td>A deliberately failing change is shown to block the merge; skipped required jobs are understood</td></tr>
+</tbody></table></div>
+<h2>5. Before publication</h2>
+<ul><li>Run the configured required checks. A failing check remains a failure; do not regenerate a baseline or widen an ignore to make it pass.</li><li>Test the install and upgrade path with disposable representative data.</li><li>Confirm rollback limits when data changes are irreversible.</li><li>Document versions, commands, artifact identity, evidence and known gaps.</li></ul>
+<aside class="callout"><p>No command in this checklist grants permission to publish or deploy. Release readiness is limited to the actual targets and checks recorded.</p></aside>
+<div class="reading-footer"><a href="review-to-fix.html">← Review to fix</a><a href="faq.html">Questions and troubleshooting →</a></div></article></div></main><footer class="footer"><div class="shell footer-inner"><p>WordPress DevKit · Maintained by Ehsan Enaloo · MIT</p><div><a href="../guides/faq.html">FAQ</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">Source repository ↗</a></div></div></footer></body></html>

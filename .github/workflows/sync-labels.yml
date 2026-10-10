@@ -1,0 +1,39 @@
+name: Sync labels
+
+# Run this by hand from the Actions tab (or it runs when labels.yml changes on main).
+# It creates or updates the issue labels listed in .github/labels.yml.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/labels.yml
+      - scripts/sync_labels.py
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  labels:
+    name: Create or update labels
+    if: github.repository == 'ehsanenaloo/wordpress-devkit'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Sync labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: python scripts/sync_labels.py

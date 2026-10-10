@@ -1,0 +1,4 @@
+interface:
+  display_name: "Static analysis with meaningful coverage"
+  short_description: "Static analysis with meaningful coverage"
+  default_prompt: "Use $wp-devkit-phpstan-review for the WordPress task I describe, and report evidence and limits."

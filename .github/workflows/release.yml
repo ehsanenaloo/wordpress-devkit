@@ -1,0 +1,71 @@
+name: Release
+
+# Runs when a version tag such as v2.0.0 is pushed. It validates the tree, checks that the tag matches
+# .claude-plugin/plugin.json, builds the reproducible archive and attaches it with a SHA-256 checksum to a
+# GitHub Release using the matching CHANGELOG.md section as the notes.
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish GitHub Release
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      TAG: ${{ github.ref_name }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Validate the product tree
+        run: |
+          python scripts/package_product.py --check
+          python tests/test_skill_content.py
+
+      - name: Assert the tag matches the plugin version
+        run: |
+          version="$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json', encoding='utf-8'))['version'])")"
+          if [ "${TAG}" != "v${version}" ]; then
+            echo "::error::Tag '${TAG}' does not match plugin version '${version}'. Expected 'v${version}'."
+            exit 1
+          fi
+          echo "VERSION=${version}" >> "$GITHUB_ENV"
+
+      - name: Extract release notes
+        run: |
+          mkdir -p build
+          python - <<'PY'
+          import os, re
+          text = open('CHANGELOG.md', encoding='utf-8').read()
+          version = re.escape(os.environ['VERSION'])
+          match = re.search(rf'^## \[{version}\][^\n]*\n(.*?)(?=^## |\Z)', text, re.M | re.S)
+          if not match or not match.group(1).strip():
+              raise SystemExit(f'CHANGELOG.md has no notes for {os.environ["VERSION"]}.')
+          open('build/release-notes.md', 'w', encoding='utf-8').write(match.group(1).strip() + '\n')
+          PY
+
+      - name: Build the archives
+        run: |
+          python scripts/package_product.py --output "build/wp-devkit-${VERSION}.zip"
+          python scripts/package_product.py --agent antigravity --output "build/wp-devkit-antigravity-${VERSION}.zip"
+
+      - name: Publish the GitHub Release
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        with:
+          body_path: build/release-notes.md
+          files: |
+            build/*.zip
+            build/*.sha256

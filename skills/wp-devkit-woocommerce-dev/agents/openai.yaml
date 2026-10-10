@@ -1,0 +1,4 @@
+interface:
+  display_name: "Store behavior and reliable order work"
+  short_description: "Store behavior and reliable order work"
+  default_prompt: "Use $wp-devkit-woocommerce-dev for the WordPress task I describe, and report evidence and limits."

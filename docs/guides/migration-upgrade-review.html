@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Migrations and upgrades | WordPress DevKit</title><meta name="description" content="Plan, debug, implement or review WordPress schema and data upgrades.">
+<meta name="color-scheme" content="light"><link rel="stylesheet" href="../styles.css"><script defer src="../app.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="shell header-inner">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span><span>WordPress DevKit<small>THE FIELD GUIDE</small></span></a>
+<nav class="top-nav" aria-label="Primary"><a href="../index.html">Overview</a><a href="../guides/installation.html">Install</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../commands.html">Commands</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">GitHub ↗</a></nav></div></header>
+<main id="main"><div class="shell page-intro"><p class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Guides</a></p><p class="eyebrow">WordPress DevKit / Field guide</p><h1>Migrations and upgrades</h1><p class="lead">Plan, debug, implement or review WordPress schema and data upgrades.</p></div><div class="shell doc-layout"><aside class="sidebar"><nav aria-label="Learning path"><p>Getting started</p><a href="quick-start.html">Your first review</a><a href="installation.html">Install for your agent</a><a href="doctor-and-reports.html">Discover the environment</a><a href="review-to-fix.html">Turn a finding into a fix</a><a href="release-checklist.html">Prepare a WordPress release</a><a href="faq.html">Questions &amp; troubleshooting</a><p>Reference</p><a href="index.html">All 20 domain guides</a><a href="../commands.html">All 41 commands</a></nav></aside><article class="prose"><h2>When to use it</h2>
+<p>Plan, debug, implement or review WordPress schema and data upgrades: dbDelta tables, versioned migrations, batched backfills, partial failures, multisite and HPOS transitions, search-replace, PHP/WordPress version upgrades and rollback readiness.</p>
+<h2>Boundaries and hand-offs</h2>
+<p>WP-CLI runbook mechanics to <code>wp-devkit-wpcli-and-ops</code>; plugin activation/hook lifecycle design to <code>wp-devkit-plugin-development</code>; WooCommerce order API details to <code>wp-devkit-woocommerce-dev</code>; release pipeline and rollback of packages to <code>wp-devkit-ci-cd-and-release-engineering</code>; query speed of the backfill to <code>wp-devkit-performance-review</code>.</p>
+<h2>Ask Claude</h2>
+<p>With the plugin loaded, start a read-only review of a bounded target:</p>
+<pre><code>/wp-devkit:migration-review &lt;target-path&gt;</code></pre>
+<p>The short form <code>/wp-devkit:migration</code> requests a quick scan.</p>
+<h2>Ask Codex, ChatGPT or Antigravity</h2>
+<p>Name the installed skill and keep the request bounded. Replace the target with your files or journey.</p>
+<pre><code>$wp-devkit-migration-upgrade-review
+Review the target without editing files.
+Read the project instructions and the skill's engineering contract first.
+Separate confirmed findings from candidates and state the evidence and checks you could not run.</code></pre>
+<h2>What it covers</h2>
+<p>The agent loads only the reference that matches the task:</p>
+<ul>
+<li><code>backfill-and-batching.md</code>: cursors, batch sizing, idempotency, locks, checkpoints, verification, Action Scheduler and WP-CLI runners. Read for data rewrites and large tables.</li>
+<li><code>migration-upgrade-review-workbook.md</code>: Migration and upgrade review workbook</li>
+<li><code>multisite-and-storage-transitions.md</code>: network vs site upgrades, new-site hooks, HPOS migration, serialized data and search-replace, option/meta/post-type changes. Read when scope is multisite, WooCommerce orders or URL/domain changes.</li>
+<li><code>platform-upgrades-and-rollback.md</code>: WordPress/PHP/MySQL version upgrades, auto-update rollback limits, backups and restore drills, uninstall and downgrade policy. Read for upgrade planning and recovery.</li>
+<li><code>schema-and-dbdelta.md</code>: dbDelta rules and limits, collation, indexes, online DDL cost, schema versions, expand/contract. Read for any table or column change.</li>
+</ul>
+<h2>How a review runs</h2>
+<ol>
+<li>State the invariant: what must be true of the data after migration, and the old and new representations. Identify authoritative storage, site scope, concurrent writers and readers (old code, new code, WP-CLI, cron, REST).</li>
+<li>Find the trigger and the completion marker. Activation hooks do not run on ordinary updates; the update path must compare a stored version on a hook that runs for updates (typically <code>plugins_loaded</code> or <code>init</code>) and also covers manual, auto-update and multisite paths. Record the version only after the invariant holds.</li>
+<li>Check schema changes: additive and compatible during overlap, <code>dbDelta</code> formatting, resulting indexes/types, engine behavior, lock time on the real table size. DDL commits implicitly in MySQL/MariaDB, so a transaction wrapper is not rollback.</li>
+<li>Check the backfill: stable selection and cursor, bounded batch by rows and time, resumability, idempotency, behavior when eligibility changes during the run, treatment of invalid historic values, concurrency control (lock with owner/expiry), progress persisted after committed work.</li>
+<li>Check cutover and recovery: dual read/write or compatible reads until verified; verification queries (counts, checksums, sampled values); what restoring old code does (nothing to data); backup/restore rehearsal; contract phase deferred to a later release.</li>
+<li>Check scope: multisite (per-site vs network), HPOS vs legacy order storage, serialized data, uninstall behavior, and the supported WordPress/PHP range.</li>
+<li>Report findings with a reproduction on a disposable dataset where possible; otherwise classify as candidate with the missing evidence.
+
+Read <code>references/migration-upgrade-review-workbook.md</code> for severity, the finding template, false positives and acceptance checks.</li>
+</ol>
+<h2>What you get back</h2>
+<p>Lead with the verdict and reviewed scope. Per finding: severity, <code>file:line</code>, trigger (install, update, manual run, multisite, concurrent worker), failure path, data impact, confidence, minimal remediation and a regression. Separate candidates and missing evidence. List executed checks (command, exit status) and unexecuted ones (production-size run, real restore, concurrent workers). For implementation, add stages, verification queries and results, and rollback instructions. "Code can be rolled back" is never a data-recovery claim.</p>
+<aside class="callout"><p>Reviews are read-only. A clean review covers the inspected scope; it is not a certification. Ask for implementation as a separate, bounded task with a regression check.</p></aside>
+<h2>Where to go next</h2>
+<p>Use <a href="review-to-fix.html">review to fix</a> for a bounded implementation and <a href="doctor-and-reports.html">Doctor and reports</a> for environment and evidence tooling.</p>
+<div class="reading-footer"><a href="index.html">← All guides</a><a href="quick-start.html">Your first review →</a></div></article></div></main><footer class="footer"><div class="shell footer-inner"><p>WordPress DevKit · Maintained by Ehsan Enaloo · MIT</p><div><a href="../guides/faq.html">FAQ</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">Source repository ↗</a></div></div></footer></body></html>

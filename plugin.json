@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wp-devkit",
+  "version": "2.0.1",
+  "description": "WordPress engineering workflows with debugging, implementation and evidence-based review.",
+  "author": {
+    "name": "Ehsan Enaloo"
+  },
+  "license": "MIT",
+  "keywords": [
+    "wordpress",
+    "engineering",
+    "skills"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "WordPress DevKit",
+        "shortDescription": "Build, debug and review WordPress with practical workflows",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Review a WordPress project and show the evidence.",
+          "Help me debug a WordPress feature using the matching DevKit skill."
+        ]
+      }
+    }
+  }
+}

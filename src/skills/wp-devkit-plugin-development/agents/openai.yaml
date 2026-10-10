@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plugin lifecycle and integration"
+  short_description: "Plugin lifecycle and integration"
+  default_prompt: "Use $wp-devkit-plugin-development for the WordPress task I describe, and report evidence and limits."

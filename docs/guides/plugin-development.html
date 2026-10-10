@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plugin development | WordPress DevKit</title><meta name="description" content="Build, debug or review WordPress plugin lifecycle, hooks, upgrade routines, storage, scheduled jobs and packaging.">
+<meta name="color-scheme" content="light"><link rel="stylesheet" href="../styles.css"><script defer src="../app.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="shell header-inner">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span><span>WordPress DevKit<small>THE FIELD GUIDE</small></span></a>
+<nav class="top-nav" aria-label="Primary"><a href="../index.html">Overview</a><a href="../guides/installation.html">Install</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../commands.html">Commands</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">GitHub ↗</a></nav></div></header>
+<main id="main"><div class="shell page-intro"><p class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Guides</a></p><p class="eyebrow">WordPress DevKit / Field guide</p><h1>Plugin development</h1><p class="lead">Build, debug or review WordPress plugin lifecycle, hooks, upgrade routines, storage, scheduled jobs and packaging.</p></div><div class="shell doc-layout"><aside class="sidebar"><nav aria-label="Learning path"><p>Getting started</p><a href="quick-start.html">Your first review</a><a href="installation.html">Install for your agent</a><a href="doctor-and-reports.html">Discover the environment</a><a href="review-to-fix.html">Turn a finding into a fix</a><a href="release-checklist.html">Prepare a WordPress release</a><a href="faq.html">Questions &amp; troubleshooting</a><p>Reference</p><a href="index.html">All 20 domain guides</a><a href="../commands.html">All 41 commands</a></nav></aside><article class="prose"><h2>When to use it</h2>
+<p>Build, debug or review WordPress plugin lifecycle, hooks, upgrade routines, storage, scheduled jobs and packaging. Use for activation/upgrade/uninstall failures, hook order or removal bugs, multisite setup and directory readiness; not REST routes, admin screens or WP-CLI.</p>
+<h2>Boundaries and hand-offs</h2>
+<p>Hand off instead of absorbing: REST routes, schemas and permissions go to <code>wp-devkit-rest-api-development</code>; settings pages, list tables and admin assets go to <code>wp-devkit-admin-ui-development</code>; WP-CLI commands, search-replace and runbooks go to <code>wp-devkit-wpcli-and-ops</code>. Exploitable-input analysis beyond the lifecycle questions here belongs to <code>wp-devkit-security-review</code>. This skill owns the plugin skeleton those features hang on.</p>
+<h2>Ask Claude</h2>
+<p>With the plugin loaded, start a read-only review of a bounded target:</p>
+<pre><code>/wp-devkit:plugin-review &lt;target-path&gt;</code></pre>
+<p>The short form <code>/wp-devkit:plugin</code> requests a quick scan.</p>
+<h2>Ask Codex, ChatGPT or Antigravity</h2>
+<p>Name the installed skill and keep the request bounded. Replace the target with your files or journey.</p>
+<pre><code>$wp-devkit-plugin-development
+Review the target without editing files.
+Read the project instructions and the skill's engineering contract first.
+Separate confirmed findings from candidates and state the evidence and checks you could not run.</code></pre>
+<h2>What it covers</h2>
+<p>The agent loads only the reference that matches the task:</p>
+<ul>
+<li><code>hooks-and-callbacks.md</code>: read for hook order, priorities, removal, recursion, custom hooks, request-context detection, early-translation notices.</li>
+<li><code>lifecycle-and-upgrades.md</code>: read for headers, activation/deactivation/uninstall, versioned upgrades, dbDelta, dependencies, multisite provisioning.</li>
+<li><code>packaging-and-compatibility.md</code>: read for directory rules, Plugin Check, readme, Composer and prefixing, PHP-version gates, release ZIP checks.</li>
+<li><code>plugin-development-workbook.md</code>: Plugin lifecycle and integration workbook</li>
+<li><code>storage-jobs-and-multisite.md</code>: read for options and autoload, transients and object cache, custom tables, <code>$wpdb-&gt;prepare</code>, WP-Cron, Action Scheduler, privacy hooks, <code>switch_to_blog</code> cost.</li>
+</ul>
+<h2>How a review runs</h2>
+<ol>
+<li>Identify the real entry file and loading mode. Trace bootstrap, dependency loading and hook registration to the first point where observed behavior departs from the expected lifecycle.</li>
+<li>Classify each concern into one lifecycle stage: install/activation, versioned upgrade, runtime, deactivation, uninstall. Updates never rerun activation; must-use plugins and drop-ins have no activation hooks.</li>
+<li>For each hook, confirm timing, priority, accepted-args count and (for filters) the return value on every branch. Confirm removal uses the registered callback identity.</li>
+<li>For storage and jobs, check ownership of the schema or option, autoload and size, idempotence of repeat runs, multisite scope and uninstall policy.</li>
+<li>For packaging, compare the declared headers, text domain, shipped files and dependencies against the real runtime. Do not build, install or activate during review.</li>
+<li>Classify per the contract. Pattern hits stay candidates until the reachable path is traced; use <code>insufficient evidence</code> when the target version, loading mode or runtime cannot be established.
+
+Read <code>references/plugin-development-workbook.md</code> for symptom triage, worked decisions, benign look-alikes and acceptance checks. Load topic references only when in scope:
+
+- <code>references/lifecycle-and-upgrades.md</code>: read for headers, activation/deactivation/uninstall, versioned upgrades, dbDelta, dependencies, multisite provisioning.
+- <code>references/hooks-and-callbacks.md</code>: read for hook order, priorities, removal, recursion, custom hooks, request-context detection, early-translation notices.
+- <code>references/storage-jobs-and-multisite.md</code>: read for options and autoload, transients and object cache, custom tables, <code>$wpdb-&gt;prepare</code>, WP-Cron, Action Scheduler, privacy hooks, <code>switch_to_blog</code> cost.
+- <code>references/packaging-and-compatibility.md</code>: read for directory rules, Plugin Check, readme, Composer and prefixing, PHP-version gates, release ZIP checks.</li>
+</ol>
+<h2>What you get back</h2>
+<p>Review: result and reviewed scope first. Each confirmed finding: <code>file:line</code>, actor, trigger, reachable path, impact, confidence, severity (per contract), minimal fix, regression check. List candidates and missing evidence separately. Implementation: changed boundaries, design decision, commands run with exit status, unexecuted checks, rollback note and residual risk.</p>
+<aside class="callout"><p>Reviews are read-only. A clean review covers the inspected scope; it is not a certification. Ask for implementation as a separate, bounded task with a regression check.</p></aside>
+<h2>Where to go next</h2>
+<p>Use <a href="review-to-fix.html">review to fix</a> for a bounded implementation and <a href="doctor-and-reports.html">Doctor and reports</a> for environment and evidence tooling.</p>
+<div class="reading-footer"><a href="index.html">← All guides</a><a href="quick-start.html">Your first review →</a></div></article></div></main><footer class="footer"><div class="shell footer-inner"><p>WordPress DevKit · Maintained by Ehsan Enaloo · MIT</p><div><a href="../guides/faq.html">FAQ</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">Source repository ↗</a></div></div></footer></body></html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Measured queries, caches and delivery"
+  short_description: "Measured queries, caches and delivery"
+  default_prompt: "Use $wp-devkit-performance-review for the WordPress task I describe, and report evidence and limits."

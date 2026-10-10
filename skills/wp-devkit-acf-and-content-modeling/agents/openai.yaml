@@ -1,0 +1,4 @@
+interface:
+  display_name: "Editorial models and field evolution"
+  short_description: "Editorial models and field evolution"
+  default_prompt: "Use $wp-devkit-acf-and-content-modeling for the WordPress task I describe, and report evidence and limits."

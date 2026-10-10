@@ -1,0 +1,4 @@
+interface:
+  display_name: "Headless visibility and content freshness"
+  short_description: "Headless visibility and content freshness"
+  default_prompt: "Use $wp-devkit-headless-and-wpgraphql for the WordPress task I describe, and report evidence and limits."

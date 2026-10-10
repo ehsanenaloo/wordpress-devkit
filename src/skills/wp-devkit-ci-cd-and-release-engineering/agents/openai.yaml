@@ -1,0 +1,4 @@
+interface:
+  display_name: "Trusted artifacts and release recovery"
+  short_description: "Trusted artifacts and release recovery"
+  default_prompt: "Use $wp-devkit-ci-cd-and-release-engineering for the WordPress task I describe, and report evidence and limits."

@@ -1,0 +1,82 @@
+name: Skill quality report
+description: A skill gave a wrong, unsafe, outdated or missing answer, or raised a false alarm.
+title: "[Skill]: "
+labels: ["skill quality", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Skill quality reports are the most valuable feedback this project receives. A minimal reproduction lets the maintainer add a regression case.
+        Do **not** include code you do not have the right to share.
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options:
+        - wp-devkit-accessibility-review
+        - wp-devkit-acf-and-content-modeling
+        - wp-devkit-admin-ui-development
+        - wp-devkit-block-development
+        - wp-devkit-ci-cd-and-release-engineering
+        - wp-devkit-headless-and-wpgraphql
+        - wp-devkit-migration-upgrade-review
+        - wp-devkit-performance-review
+        - wp-devkit-phpstan-review
+        - wp-devkit-playground-development
+        - wp-devkit-plugin-development
+        - wp-devkit-rest-api-development
+        - wp-devkit-security-review
+        - wp-devkit-site-audit-and-onboarding
+        - wp-devkit-test-strategy
+        - wp-devkit-theme-development
+        - wp-devkit-ui-design
+        - wp-devkit-wcag-review
+        - wp-devkit-woocommerce-dev
+        - wp-devkit-wpcli-and-ops
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong?
+      options:
+        - False positive (reported a defect that is not one)
+        - False negative (missed a real defect)
+        - Wrong or unsafe fix
+        - Outdated or incorrect WordPress guidance
+        - Scope violation (edited code during a review)
+        - Severity was not justified by evidence
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Minimal code or situation
+      description: A small snippet or description that reproduces the answer. Remove private data.
+      render: php
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should the skill have done?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Official source (if guidance is wrong)
+      description: Link to developer.wordpress.org, make.wordpress.org, WooCommerce docs or another primary source.
+  - type: input
+    id: versions
+    attributes:
+      label: Client, model and WordPress/PHP versions
+      placeholder: "Claude Code, WordPress 6.9, PHP 8.3"
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I removed secrets and private data from this report.
+          required: true

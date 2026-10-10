@@ -1,0 +1,52 @@
+# Labels used by this project.
+# The "Sync labels" workflow (Actions tab, Run workflow) creates or updates these labels.
+# Colors are hex values without the leading #.
+
+- name: bug
+  color: d73a4a
+  description: Something does not work as expected
+- name: enhancement
+  color: a2eeef
+  description: New feature or improvement
+- name: skill quality
+  color: 5319e7
+  description: A skill gave a wrong, unsafe, outdated or missing answer
+- name: documentation
+  color: 0075ca
+  description: Improvements to guides, README or docs
+- name: good first issue
+  color: 7057ff
+  description: Small and well described, good for a first contribution
+- name: help wanted
+  color: 008672
+  description: The maintainer would welcome help with this
+- name: question
+  color: d876e3
+  description: A usage question, not a bug
+- name: duplicate
+  color: cfd3d7
+  description: This already exists in another issue or pull request
+- name: invalid
+  color: e4e669
+  description: This is not a valid report or does not apply
+- name: wontfix
+  color: ffffff
+  description: This will not be worked on
+- name: security
+  color: b60205
+  description: Security related. Use private reporting for vulnerabilities
+- name: accessibility
+  color: 1d76db
+  description: Accessibility guidance or tooling
+- name: performance
+  color: fbca04
+  description: Speed or resource use of scripts and installers
+- name: needs triage
+  color: ededed
+  description: Not reviewed by the maintainer yet
+- name: blocked
+  color: e99695
+  description: Waiting on something else before work can continue
+- name: dependencies
+  color: 0366d6
+  description: Updates to GitHub Actions versions

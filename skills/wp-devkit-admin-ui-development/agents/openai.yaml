@@ -1,0 +1,4 @@
+interface:
+  display_name: "Administrative screens and save behavior"
+  short_description: "Administrative screens and save behavior"
+  default_prompt: "Use $wp-devkit-admin-ui-development for the WordPress task I describe, and report evidence and limits."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security paths and exploit evidence"
+  short_description: "Security paths and exploit evidence"
+  default_prompt: "Use $wp-devkit-security-review for the WordPress task I describe, and report evidence and limits."

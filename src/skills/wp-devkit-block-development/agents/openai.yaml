@@ -1,0 +1,4 @@
+interface:
+  display_name: "Block state, storage and rendering"
+  short_description: "Block state, storage and rendering"
+  default_prompt: "Use $wp-devkit-block-development for the WordPress task I describe, and report evidence and limits."

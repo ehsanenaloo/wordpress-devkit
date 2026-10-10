@@ -1,0 +1,4 @@
+interface:
+  display_name: "Regressions that prove WordPress behavior"
+  short_description: "Regressions that prove WordPress behavior"
+  default_prompt: "Use $wp-devkit-test-strategy for the WordPress task I describe, and report evidence and limits."

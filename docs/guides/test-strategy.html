@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Testing strategy | WordPress DevKit</title><meta name="description" content="Plan, write, debug or review WordPress tests.">
+<meta name="color-scheme" content="light"><link rel="stylesheet" href="../styles.css"><script defer src="../app.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="shell header-inner">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span><span>WordPress DevKit<small>THE FIELD GUIDE</small></span></a>
+<nav class="top-nav" aria-label="Primary"><a href="../index.html">Overview</a><a href="../guides/installation.html">Install</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../commands.html">Commands</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">GitHub ↗</a></nav></div></header>
+<main id="main"><div class="shell page-intro"><p class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Guides</a></p><p class="eyebrow">WordPress DevKit / Field guide</p><h1>Testing strategy</h1><p class="lead">Plan, write, debug or review WordPress tests.</p></div><div class="shell doc-layout"><aside class="sidebar"><nav aria-label="Learning path"><p>Getting started</p><a href="quick-start.html">Your first review</a><a href="installation.html">Install for your agent</a><a href="doctor-and-reports.html">Discover the environment</a><a href="review-to-fix.html">Turn a finding into a fix</a><a href="release-checklist.html">Prepare a WordPress release</a><a href="faq.html">Questions &amp; troubleshooting</a><p>Reference</p><a href="index.html">All 20 domain guides</a><a href="../commands.html">All 41 commands</a></nav></aside><article class="prose"><h2>When to use it</h2>
+<p>Plan, write, debug or review WordPress tests: choose the layer (unit, WP integration, REST/AJAX, WooCommerce HPOS, Playwright), prove a regression fails first, fix flaky or order-dependent suites, CI exit propagation and skipped tests. Use for PHPUnit, wp-env and browser test strategy.</p>
+<h2>Boundaries and hand-offs</h2>
+<p>This skill decides what to test, at which layer, how to isolate it and whether the run proves anything. Domain correctness belongs to the owner skill (<code>wp-devkit-security-review</code>, <code>wp-devkit-woocommerce-dev</code>, <code>wp-devkit-rest-api-development</code>, <code>wp-devkit-block-development</code>, <code>wp-devkit-accessibility-review</code>). Static typing is <code>wp-devkit-phpstan-review</code>; pipeline design is <code>wp-devkit-ci-cd-and-release-engineering</code>. Use this skill when the question is "does a test exist that would have caught this?".</p>
+<h2>Ask Claude</h2>
+<p>With the plugin loaded, start a read-only review of a bounded target:</p>
+<pre><code>/wp-devkit:test-review &lt;target-path&gt;</code></pre>
+<p>The short form <code>/wp-devkit:test</code> requests a quick scan.</p>
+<h2>Ask Codex, ChatGPT or Antigravity</h2>
+<p>Name the installed skill and keep the request bounded. Replace the target with your files or journey.</p>
+<pre><code>$wp-devkit-test-strategy
+Review the target without editing files.
+Read the project instructions and the skill's engineering contract first.
+Separate confirmed findings from candidates and state the evidence and checks you could not run.</code></pre>
+<h2>What it covers</h2>
+<p>The agent loads only the reference that matches the task:</p>
+<ul>
+<li><code>browser-and-e2e-tests.md</code>: Browser and end-to-end tests</li>
+<li><code>ci-and-evidence.md</code>: CI reliability and evidence</li>
+<li><code>test-layers-and-setup.md</code>: Test layers and setup</li>
+<li><code>test-strategy-workbook.md</code>: Test strategy workbook</li>
+<li><code>woocommerce-and-data-tests.md</code>: WooCommerce and data-heavy tests</li>
+<li><code>wordpress-test-recipes.md</code>: WordPress test recipes</li>
+</ul>
+<h2>How a review runs</h2>
+<ol>
+<li>State the observable behavior and the failure the regression must distinguish. Find the real runner and how failure reaches the CI exit status.</li>
+<li>Pick the cheapest layer that still contains the failing boundary (<code>references/test-layers-and-setup.md</code>): pure unit, WP integration (hooks, capabilities, storage, REST, AJAX, cron, HTTP), browser journey, or manual check. A mock that replaces the failing boundary proves nothing about it.</li>
+<li>Define controls: a positive case, the denied/invalid/empty/failed-dependency case, and repeat, concurrency or migration cases when promised. Assert persisted state and side effects, not only the response.</li>
+<li>Check isolation: test-owned data, reset of globals, current user, options, transients, cron, object cache, files, multisite state; no dependence on order or the clock.</li>
+<li>Check reliability: no arbitrary sleeps, no silent retries or skips, <code>.only</code> blocked in CI, exit codes propagated, skipped tests listed, required checks cannot be disabled by a flag.</li>
+<li>Report: suitable layer, the regression that fails before the fix, controls, runner and versions, what is not covered.
+
+Read <code>references/test-strategy-workbook.md</code> first for decision rules, false positives and the finding format.</li>
+</ol>
+<h2>What you get back</h2>
+<p>Lead with the verdict and scope: behaviors reviewed, layers present, runner and versions found. For each confirmed gap give: behavior and file:line, why current tests would pass while it is broken (mock boundary, missing negative case, shared state, swallowed exit), impact, confidence, the proposed regression (layer, fixture, steps, assertions on persisted state), and how to prove it fails first. Separate confirmed gaps, candidates needing execution, and insufficient evidence. For implementation add files changed, commands with exit codes, before/after results, skipped or unavailable checks, and residual risk.</p>
+<aside class="callout"><p>Reviews are read-only. A clean review covers the inspected scope; it is not a certification. Ask for implementation as a separate, bounded task with a regression check.</p></aside>
+<h2>Where to go next</h2>
+<p>Use <a href="review-to-fix.html">review to fix</a> for a bounded implementation and <a href="doctor-and-reports.html">Doctor and reports</a> for environment and evidence tooling.</p>
+<div class="reading-footer"><a href="index.html">← All guides</a><a href="quick-start.html">Your first review →</a></div></article></div></main><footer class="footer"><div class="shell footer-inner"><p>WordPress DevKit · Maintained by Ehsan Enaloo · MIT</p><div><a href="../guides/faq.html">FAQ</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">Source repository ↗</a></div></div></footer></body></html>

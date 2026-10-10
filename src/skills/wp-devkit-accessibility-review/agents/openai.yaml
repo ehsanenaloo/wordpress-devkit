@@ -1,0 +1,4 @@
+interface:
+  display_name: "Usable controls and assistive access"
+  short_description: "Usable controls and assistive access"
+  default_prompt: "Use $wp-devkit-accessibility-review for the WordPress task I describe, and report evidence and limits."

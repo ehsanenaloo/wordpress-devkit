@@ -1,0 +1,4 @@
+interface:
+  display_name: "WordPress journeys and visual decisions"
+  short_description: "WordPress journeys and visual decisions"
+  default_prompt: "Use $wp-devkit-ui-design for the WordPress task I describe, and report evidence and limits."

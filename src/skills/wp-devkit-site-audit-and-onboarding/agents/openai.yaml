@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project discovery and evidence-led routing"
+  short_description: "Project discovery and evidence-led routing"
+  default_prompt: "Use $wp-devkit-site-audit-and-onboarding for the WordPress task I describe, and report evidence and limits."

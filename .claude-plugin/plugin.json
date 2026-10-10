@@ -1,0 +1,9 @@
+{
+  "name": "wp-devkit",
+  "description": "Open-source WordPress engineering skills for Claude Code and Codex",
+  "version": "2.0.1",
+  "author": {
+    "name": "Ehsan Enaloo"
+  },
+  "license": "MIT"
+}

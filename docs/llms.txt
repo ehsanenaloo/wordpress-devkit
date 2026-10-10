@@ -1,0 +1,39 @@
+# WordPress DevKit
+
+> WordPress engineering workflows for Claude and Codex. An instruction pack, not a WordPress runtime.
+
+## User guides
+
+- [Your first review](guides/quick-start.html): Go from a new project to a bounded review with evidence.
+- [Install for your agent](guides/installation.html): Choose Claude plugin loading or complete manual skills.
+- [Discover the environment](guides/doctor-and-reports.html): Run Doctor, read its report and compare evidence over time.
+- [Turn a finding into a fix](guides/review-to-fix.html): Confirm the failing path, scope the change and verify the result.
+- [Prepare a WordPress release](guides/release-checklist.html): Sequence migration, testing, packaging and rollback review.
+- [Questions & troubleshooting](guides/faq.html): Understand activation, updates, evidence and common installation errors.
+
+## Specialist guides
+
+- [Site audit & onboarding](guides/site-audit-and-onboarding.html): Map an unfamiliar WordPress project before choosing a specialist review.
+- [Security review](guides/security-review.html): Trace authorization and untrusted data through reachable WordPress code.
+- [Performance review](guides/performance-review.html): Investigate queries, hooks and caching with measured workload context.
+- [Plugin development](guides/plugin-development.html): Review plugin architecture, lifecycle and WordPress integration boundaries.
+- [Theme development](guides/theme-development.html): Work with classic, hybrid, child and block themes without losing saved customizations.
+- [Gutenberg blocks](guides/block-development.html): Review metadata, editor behavior and existing saved-content compatibility.
+- [WooCommerce extensions](guides/woocommerce-dev.html): Review orders, checkout, payments and jobs with explicit store context.
+- [REST API development](guides/rest-api-development.html): Review route permissions, request validation and response contracts.
+- [Headless & WPGraphQL](guides/headless-and-wpgraphql.html): Review schemas, preview flows and content invalidation across frontend boundaries.
+- [ACF & content modeling](guides/acf-and-content-modeling.html): Choose stable content structures and inspect field-group drift.
+- [Admin interfaces](guides/admin-ui-development.html): Review settings screens, capabilities and focused asset loading.
+- [Interface design](guides/ui-design.html): Design WordPress layouts with responsive, visual and interaction evidence.
+- [Accessibility implementation](guides/accessibility-review.html): Inspect keyboard, focus, semantics and interactive behavior.
+- [WCAG evidence review](guides/wcag-review.html): Map applicable WCAG 2.1/2.2 A and AA criteria to representative evidence.
+- [Migration & upgrades](guides/migration-upgrade-review.html): Review versioned schema/data changes and interrupted execution.
+- [WP-CLI & operations](guides/wpcli-and-ops.html): Plan targeted maintenance with dry-run, checkpoints and failure reporting.
+- [PHPStan adoption](guides/phpstan-review.html): Inspect static-analysis configuration, WordPress stubs and baseline discipline.
+- [WordPress Playground](guides/playground-development.html): Prepare reproducible demos and inspect Blueprint trust boundaries.
+- [Testing strategy](guides/test-strategy.html): Choose useful unit, integration and browser coverage for real risks.
+- [CI/CD & release engineering](guides/ci-cd-and-release-engineering.html): Inspect build artifacts, deployment gates and recovery plans.
+
+## Commands
+
+- [Claude command catalog](commands.html): All 41 commands; these are not Codex slash commands.

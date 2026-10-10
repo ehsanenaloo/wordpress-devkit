@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scoped commands and operational recovery"
+  short_description: "Scoped commands and operational recovery"
+  default_prompt: "Use $wp-devkit-wpcli-and-ops for the WordPress task I describe, and report evidence and limits."

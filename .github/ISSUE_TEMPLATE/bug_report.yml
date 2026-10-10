@@ -1,0 +1,99 @@
+name: Bug report
+description: A skill, command, installer or script does not behave as documented.
+title: "[Bug]: "
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem. Use made-up or minimal code in examples. Do **not** paste secrets, customer data or a private site's code.
+        For a security problem, use the private link on the issue chooser instead of this form.
+  - type: input
+    id: version
+    attributes:
+      label: WordPress DevKit version
+      description: Shown in `.claude-plugin/plugin.json` or the release you installed.
+      placeholder: "2.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: client
+    attributes:
+      label: Agent client
+      options:
+        - Claude Code (CLI)
+        - Claude desktop app
+        - Codex
+        - ChatGPT desktop
+        - Google Antigravity
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install it?
+      options:
+        - Plugin / marketplace
+        - Manual skills copy
+        - scripts/install.py
+        - Release archive
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part is affected?
+      options:
+        - A specific skill (name it below)
+        - A slash command
+        - Installer or recovery
+        - Doctor or evidence reports
+        - Plugin or marketplace manifest
+        - Documentation site
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: skill
+    attributes:
+      label: Skill or command name
+      placeholder: wp-devkit-security-review
+  - type: input
+    id: platform
+    attributes:
+      label: Operating system and Python version
+      placeholder: "Windows 11, Python 3.12"
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe what you saw and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Install ...
+        2. Ask the agent to ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Logs, command output or screenshots
+      description: Redact secrets, tokens, hostnames and personal data.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and did not find this problem.
+          required: true
+        - label: I removed secrets and private data from this report.
+          required: true

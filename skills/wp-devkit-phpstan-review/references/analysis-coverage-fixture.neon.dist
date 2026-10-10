@@ -1,0 +1,11 @@
+# Adapt paths to real production code before running.
+# Include the extension explicitly only when auto-discovery is not enabled.
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 5
+    paths:
+        - src
+    tmpDir: .cache/phpstan
+    reportUnmatchedIgnoredErrors: true

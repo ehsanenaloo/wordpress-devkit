@@ -1,0 +1,20 @@
+{
+  "name": "wordpress-devkit",
+  "interface": {
+    "displayName": "WordPress DevKit"
+  },
+  "plugins": [
+    {
+      "name": "wp-devkit",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

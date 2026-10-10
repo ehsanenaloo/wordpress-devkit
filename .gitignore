@@ -1,0 +1,22 @@
+build/
+dist/
+*.zip
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+node_modules/
+.env
+.env.*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Agent client local state
+.claude/
+.codex/
+.gemini/
+.agent/

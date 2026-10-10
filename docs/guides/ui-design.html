@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interface design | WordPress DevKit</title><meta name="description" content="Design, implement or review WordPress user journeys, responsive layouts, UI states, design tokens, editor/front parity, RTL and visual-regression checks. Not for WCAG criterion audits (wcag-review), theme.json internals (theme skill) or wp-admin implementation (admin-ui).">
+<meta name="color-scheme" content="light"><link rel="stylesheet" href="../styles.css"><script defer src="../app.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="shell header-inner">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span><span>WordPress DevKit<small>THE FIELD GUIDE</small></span></a>
+<nav class="top-nav" aria-label="Primary"><a href="../index.html">Overview</a><a href="../guides/installation.html">Install</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../commands.html">Commands</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">GitHub ↗</a></nav></div></header>
+<main id="main"><div class="shell page-intro"><p class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Guides</a></p><p class="eyebrow">WordPress DevKit / Field guide</p><h1>Interface design</h1><p class="lead">Design, implement or review WordPress user journeys, responsive layouts, UI states, design tokens, editor/front parity, RTL and visual-regression checks. Not for WCAG criterion audits (wcag-review), theme.json internals (theme skill) or wp-admin implementation (admin-ui).</p></div><div class="shell doc-layout"><aside class="sidebar"><nav aria-label="Learning path"><p>Getting started</p><a href="quick-start.html">Your first review</a><a href="installation.html">Install for your agent</a><a href="doctor-and-reports.html">Discover the environment</a><a href="review-to-fix.html">Turn a finding into a fix</a><a href="release-checklist.html">Prepare a WordPress release</a><a href="faq.html">Questions &amp; troubleshooting</a><p>Reference</p><a href="index.html">All 20 domain guides</a><a href="../commands.html">All 41 commands</a></nav></aside><article class="prose"><h2>When to use it</h2>
+<p>Design, implement or review WordPress user journeys, responsive layouts, UI states, design tokens, editor/front parity, RTL and visual-regression checks. Not for WCAG criterion audits (wcag-review), theme.json internals (theme skill) or wp-admin implementation (admin-ui).</p>
+<h2>Boundaries and hand-offs</h2>
+<ul><li>WCAG criterion-by-criterion conformance: <code>wp-devkit-wcag-review</code>; accessibility defects in code: <code>wp-devkit-accessibility-review</code>.</li><li>Theme templates, <code>theme.json</code> mechanics: <code>wp-devkit-theme-development</code>; wp-admin screen implementation: <code>wp-devkit-admin-ui-development</code>; block internals: <code>wp-devkit-block-development</code>.</li><li>Speed measurement and tuning: <code>wp-devkit-performance-review</code>.</li></ul>
+<h2>Ask Claude</h2>
+<p>With the plugin loaded, start a read-only review of a bounded target:</p>
+<pre><code>/wp-devkit:design-review &lt;target-path&gt;</code></pre>
+<p>The short form <code>/wp-devkit:design</code> requests an implementation; use the review form to stay read-only.</p>
+<h2>Ask Codex, ChatGPT or Antigravity</h2>
+<p>Name the installed skill and keep the request bounded. Replace the target with your files or journey.</p>
+<pre><code>$wp-devkit-ui-design
+Review the target without editing files.
+Read the project instructions and the skill's engineering contract first.
+Separate confirmed findings from candidates and state the evidence and checks you could not run.</code></pre>
+<h2>What it covers</h2>
+<p>The agent loads only the reference that matches the task:</p>
+<ul>
+<li><code>acceptance-checklist.md</code>: Acceptance checklist</li>
+<li><code>analytics-and-experiments.md</code>: Analytics and experiments</li>
+<li><code>design-systems-and-tokens.md</code>: Design systems and tokens</li>
+<li><code>localization-and-content-design.md</code>: Localization, RTL and content design</li>
+<li><code>research-and-usability.md</code>: Research and usability evidence</li>
+<li><code>responsive-states-and-interaction.md</code>: Responsive layout, states and interaction</li>
+<li><code>ui-design-workbook.md</code>: WordPress UI design workbook</li>
+<li><code>visual-regression-and-devices.md</code>: Visual regression, devices and performance</li>
+<li><code>wordpress-ui-surfaces.md</code>: WordPress UI surfaces and ownership</li>
+</ul>
+<h2>How a review runs</h2>
+<ol>
+<li>Capture the current journey and content (URLs, viewports, screenshots). Define the user outcome; separate visual polish from structural reconstruction.</li>
+<li>Locate the owner of each surface and token (<code>references/wordpress-ui-surfaces.md</code>, <code>references/design-systems-and-tokens.md</code>). Preserve working navigation, links and content.</li>
+<li>Check states, forms, layout and interaction against <code>references/responsive-states-and-interaction.md</code>: loading, empty, error, success, long content, 320 px to wide, zoom, keyboard, focus visibility, target size, reduced motion.</li>
+<li>Check locale and RTL with stress data (<code>references/localization-and-content-design.md</code>).</li>
+<li>Identify the evidence available for any usability, conversion or performance claim (<code>references/research-and-usability.md</code>, <code>references/analytics-and-experiments.md</code>); mark unsupported claims "not measured".</li>
+<li>Report observed rendered and interaction evidence, plus proposed acceptance checks. A review does not authorize a redesign.
+
+Read <code>references/ui-design-workbook.md</code> for the decision table, symptoms, false positives, severity and worked example. Use <code>references/acceptance-checklist.md</code> for delivery acceptance and <code>references/visual-regression-and-devices.md</code> for the rendering matrix, Playwright baselines, Core Web Vitals evidence and axe automation.</li>
+</ol>
+<h2>What you get back</h2>
+<p>Lead with the result and what was observed (viewports, browsers, locales, assistive tech actually used). Confirmed concern: location (file:line or URL+viewport), actor, trigger, reachable path, impact, confidence, minimal fix, regression check. Keep candidates and unmeasured claims separate. For implementation include the user flow, responsive and keyboard checks, screenshots when available, empty/loading/error/success states, commands with exit codes and unexecuted checks. A visual pass does not prove usability, conversion, screen-reader behavior or conformance.</p>
+<aside class="callout"><p>Reviews are read-only. A clean review covers the inspected scope; it is not a certification. Ask for implementation as a separate, bounded task with a regression check.</p></aside>
+<h2>Where to go next</h2>
+<p>Use <a href="review-to-fix.html">review to fix</a> for a bounded implementation and <a href="doctor-and-reports.html">Doctor and reports</a> for environment and evidence tooling.</p>
+<div class="reading-footer"><a href="index.html">← All guides</a><a href="quick-start.html">Your first review →</a></div></article></div></main><footer class="footer"><div class="shell footer-inner"><p>WordPress DevKit · Maintained by Ehsan Enaloo · MIT</p><div><a href="../guides/faq.html">FAQ</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">Source repository ↗</a></div></div></footer></body></html>

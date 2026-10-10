@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portable reproductions and trusted Blueprints"
+  short_description: "Portable reproductions and trusted Blueprints"
+  default_prompt: "Use $wp-devkit-playground-development for the WordPress task I describe, and report evidence and limits."

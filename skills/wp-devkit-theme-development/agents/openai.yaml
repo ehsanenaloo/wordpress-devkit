@@ -1,0 +1,4 @@
+interface:
+  display_name: "Theme rendering and customization"
+  short_description: "Theme rendering and customization"
+  default_prompt: "Use $wp-devkit-theme-development for the WordPress task I describe, and report evidence and limits."

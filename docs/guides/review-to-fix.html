@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Turn a finding into a fix | WordPress DevKit</title><meta name="description" content="Understand the problem, agree on the fix and check that it works.">
+<meta name="color-scheme" content="light"><link rel="stylesheet" href="../styles.css"><script defer src="../app.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="shell header-inner">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">W</span><span>WordPress DevKit<small>THE FIELD GUIDE</small></span></a>
+<nav class="top-nav" aria-label="Primary"><a href="../index.html">Overview</a><a href="../guides/installation.html">Install</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../commands.html">Commands</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">GitHub ↗</a></nav></div></header>
+<main id="main"><div class="shell page-intro"><p class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Guides</a></p><p class="eyebrow">WordPress DevKit / Field guide</p><h1>Turn a finding into a fix</h1><p class="lead">Understand the problem, agree on the fix and check that it works.</p></div><div class="shell doc-layout"><aside class="sidebar"><nav aria-label="Learning path"><p>Getting started</p><a href="quick-start.html">Your first review</a><a href="installation.html">Install for your agent</a><a href="doctor-and-reports.html">Discover the environment</a><a href="review-to-fix.html" aria-current="page">Turn a finding into a fix</a><a href="release-checklist.html">Prepare a WordPress release</a><a href="faq.html">Questions &amp; troubleshooting</a><p>Reference</p><a href="index.html">All 20 domain guides</a><a href="../commands.html">All 41 commands</a></nav></aside><article class="prose"><h2>1. Confirm the original failing invariant</h2>
+<p>Read the cited source, the project instructions and the relevant engineering contract. Identify the actor, input, actual control flow and expected behavior. If the path or the contract is missing, keep the finding unverified instead of fixing a guess.</p>
+<h2>2. Authorize a bounded fix</h2>
+<p>A review never edits. Ask for the change explicitly and name its edges:</p>
+<pre><code>Implement only the confirmed missing capability check in fixture_update (plugin.php:4-8).
+Read this project's governing instructions first.
+State the affected files, intended behavior and validation plan before editing.
+Write the failing regression first: subscriber with a valid nonce must get 403 and the option must not change.
+Preserve successful administrator writes and unrelated code.
+Do not deploy or broaden the task.</code></pre>
+<h2>3. Work at the source of the failure</h2>
+<ol><li>Inspect neighboring handlers and the project's established validation and error patterns.</li><li>Restore the intended invariant at the failing boundary, not with a downstream filter, an invented fallback or a new architecture.</li><li>Add a regression that reproduces the original failure and preserves legitimate operations.</li><li>Run the project's own lint, static analysis, integration or browser checks. Record absent tools and failures.</li></ol>
+<h2>4. What a good change looks like</h2>
+<pre><code>function fixture_update() {
+    check_ajax_referer( 'fixture-settings', 'nonce' );
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( array( 'message' =&gt; 'Forbidden' ), 403 );
+    }
+    $banner = isset( $_POST['banner'] ) &amp;&amp; is_string( $_POST['banner'] )
+        ? sanitize_text_field( wp_unslash( $_POST['banner'] ) )
+        : '';
+    update_option( 'fixture_banner', $banner );
+    wp_send_json_success();
+}</code></pre>
+<p>The nonce proves intent; the capability check supplies authority. The fix touches one handler and leaves the administrator path unchanged.</p>
+<h2>5. Make the result reviewable</h2>
+<p>Ask for the changed files, behavior before and after, the exact commands with exit codes, screenshots when the change is visual, and residual risks. A source diff supports a fix; verified runtime behavior needs the relevant execution.</p>
+<h2>Example acceptance</h2>
+<ul><li>A user lacking the capability receives the established denied response and no write occurs.</li><li>An authorized administrator can still save a valid value.</li><li>Invalid input follows the existing validation contract.</li><li>No baseline, ignore rule or authorization control is weakened to pass checks.</li></ul>
+<aside class="callout"><p>This guide describes fixing a target WordPress project. Deployment and publication are separate task boundaries and need their own authorization.</p></aside>
+<div class="reading-footer"><a href="quick-start.html">← Your first review</a><a href="release-checklist.html">Release checklist →</a></div></article></div></main><footer class="footer"><div class="shell footer-inner"><p>WordPress DevKit · Maintained by Ehsan Enaloo · MIT</p><div><a href="../guides/faq.html">FAQ</a><a href="https://github.com/ehsanenaloo/wordpress-devkit">Source repository ↗</a></div></div></footer></body></html>

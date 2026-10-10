@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="460" viewBox="0 0 1440 460" role="img" aria-labelledby="title description">
+  <title id="title">WordPress DevKit</title>
+  <desc id="description">Evidence-based WordPress engineering for Claude and Codex. Twenty specialist skills, forty-one Claude commands, one canonical workflow library.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102c35"/><stop offset="1" stop-color="#194b43"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#b2d3c5" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1440" height="460" rx="24" fill="url(#background)"/>
+  <rect width="1440" height="460" rx="24" fill="url(#grid)"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="64" y="56" width="46" height="46" rx="12" fill="#b5dcc1"/>
+    <text x="87" y="87" text-anchor="middle" font-size="26" font-weight="700" fill="#12372f">W</text>
+    <text x="128" y="85" font-size="15" font-weight="600" letter-spacing="3" fill="#b5dcc1">WORDPRESS ENGINEERING</text>
+    <text x="64" y="192" font-size="76" font-weight="750" letter-spacing="-3" fill="#ffffff">WordPress DevKit</text>
+    <text x="68" y="247" font-size="25" fill="#d6e6df">From a focused review to a verified change.</text>
+    <rect x="68" y="298" width="210" height="40" rx="7" fill="#ffffff" fill-opacity=".08" stroke="#83af9b" stroke-opacity=".4"/>
+    <text x="173" y="324" text-anchor="middle" font-size="16" fill="#e7f3ec">20 specialist skills</text>
+    <rect x="292" y="298" width="236" height="40" rx="7" fill="#ffffff" fill-opacity=".08" stroke="#83af9b" stroke-opacity=".4"/>
+    <text x="410" y="324" text-anchor="middle" font-size="16" fill="#e7f3ec">41 Claude commands</text>
+    <text x="68" y="405" font-size="15" fill="#b5cfbf">CLAUDE + CODEX</text>
+    <text x="253" y="405" font-size="15" fill="#b5cfbf">/</text>
+    <text x="282" y="405" font-size="15" fill="#b5cfbf">OPEN SOURCE · MIT</text>
+    <g transform="translate(968 60)">
+      <rect width="398" height="340" rx="18" fill="#0d252d" stroke="#416a5c"/>
+      <circle cx="25" cy="26" r="4" fill="#b5dcc1"/><circle cx="41" cy="26" r="4" fill="#729e88"/><circle cx="57" cy="26" r="4" fill="#416a5c"/>
+      <text x="25" y="72" font-size="13" fill="#a6c8b7" letter-spacing="2">THE ENGINEERING LOOP</text>
+      <path d="M 48 120 V 274" stroke="#426d5d" stroke-width="2"/>
+      <g font-size="19" font-weight="600" fill="#e5efe9">
+        <circle cx="48" cy="120" r="12" fill="#b5dcc1"/><text x="77" y="127">Discover the context</text>
+        <circle cx="48" cy="170" r="12" fill="#b5dcc1"/><text x="77" y="177">Trace the evidence</text>
+        <circle cx="48" cy="220" r="12" fill="#b5dcc1"/><text x="77" y="227">Make a bounded change</text>
+        <circle cx="48" cy="270" r="12" fill="#b5dcc1"/><text x="77" y="277">Verify the outcome</text>
+      </g>
+    </g>
+  </g>
+</svg>

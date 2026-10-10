@@ -1,0 +1,4 @@
+interface:
+  display_name: "REST contracts and request boundaries"
+  short_description: "REST contracts and request boundaries"
+  default_prompt: "Use $wp-devkit-rest-api-development for the WordPress task I describe, and report evidence and limits."
