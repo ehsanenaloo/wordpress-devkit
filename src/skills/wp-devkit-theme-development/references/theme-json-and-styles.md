@@ -58,4 +58,4 @@ WordPress core defaults, block-level defaults, parent theme, child theme, user G
 - https://developer.wordpress.org/reference/functions/wp_enqueue_block_style/
 - https://make.wordpress.org/core/2024/06/24/section-styles/
 - https://make.wordpress.org/core/2022/01/08/updates-for-settings-styles-and-theme-json/
-- Core source read (trunk, 2026-10-08): `class-wp-theme-json-resolver.php`, `class-wp-theme-json-data.php`, `script-loader.php`, `block-supports/typography.php` (default 14px fluid minimum). Unverified: whether the dev-note report that `defaultFontSizes`/`defaultSpacingSizes: false` sometimes left default variables is fixed in your WordPress version; test the generated CSS.
+- Core source read (trunk, 2026-10-08): `class-wp-theme-json-resolver.php`, `class-wp-theme-json-data.php`, `script-loader.php`, `block-supports/typography.php` (default 14px fluid minimum). A dev note reports that `defaultFontSizes`/`defaultSpacingSizes: false` sometimes left default variables; test the generated CSS in your WordPress version.

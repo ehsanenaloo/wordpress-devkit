@@ -37,7 +37,7 @@ add_filter( 'acf/settings/load_json', static function ( array $paths ): array {
 ## Sync semantics
 
 - An item is "available to sync" when it is absent from the database or its JSON `modified` value is later than the database post's modified time. Because `modified` is a timestamp, two developers editing the same group produce merge conflicts in JSON and a "later wins" outcome; review the JSON diff, not just the admin screen.
-- Sync imports JSON into the database. Neither the Local JSON page nor the [WP-CLI page](https://www.advancedcustomfields.com/resources/wp-cli/) says whether it removes database items whose JSON file was deleted (unverified: check the installed version); test it on staging and plan an explicit removal step for retired groups.
+- Sync imports JSON into the database. Neither the Local JSON page nor the [WP-CLI page](https://www.advancedcustomfields.com/resources/wp-cli/) says whether it removes database items whose JSON file was deleted (check the installed version); test it on staging and plan an explicit removal step for retired groups.
 - Deploy: run sync as a release step (`wp acf json sync` on ACF 6.8+ writes to the database; `wp acf json import` and `export` move items to or from files; `status` reports). Before 6.8 or on hosts without CLI, use the admin Sync action. Do not run sync, import or export during a read-only review.
 - JSON loading reduces database reads at runtime; it does not remove the need to sync if the admin UI lists database copies.
 

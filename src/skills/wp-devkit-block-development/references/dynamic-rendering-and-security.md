@@ -27,7 +27,7 @@ if ( '' === $message ) {
 
 ## Inner blocks
 
-A dynamic container keeps children by saving `<InnerBlocks.Content />`. `$content` is then the rendered children. If the PHP wants to wrap or filter children, use `$block->inner_blocks` or `render_block_data`/`render_block` filters rather than regexing `$content`. For a parent that renders children individually, call `$block->render()` per inner block (`WP_Block::render()` in trunk skips rendering inner content when the block type has a truthy `skip_inner_blocks` property; the version that introduced it and how to set it are unverified, so check the installed core before relying on it).
+A dynamic container keeps children by saving `<InnerBlocks.Content />`. `$content` is then the rendered children. If the PHP wants to wrap or filter children, use `$block->inner_blocks` or `render_block_data`/`render_block` filters rather than regexing `$content`. For a parent that renders children individually, call `$block->render()` per inner block (`WP_Block::render()` in trunk skips rendering inner content when the block type has a truthy `skip_inner_blocks` property; check the installed core for the version that introduced it and how to set it before relying on it).
 
 ## Editor preview
 

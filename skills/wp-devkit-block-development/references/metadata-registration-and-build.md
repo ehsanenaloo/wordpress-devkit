@@ -93,4 +93,4 @@ If the same name is also passed to `registerBlockType()` in JS, the JS name must
 - https://github.com/WordPress/gutenberg/blob/trunk/packages/scripts/CHANGELOG.md and README.md
 - Core source read (wordpress-develop trunk, 2026-10-08): `blocks.php` (`wp_register_block_metadata_collection` 6.7, `block_type_metadata_settings` 5.7), `class-wp-block-type.php` (`register_block_type_args` 5.5)
 
-Confirmed 2026-10-08: the `Since` values in the version-gate list above, apiVersion 3 in 6.3, name format, `supports.renaming` 6.5, `supports.allowedBlocks`/`visibility` 6.9. Unverified: that `register_block_type_args` can inject every PHP-only arg you need on all versions (check the installed version).
+Confirmed 2026-10-08: the `Since` values in the version-gate list above, apiVersion 3 in 6.3, name format, `supports.renaming` 6.5, `supports.allowedBlocks`/`visibility` 6.9. Check on the installed version that `register_block_type_args` can inject every PHP-only arg you need.

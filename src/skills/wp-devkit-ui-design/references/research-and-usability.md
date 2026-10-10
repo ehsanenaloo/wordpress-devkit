@@ -8,7 +8,7 @@ Decision to inform, hypotheses, audience, representative tasks with a success cr
 
 ## Methods
 
-- Moderated sessions for discovery and complex flows; unmoderated for narrow tasks at scale. Five to eight participants per distinct user group is an industry rule of thumb (unverified here against a primary source) for surfacing recurring problems; it supports no statistical claim.
+- Moderated sessions for discovery and complex flows; unmoderated for narrow tasks at scale. Five to eight participants per distinct user group is an industry rule of thumb for surfacing recurring problems; it supports no statistical claim.
 - Include keyboard-only and screen-reader users, zoom/low-vision users and the supported languages and devices when the product serves them.
 - Use realistic content and data; empty prototypes hide layout and wording problems.
 - Heuristic review and analytics are complements, not substitutes for observing tasks.

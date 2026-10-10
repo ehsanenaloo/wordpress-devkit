@@ -64,7 +64,7 @@ Directives processed on the server for blocks happen automatically; classic temp
 
 ## Client navigation
 
-Router regions (`data-wp-router-region`, `supports.interactivity.clientNavigation`) swap content without a reload. The Interactivity API reference page does not document these (the block-supports page documents the `clientNavigation` sub-property only as a compatibility flag); unverified: check the installed `@wordpress/interactivity-router` docs before using, and test that listeners and `data-wp-init` cleanups survive repeated navigation.
+Router regions (`data-wp-router-region`, `supports.interactivity.clientNavigation`) swap content without a reload. The Interactivity API reference page does not document these (the block-supports page documents the `clientNavigation` sub-property only as a compatibility flag); check the installed `@wordpress/interactivity-router` docs before using, and test that listeners and `data-wp-init` cleanups survive repeated navigation.
 
 ## Security
 

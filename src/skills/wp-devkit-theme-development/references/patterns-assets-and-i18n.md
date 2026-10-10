@@ -62,4 +62,4 @@ Skip link, landmark structure (`header`, `nav`, `main`, `footer`), visible focus
 - https://developer.wordpress.org/themes/patterns/using-php-in-patterns/
 - Core source read (trunk, 2026-10-08): `media.php` (`wp_get_loading_optimization_attributes` since 6.3, `wp_omit_loading_attr_threshold` default 3, `wp_min_priority_img_pixels` default 50000), `functions.php`/`theme.php` (`block_template_part` since 5.9).
 
-Confirmed: pattern header keys, `audio`/`video` categories in 6.4, header patterns cannot be registered conditionally (unregister with `unregister_block_pattern()`), a pattern uses either header or `register_block_pattern()`; pattern files may use any i18n function. Unverified: shipping `/languages` JSON for editor strings in block themes (check the installed version).
+Confirmed: pattern header keys, `audio`/`video` categories in 6.4, header patterns cannot be registered conditionally (unregister with `unregister_block_pattern()`), a pattern uses either header or `register_block_pattern()`; pattern files may use any i18n function. Check the installed version before shipping `/languages` JSON for editor strings in block themes.

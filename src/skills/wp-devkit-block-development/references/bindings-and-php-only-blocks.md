@@ -60,4 +60,4 @@ register_block_type( 'acme/notice', array(
 - https://make.wordpress.org/core/2026/03/03/php-only-block-registration/
 - Core source read (trunk): `blocks.php` `_wp_enqueue_auto_register_blocks()`
 
-Confirmed 2026-10-08 in the bindings handbook page: version history (6.5, 6.7, 6.9), default bindable attributes, `core/post-meta`/`post-data`/`term-data`/`pattern-overrides` args, protected meta rule, `get_value_callback` parameters, supported-attributes filters, no documented permission checks. The 7.0 pattern-overrides opt-in detail is unverified and was removed.
+Confirmed 2026-10-08 in the bindings handbook page: version history (6.5, 6.7, 6.9), default bindable attributes, `core/post-meta`/`post-data`/`term-data`/`pattern-overrides` args, protected meta rule, `get_value_callback` parameters, supported-attributes filters, no documented permission checks.

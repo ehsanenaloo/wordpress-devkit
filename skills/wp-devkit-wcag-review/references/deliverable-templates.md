@@ -59,7 +59,7 @@ A conformance claim, if made, includes date, scope (URLs or patterns), WCAG vers
 
 ## ACR / VPAT input
 
-Vendors producing an Accessibility Conformance Report in the VPAT format record per criterion: Supports, Partially Supports, Does Not Support, Not Applicable, Not Evaluated. Map statuses: Pass to Supports; Fail in all instances to Does Not Support; Fail in some instances to Partially Supports; Needs evidence stays open until tested (do not report it as Supports); "Not Evaluated" is, per the VPAT 2.5 wording used in published ACRs, only for WCAG AAA criteria, so it is not a valid status for A/AA rows (unverified against the template itself: check the current ITI edition); Not applicable stays. Remarks name the test method, environment and affected components. The legal or sales owner decides publication; this skill supplies the evidence table.
+Vendors producing an Accessibility Conformance Report in the VPAT format record per criterion: Supports, Partially Supports, Does Not Support, Not Applicable, Not Evaluated. Map statuses: Pass to Supports; Fail in all instances to Does Not Support; Fail in some instances to Partially Supports; Needs evidence stays open until tested (do not report it as Supports); "Not Evaluated" is, per the VPAT 2.5 wording used in published ACRs, only for WCAG AAA criteria, so it is not a valid status for A/AA rows (check the current ITI edition); Not applicable stays. Remarks name the test method, environment and affected components. The legal or sales owner decides publication; this skill supplies the evidence table.
 
 ## Retest log
 

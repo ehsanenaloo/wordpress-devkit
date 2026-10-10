@@ -24,7 +24,7 @@ For wp-admin plugin screens hand off to `wp-devkit-admin-ui-development`; this s
 
 ## Components
 
-`@wordpress/components` supplies Button, TextControl, Modal, Notice, Popover and others. In WordPress, depend on the `wp-components` style handle so ordering is correct; outside it import the package CSS (`style-rtl.css` for RTL). Popovers render at the end of the document body unless a `Popover.Slot` is rendered higher in the tree (Popover component docs). The `wp-components` handle and `style-rtl.css` file names are unverified here: check the installed WordPress and `@wordpress/components` package. Prefer these over bespoke controls for admin and editor UI: they carry keyboard and ARIA behavior.
+`@wordpress/components` supplies Button, TextControl, Modal, Notice, Popover and others. In WordPress, depend on the `wp-components` style handle so ordering is correct; outside it import the package CSS (`style-rtl.css` for RTL). Popovers render at the end of the document body unless a `Popover.Slot` is rendered higher in the tree (Popover component docs). Check the `wp-components` handle and the `style-rtl.css` file name against the installed WordPress and `@wordpress/components` package. Prefer these over bespoke controls for admin and editor UI: they carry keyboard and ARIA behavior.
 
 ## Changing a shared token (ownership checklist)
 

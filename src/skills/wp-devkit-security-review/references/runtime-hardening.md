@@ -17,7 +17,7 @@ Record the environment: WordPress, PHP (version and SAPI), database (engine and 
 - `DISALLOW_FILE_EDIT` removes the theme/plugin editors; `DISALLOW_FILE_MODS` also blocks plugin/theme installs and updates and thus patch delivery, so use it only when updates ship through deployment. Neither stops a user who already has code execution.
 - XML-RPC: disable if unused (`xmlrpc_enabled` filter or server rule); remember it supports multicall authentication attempts.
 - REST user enumeration (`/wp/v2/users`) and author archives expose usernames; INFO unless usernames serve as secrets.
-- Automatic updates: core minor and security updates are on by default; plugin and theme auto-update is opt-in. Since WordPress 6.6 a failed plugin auto-update that fatals the front end is rolled back automatically (loopback check), which restores plugin files; whether it also covers database changes made by that plugin's upgrade routine is unverified, so assume it does not.
+- Automatic updates: core minor and security updates are on by default; plugin and theme auto-update is opt-in. Since WordPress 6.6 a failed plugin auto-update that fatals the front end is rolled back automatically (loopback check), which restores plugin files; assume it does not cover database changes made by that plugin's upgrade routine.
 - Application passwords available over HTTPS only; review who has them.
 - Salts and keys: rotating them invalidates sessions; document it as the response to suspected session theft.
 

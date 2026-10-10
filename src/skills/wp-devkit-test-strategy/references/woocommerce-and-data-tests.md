@@ -1,6 +1,6 @@
 # WooCommerce and data-heavy tests
 
-Contents: [HPOS storage matrix](#hpos-storage-matrix) - [Order and stock invariants](#order-and-stock-invariants) - [Webhooks and gateways](#webhooks-and-gateways) - [Checkout paths](#checkout-paths) - [Background jobs and Action Scheduler](#background-jobs-and-action-scheduler) - [Migrations and large data](#migrations-and-large-data) - [Caching and multisite](#caching-and-multisite) - [Privacy and GDPR](#privacy-and-gdpr) - [Sources and unverified items](#sources-and-unverified-items)
+Contents: [HPOS storage matrix](#hpos-storage-matrix) - [Order and stock invariants](#order-and-stock-invariants) - [Webhooks and gateways](#webhooks-and-gateways) - [Checkout paths](#checkout-paths) - [Background jobs and Action Scheduler](#background-jobs-and-action-scheduler) - [Migrations and large data](#migrations-and-large-data) - [Caching and multisite](#caching-and-multisite) - [Privacy and GDPR](#privacy-and-gdpr) - [Sources and items to check](#sources-and-items-to-check)
 
 Applies when the code reads or writes orders, products, stock, subscriptions, customers or any large table. Pair with `wp-devkit-woocommerce-dev` for domain correctness.
 
@@ -88,7 +88,7 @@ The classic shortcode checkout and the block-based Checkout (Store API under `wc
 
 If the feature stores personal data, test the core privacy tools integration: registered exporters (`wp_privacy_personal_data_exporters`) return the data with a `done` flag and pagination; erasers (`wp_privacy_personal_data_erasers`) remove or anonymize it and report `items_removed`/`items_retained`; retention jobs delete what policy says; logs and test fixtures contain no real personal data.
 
-## Sources and unverified items
+## Sources and items to check
 
 Reviewed 2026-10-08.
 
@@ -96,4 +96,4 @@ Reviewed 2026-10-08.
 - [HPOS extension recipe book](https://developer.woocommerce.com/docs/features/high-performance-order-storage/recipe-book/): `declare_compatibility`, avoid direct posts access, test with sync on and off
 - [pre_http_request](https://developer.wordpress.org/reference/hooks/pre_http_request/)
 - Confirmed: HPOS default for new installs since 8.2, option `woocommerce_custom_orders_table_enabled`, `before_woocommerce_init` + `FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true )`, `OrderUtil::custom_orders_table_usage_is_enabled()`; the docs name `woocommerce_custom_orders_table_data_sync_enabled` as the sync option but give no test procedure for sync on/off. Action Scheduler: [API](https://actionscheduler.org/api/).
-- Unverified here, check against installed versions: the `pre_option_*` approach to switching HPOS in a test bootstrap, Action Scheduler helper signatures, WooCommerce's internal test helper names, Store API route details.
+- Check against installed versions: the `pre_option_*` approach to switching HPOS in a test bootstrap, Action Scheduler helper signatures, WooCommerce's internal test helper names, Store API route details.

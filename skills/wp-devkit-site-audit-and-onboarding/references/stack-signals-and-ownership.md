@@ -27,7 +27,7 @@ Classify each directory you were given as one of: first-party source, vendored d
 
 ## wp-content layout
 
-Standard layout: `wp-content/plugins/`, `themes/`, `mu-plugins/`, `uploads/`, `languages/`, `upgrade/`, plus drop-in files at the root of `wp-content`. The directory can be relocated with `WP_CONTENT_DIR`, `WP_PLUGIN_DIR`, `WPMU_PLUGIN_DIR` or a Bedrock-style `web/app` layout, so locate the real path from configuration before concluding a plugin is missing. `uploads/` is user data: never treat it as source or modify it. A `.maintenance` file at the site root is how WordPress signals maintenance mode during an update and can be left behind by an interrupted update (hosting guides agree; not a primary WordPress page). A non-empty `upgrade/` directory may be leftover update staging (unverified: no primary source read); report both and do not delete them. Backup or `.zip` copies of plugins, `old-*` directories and `*.bak` files are risks to flag (exposure, stale code), not code to edit.
+Standard layout: `wp-content/plugins/`, `themes/`, `mu-plugins/`, `uploads/`, `languages/`, `upgrade/`, plus drop-in files at the root of `wp-content`. The directory can be relocated with `WP_CONTENT_DIR`, `WP_PLUGIN_DIR`, `WPMU_PLUGIN_DIR` or a Bedrock-style `web/app` layout, so locate the real path from configuration before concluding a plugin is missing. `uploads/` is user data: never treat it as source or modify it. A `.maintenance` file at the site root is how WordPress signals maintenance mode during an update and can be left behind by an interrupted update (hosting guides agree; not a primary WordPress page). A non-empty `upgrade/` directory may be leftover update staging (check the host's update behavior); report both and do not delete them. Backup or `.zip` copies of plugins, `old-*` directories and `*.bak` files are risks to flag (exposure, stale code), not code to edit.
 
 ## Drop-ins
 
@@ -47,7 +47,7 @@ Record each drop-in found, who owns it (plugin-generated or hand-written), and w
 
 ## mu-plugins and platform layers
 
-Must-use plugins load automatically, cannot be deactivated in the UI and load in alphabetical order; only top-level PHP files load (a loader file is needed for subdirectories). They often hold hosting integration, security hardening, feature flags or the whole site's custom code. Inventory every file. Hosting layers commonly leave recognizable files (examples from field experience, unverified against host documentation: verify per host): WP Engine `wpengine-common`, Kinsta `kinsta-mu-plugins`, Pantheon `pantheon.yml` and a `pantheon-mu-plugin`, WordPress VIP `client-mu-plugins`, `vip-config/`, `plugins/` conventions. Their presence says where behavior such as caching, CDN purge, login protection, cron or email may be implemented outside the repository.
+Must-use plugins load automatically, cannot be deactivated in the UI and load in alphabetical order; only top-level PHP files load (a loader file is needed for subdirectories). They often hold hosting integration, security hardening, feature flags or the whole site's custom code. Inventory every file. Hosting layers commonly leave recognizable files (examples only: verify per host in its documentation): WP Engine `wpengine-common`, Kinsta `kinsta-mu-plugins`, Pantheon `pantheon.yml` and a `pantheon-mu-plugin`, WordPress VIP `client-mu-plugins`, `vip-config/`, `plugins/` conventions. Their presence says where behavior such as caching, CDN purge, login protection, cron or email may be implemented outside the repository.
 
 ## Multisite
 
@@ -86,4 +86,4 @@ Reviewed 2026-10-08.
 - [wp_get_environment_type](https://developer.wordpress.org/reference/functions/wp_get_environment_type/)
 - [wp_is_block_theme](https://developer.wordpress.org/reference/functions/wp_is_block_theme/)
 - [Plugin header requirements](https://developer.wordpress.org/plugins/plugin-basics/header-requirements/)
-- Host layer examples are unverified heuristics from field experience; confirm in the host's documentation.
+- Host layer examples are heuristics; confirm in the host's documentation.
